@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ecommerce Page</title>
+	<style>
+		.container {
+			display: flex;
+		}
+		
+		.filter {
+			flex: 0 0 20%;
+			background-color: #f2f2f2;
+			padding: 20px;
+		}
+		
+		.products {
+			flex: 1;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+		}
+		
+		.product {
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			width: 30%;
+			margin-right: 2%;
+		}
+		
+		.product:nth-child(3n) {
+			margin-right: 0;
+		}
+		
+		.product img {
+			max-width: 100px;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="filter">
+			<h2>Filters</h2>
+            <hr>
+            <h3>All Categories</h3>
+            <h3>All Categories</h3>
+            <h3>All Categories</h3>
+            <h3>All Categories</h3>
+            <h3>All Categories</h3>
+			<!-- Add your filters here -->
+		</div>
+		<div class="products">
+			
+			<!-- Add your products here -->
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+			<div class="product">
+				<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="data:image/jpeg;base64,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" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Ranger XR</h5>
+                      <p class="card-text">$40.50</p>
+                    </div>
+                </div>
+			</div>
+        </div>
+    </div>
+</body>
+</html>
