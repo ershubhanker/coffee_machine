@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% load static %}
+{% load static %}
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+	<meta name="description"
+		content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
 	<title>Primo Roasting Equipment</title>
@@ -33,72 +35,170 @@
 	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 	<style>
-		@media only screen and (max-width: 480px){
-.list-section div.container div.row{
-  margin-left:-155px;
-}
-a.boxed-btn{
-  margin-left:47px;
-}
-/* a.cart-btn{
+		/* ------------------modal style------------------------ */
+		@media (max-width: 600px) {
+			.modal-content {
+				width: 90%;
+			}
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.modal-content {
+			background-color: #000000;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #3ab344;
+			border-radius: 30px;
+			width: 50%;
+			text-align: center;
+			justify-content: center;
+		}
+
+		.close {
+			margin-left: 95%;
+			color: #e3e3e3;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		label {
+			color: white;
+			/* margin-left: -30%; */
+		}
+
+		.message {
+			margin-top: 20px;
+			color: white;
+		}
+
+		.fade-in {
+			animation: fadeIn 0.3s ease-in-out forwards;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.modal-btn {
+			font-family: 'Poppins', sans-serif;
+			display: inline-block;
+			background-color: rgb(44, 215, 25);
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 50px;
+		}
+
+		.modal-inputs {
+			margin-left: 5%;
+			border-radius: 20px;
+			width:40%;
+		}
+
+		/* -------------------------------------------------------- */
+		@media only screen and (max-width: 480px) {
+			.list-section div.container div.row {
+				margin-left: -155px;
+			}
+
+			a.boxed-btn {
+				margin-left: 47px;
+			}
+
+			/* a.cart-btn{
   margin-left: 90px;
   margin-top: 20px;
 } */
-.shop-banner div.container a:nth-child(2){
-  margin-left:100px;
-}
-.logo-carousel-section div.container div.col-lg-8{
-  margin-left: -168px;
-}
-.logo-carousel-section div.container div.row{
-  margin-left:-260px;
-}
+			.shop-banner div.container a:nth-child(2) {
+				margin-left: 100px;
+			}
 
-.footer-area div.container div.row div.col-lg-3:first-of-type{
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-.footer-area div.container div.row div.col-lg-3:nth-of-type(2){
-  width: 80%;
-  max-width: 1200px;
-  padding: 0 0 10px 0;
-  margin-left:10px;
-  box-sizing: border-box;}
+			.logo-carousel-section div.container div.col-lg-8 {
+				margin-left: -168px;
+			}
 
-.footer-area div.container div.row div.col-lg-3:nth-of-type(3){
-	width: 80%;
-  max-width: 1200px;
-  padding: 0 0 10px 0;
-  margin-left:10px;
-  box-sizing: border-box;
-}
-.machine-image{
-	height: 450px;
-	width: 400px;
-}
-.machine-image1{
-	height:200px;
-	width:200px;
-}
-.mean-bar{
-	margin-top: 90px;
-}
+			.logo-carousel-section div.container div.row {
+				margin-left: -260px;
+			}
 
-}
+			.footer-area div.container div.row div.col-lg-3:first-of-type {
+				display: flex;
+				justify-content: right;
+				align-items: center;
+			}
+
+			.footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
+				width: 80%;
+				max-width: 1200px;
+				padding: 0 0 10px 0;
+				margin-left: 10px;
+				box-sizing: border-box;
+			}
+
+			.footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
+				width: 80%;
+				max-width: 1200px;
+				padding: 0 0 10px 0;
+				margin-left: 10px;
+				box-sizing: border-box;
+			}
+
+			.machine-image {
+				height: 450px;
+				width: 400px;
+			}
+
+			.machine-image1 {
+				height: 200px;
+				width: 200px;
+			}
+
+			.mean-bar {
+				margin-top: 90px;
+			}
+
+		}
 	</style>
 
 </head>
+
 <body>
-	
+
 	<!--PreLoader-->
-    <!-- <div class="loader">
+	<!-- <div class="loader">
         <div class="loader-inner">
             <div class="circle"></div>
         </div>
     </div> -->
-    <!--PreLoader Ends-->
-	
+	<!--PreLoader Ends-->
+
 	<!-- header -->
 	<div class="top-header-area" id="sticker">
 		<div class="container">
@@ -117,22 +217,24 @@ a.boxed-btn{
 						<nav class="main-menu">
 							<ul>
 								<li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a>
-									
+
 								</li>
 								<li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
 								<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a>
-									
+
 								</li>
 								<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-									<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a>	
+								<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a>
 								</li>
 								<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
 								<li><a href="{% url 'blog' %}">{{nav5.items}}</a>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										<a class="shopping-cart" href="cart.html"><i
+												class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" href="#"><i
+												class="fas fa-search"></i></a>
 									</div>
 								</li>
 							</ul>
@@ -146,7 +248,7 @@ a.boxed-btn{
 		</div>
 	</div>
 	<!-- end header -->
-	
+
 	<!-- search area -->
 	<div class="search-area">
 		<div class="container">
@@ -170,7 +272,7 @@ a.boxed-btn{
 	<div class="hero-area hero-bg bg-dark">
 		<video class="hero-bg-video" autoplay loop muted>
 			<source src="{% static 'img\backgroundImage.mp4' %}" type="video/mp4">
-		  </video>
+		</video>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-9 offset-lg-2 text-center">
@@ -179,7 +281,8 @@ a.boxed-btn{
 							<p class="subtitle">{{heading0.head_text}}</p>
 							<h1 style="font-size: 20px">{{para0.para}}</h1>
 							<div class="hero-btns">
-								<a href="{% url 'shoproaster' %}" class="boxed-btn">{{btnText0.btn_txt}}</a>
+								<a href="#" class="boxed-btn"
+									onclick="openModal(); return false;">{{btnText0.btn_txt}}</a>
 								<a href="{% url 'contact' %}" class="bordered-btn">{{btnText1.btn_txt}}</a>
 							</div>
 						</div>
@@ -188,10 +291,30 @@ a.boxed-btn{
 			</div>
 		</div>
 	</div>
-	<!-- end hero area -->
+
+
+	<!-- --------------------Modal------------------------ -->
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<h2 style="color: white;">Enter Contact Details</h2>
+			<form onsubmit="submitForm(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message" class="message"></div>
+		</div>
+	</div>
+	<!---------------------------- end hero area-------------------- -->
 
 	<!-- features list section -->
-	<div class="list-section pt-80 pb-80"  style="background-color:black;">
+	<div class="list-section pt-80 pb-80" style="background-color:black;">
 		<div class="container">
 
 			<div class="row">
@@ -200,7 +323,7 @@ a.boxed-btn{
 						<div class="list-icon">
 							<i class="fas fa-shipping-fast"></i>
 						</div>
-						<div class="content" >
+						<div class="content">
 							<p style="color:white">{{para1.para}}</p>
 						</div>
 					</div>
@@ -236,13 +359,14 @@ a.boxed-btn{
 	<!-- product section -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
-			
+
 
 			<div class="row">
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701" alt="" style="border-radius:60%;height:50px;width:50px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701"
+								alt="" style="border-radius:60%;height:50px;width:50px;">
 						</div>
 						<h3 style="color: white">{{heading3.head_text}}</h3>
 						<p class="product-price" style="color: white"><span>{{para4.para}}</span></p>
@@ -251,23 +375,25 @@ a.boxed-btn{
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701" alt="" style="border-radius:60%;height:50px;width:50px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701"
+								alt="" style="border-radius:60%;height:50px;width:50px;">
 						</div>
 						<h3 style="color: white">{{heading4.head_text}}</h3>
 						<p class="product-price" style="color: white"><span>{{para5.para}}</span></p>
-						
+
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701" alt="" style="border-radius:60%;height:50px;width:50px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVJc4bDYKBCC904zsezdJOXfLnfPlNLbP6A86VV6HnNQ&usqp=CAU&ec=48665701"
+								alt="" style="border-radius:60%;height:50px;width:50px;">
 						</div>
 						<h3 style="color: white">{{heading5.head_text}}</h3>
 						<p class="product-price" style="color: white"><span>{{para6.para}}</span></p>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -275,42 +401,47 @@ a.boxed-btn{
 
 	<!-- cart banner section -->
 	<section class="cart-banner pt-10 pb-100">
-    	<div class="container" style="background-color: #000;">
-        	<div class="row clearfix">
-            	<!--Image Column-->
-            	<div class="image-column col-lg-6" style="max-width:600px">
-                	<div class="image" >
-                    	
-                    	<img  class="machine-image" src="{{image4.image.url}}" alt="" height="600" width="600" style="border-radius:20px;">
-                    </div>
-                </div>
-                <!--Content Column-->
-                <div class="content-column col-lg-6">
+		<div class="container" style="background-color: #000;">
+			<div class="row clearfix">
+				<!--Image Column-->
+				<div class="image-column col-lg-6" style="max-width:600px">
+					<div class="image">
+
+						<img class="machine-image" src="{{image4.image.url}}" alt="" height="600" width="600"
+							style="border-radius:20px;">
+					</div>
+				</div>
+				<!--Content Column-->
+				<div class="content-column col-lg-6">
 					<div class="col">
 						<div class="row">
 							<div class="col">
-								<img  class="machine-image1" src="{{image6.image.url}}" alt="" height="260" style="border-radius:20px;">
-							</div>
-							<div class="col" >
-								<img class="machine-image1" src="{{image7.image.url}}" alt="" height='260' style="border-radius:20px;margin-left:20px ;margin-top:40px;">
-							</div>
-						</div>
-						<div class="row" >
-							<div class="col"  >
-								<img  class="machine-image1" src="{{image8.image.url}}" alt="" height='260' style="border-radius:20px; margin-top:20px;">
+								<img class="machine-image1" src="{{image6.image.url}}" alt="" height="260"
+									style="border-radius:20px;">
 							</div>
 							<div class="col">
-								<img class="machine-image1" src="{{image9.image.url}}" alt="" height='260' style="border-radius:20px; margin-top:40px; margin-left:20px">
+								<img class="machine-image1" src="{{image7.image.url}}" alt="" height='260'
+									style="border-radius:20px;margin-left:20px ;margin-top:40px;">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<img class="machine-image1" src="{{image8.image.url}}" alt="" height='260'
+									style="border-radius:20px; margin-top:20px;">
+							</div>
+							<div class="col">
+								<img class="machine-image1" src="{{image9.image.url}}" alt="" height='260'
+									style="border-radius:20px; margin-top:40px; margin-left:20px">
 							</div>
 						</div>
 					</div>
-                   
 
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end cart banner section -->
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end cart banner section -->
 
 	<!-- testimonail-section -->
 	<div class="testimonail-section mt-150 mb-150">
@@ -322,8 +453,9 @@ a.boxed-btn{
 							<div class="client-avater">
 								<img src="{{image1.image.url}}" alt="">
 							</div>
-							<div class="client-meta">		
-								<h3 style="color: #3a3939;">{{heading6.head_text}}<span style="color: #3a3939;">{{para10.para}}</span></h3>
+							<div class="client-meta">
+								<h3 style="color: #3a3939;">{{heading6.head_text}}<span
+										style="color: #3a3939;">{{para10.para}}</span></h3>
 								<p class="testimonial-body">
 									{{para7.para}}
 								</p>
@@ -337,7 +469,8 @@ a.boxed-btn{
 								<img src="{{image2.image.url}}" alt="">
 							</div>
 							<div class="client-meta">
-								<h3 style="color: #3a3939;">{{heading7.head_text}}<span style="color: #3a3939;">{{para9.para}}</span></h3>
+								<h3 style="color: #3a3939;">{{heading7.head_text}}<span
+										style="color: #3a3939;">{{para9.para}}</span></h3>
 								<p class="testimonial-body">
 									{{para8.para}}
 								</p>
@@ -346,21 +479,22 @@ a.boxed-btn{
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- end testimonail-section -->
-	
+
 	<!-- advertisement section -->
 	<div class="abt-section mb-150">
 		<div class="container" style="color:white;">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<div class="abt-bg" style="background:#000; display: flex; justify-content: center; align-items: center;">
-						<img src="{{image5.image.url}}"alt="" class="center">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;">
+						<img src="{{image5.image.url}}" alt="" class="center">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
@@ -373,18 +507,18 @@ a.boxed-btn{
 		</div>
 	</div>
 	<!-- end advertisement section -->
-	
+
 	<!-- shop banner -->
 	<section class="shop-banner">
-    	<div class="container" style="background-color: #000;">
-        	<h3 style="color: white">
+		<div class="container" style="background-color: #000;">
+			<h3 style="color: white">
 				{{heading8.head_text}}</span></h3>
-				<p class="product-price" style="color: white"><span>
+			<p class="product-price" style="color: white"><span>
 					{{para12.para}}</span></p>
-            <a href="{% url 'shoproaster' %}" class="cart-btn btn-lg">{{btnText3.btn_txt}}</a>
+			<a href="{% url 'shoproaster' %}" class="cart-btn btn-lg">{{btnText3.btn_txt}}</a>
 			<a href="{% url 'shoproaster' %}" class="cart-btn btn-lg">{{btnText4.btn_txt}}</a>
-        </div>
-    </section>
+		</div>
+	</section>
 	<!-- end shop banner -->
 
 	<!-- latest news -->
@@ -393,7 +527,7 @@ a.boxed-btn{
 
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
+					<div class="section-title">
 						<h3><span class="orange-text" style="color:white">{{heading9.head_text}}</span></h3>
 						<p>{{para13.para}}</p>
 					</div>
@@ -402,10 +536,10 @@ a.boxed-btn{
 
 			<div class="row">
 				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-latest-news" >
-						<div class="news-text-box" >
+					<div class="single-latest-news">
+						<div class="news-text-box">
 							<h3><a href="single-{% url 'blog' %}" style="color:white">{{heading10.head_text}}</a></h3>
-							
+
 							<p class="excerpt">{{para14.para}}</p>
 						</div>
 					</div>
@@ -422,38 +556,38 @@ a.boxed-btn{
 					<div class="single-latest-news">
 						<div class="news-text-box">
 							<h3><a href="single-{% url 'blog' %}" style="color:white">{{heading12.head_text}}</a></h3>
-							
+
 							<p class="excerpt">{{para16.para}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 	<!-- end latest news -->
 
 	<!-- logo carousel -->
 
-	
+
 	<div class="logo-carousel-section">
 		<div class="container">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title" style="margin-right:250px;">	
-						<h3><span class="orange-text" style="color:white;">{{heading13.head_text}}</span></h3>
-					</div>
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="section-title" style="margin-right:250px;">
+					<h3><span class="orange-text" style="color:white;">{{heading13.head_text}}</span></h3>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12" style="margin-top:50px;">
 					<div class="logo-carousel-inner">
 						<div class="single-logo-item" style="margin-left:-100px;">
-							
+
 							<img src="{{image0.image.url}}" alt="">
 						</div>
-						
+
 						<div class="single-logo-item" style="margin-left: 100px;">
 							<img src="{{image1.image.url}}" alt="">
-						</div> 
+						</div>
 						<div class="single-logo-item" style="margin-right:-200px;">
 							<img src="{{image2.image.url}}" alt="">
 						</div>
@@ -497,7 +631,8 @@ a.boxed-btn{
 						<p>{{para23.para}}</p>
 						<form action="{% url 'home' %}">
 							<input type="email" placeholder="Email" style="border-radius:20px 0px 0px 20px">
-							<button type="submit" style="border-radius:0px 20px 20px 0px"><i class="fas fa-paper-plane"></i></button>
+							<button type="submit" style="border-radius:0px 20px 20px 0px"><i
+									class="fas fa-paper-plane"></i></button>
 						</form>
 					</div>
 				</div>
@@ -505,13 +640,14 @@ a.boxed-btn{
 		</div>
 	</div>
 	<!-- end footer -->
-	
+
 	<!-- copyright -->
 	<div class="copyright">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}</p>
+					<p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}
+					</p>
 				</div>
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
@@ -528,7 +664,57 @@ a.boxed-btn{
 		</div>
 	</div>
 	<!-- end copyright -->
-	
+
+
+	<script>
+		// Open the modal
+		function openModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "block";
+		}
+
+		// Close the modal
+		function closeModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "none";
+		}
+		// Open the modal with fade-in effect
+		function openModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "block";
+			modal.classList.add("fade-in");
+		}
+
+		// Close the modal
+		function closeModal() {
+			var modal = document.getElementById("myModal");
+			modal.classList.remove("fade-in");
+			setTimeout(function () {
+				modal.style.display = "none";
+			}, 300); // Adjust the delay to match your CSS transition duration
+		}
+
+		// Submit the form
+		function submitForm(event) {
+			event.preventDefault();
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var phone = document.getElementById("phone").value;
+
+			// Perform any necessary validation or processing here
+			// ...
+
+			// Display success message
+			var messageDiv = document.getElementById("message");
+			messageDiv.textContent =
+				"Thank you, " + name + "! We'll get back to you.";
+
+			// Reset the form
+			document.getElementById("name").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("phone").value = "";
+		}
+	</script>
 	<!-- jquery -->
 	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
 	<!-- bootstrap -->
@@ -551,4 +737,5 @@ a.boxed-btn{
 	<script src="{% static 'js/main.js' %}"></script>
 
 </body>
+
 </html>
