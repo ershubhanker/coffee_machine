@@ -483,14 +483,24 @@ def spareparts(request):
     para24 =  para[24]
     para25 =  para[25]
 
-    spare = spareParts.objects.all()
+    # Retrieve the selected category from the query string
+    category = request.GET.get('Category')
+    
+    # Filter the spare parts based on the selected category
+    if category:
+        spare = spareParts.objects.filter(toolCategory=category)
+    else:
+        spare = spareParts.objects.all()
 
 
-    return render(request,'spareparts.html',{'spare':spare,
-        'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
-                                             'image3':image3,
-                                             'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,
-                                             'heading44':heading44,})
+    return render(request,'spareparts.html',{'spare': spare,
+                                               'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
+                                               'nav4': nav4, 'nav5': nav5, 'nav6': nav6,
+                                               'image3': image3,
+                                               'para': para, 'para17': para17, 'para18': para18, 'para19': para19,
+                                               'para20': para20, 'para21': para21, 'para22': para22, 'para23': para23,
+                                               'para24': para24, 'para25': para25,
+                                               'heading44': heading44})
     # send_mail(
     #         'This is test mail',
     #         'this is message',

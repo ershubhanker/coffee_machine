@@ -44,9 +44,10 @@ class Image(models.Model):
     
 
 class spareParts(models.Model):
+    toolCategory = models.CharField(max_length=100,null=True,blank=True)
     toolImage = models.ImageField(upload_to='media')
     toolTitle = models.CharField(max_length=30)
     toolPrice = models.FloatField()
 
     def __str__(self):
-        return f'{self.toolTitle}-{self.toolPrice}'
+        return f'{self.toolTitle} - ${self.toolPrice} / {self.toolCategory}'
