@@ -47,6 +47,7 @@ class spareParts(models.Model):
     toolCategory = models.CharField(max_length=100,null=True,blank=True)
     toolImage = models.ImageField(upload_to='media')
     toolTitle = models.CharField(max_length=30)
+    toolDesc = models.TextField(null=True, blank=True)
     toolPrice = models.FloatField()
 
     def __str__(self):

@@ -253,7 +253,8 @@
         {% for sp in spare %}
         <div class="product" data-category="{{ sp.toolCategory }}"> <!-- Update data-category with multiple categories -->
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{ sp.toolImage.url }}" alt="Card image cap">
+            <a href="/spare-parts/{{ sp.id }}">
+            <img class="card-img-top" src="{{ sp.toolImage.url }}" alt="Card image cap"></a>
             <div class="card-body">
               <h5 class="card-title">{{ sp.toolTitle }}</h5>
               <p class="card-text">${{ sp.toolPrice }}</p>

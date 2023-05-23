@@ -43,7 +43,7 @@
 		.modal {
 			display: none;
 			position: fixed;
-			z-index: 1;
+			z-index: 2;
 			left: 0;
 			top: 0;
 			width: 100%;
@@ -373,7 +373,9 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading16.head_text}}</span></h3>
 			<form onsubmit="submitForm(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name" name="name" required class="modal-inputs" /><br /><br />
@@ -423,7 +425,10 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal2()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading18.head_text}}</span></h3>
+			<form onsubmit="submitForm(event)">
 			<form onsubmit="submitForm2(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name2" name="name" required class="modal-inputs" /><br /><br />
@@ -472,7 +477,10 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal3()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading19.head_text}}</span></h3>
+			<form onsubmit="submitForm(event)">
 			<form onsubmit="submitForm3(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name3" name="name" required class="modal-inputs" /><br /><br />
@@ -519,7 +527,10 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal4()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading20.head_text}}</span></h3>
+			<form onsubmit="submitForm(event)">
 			<form onsubmit="submitForm4(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name4" name="name" required class="modal-inputs" /><br /><br />
@@ -566,7 +577,10 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal5()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading21.head_text}}</span></h3>
+			<form onsubmit="submitForm(event)">
 			<form onsubmit="submitForm5(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name5" name="name" required class="modal-inputs" /><br /><br />
@@ -613,7 +627,10 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close" onclick="closeModal6()">&times;</span>
-			<h2 style="color: white;">Enter Contact Details</h2>
+			<h4 style="color: white;">Enquiry for</h4>
+			<h3><span class="orange-text"
+				style="color:rgb(44, 215, 25); font-size: 26px;">{{heading22.head_text}}</span></h3>
+			<form onsubmit="submitForm(event)">
 			<form onsubmit="submitForm6(event)">
 				<label for="name">Name</label>
 				<input type="text" id="name6" name="name" required class="modal-inputs" /><br /><br />
@@ -757,28 +774,30 @@
 		function openModal() {
 			var modal = document.getElementById("myModal");
 			modal.style.display = "block";
+			modal.classList.add("fade-in");
+
 		}
 
 		// Close the modal
 		function closeModal() {
 			var modal = document.getElementById("myModal");
 			modal.style.display = "none";
-		}
-		// Open the modal with fade-in effect
-		function openModal() {
-			var modal = document.getElementById("myModal");
-			modal.style.display = "block";
-			modal.classList.add("fade-in");
-		}
-
-		// Close the modal
-		function closeModal() {
-			var modal = document.getElementById("myModal");
 			modal.classList.remove("fade-in");
 			setTimeout(function () {
 				modal.style.display = "none";
 			}, 300); // Adjust the delay to match your CSS transition duration
+		
 		}
+		// Open the modal with fade-in effect
+		{% comment %} function openModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "block";
+		} {% endcomment %}
+
+		// Close the modal
+		{% comment %} function closeModal() {
+			var modal = document.getElementById("myModal"); {% endcomment %}
+			
 
 		// Submit the form
 		function submitForm(event) {
@@ -805,28 +824,30 @@
 		function openModal2() {
 			var modal = document.getElementById("myModal2");
 			modal.style.display = "block";
+			modal.classList.add("fade-in");
+
 		}
 
 		// Close the modal
 		function closeModal2() {
 			var modal = document.getElementById("myModal2");
 			modal.style.display = "none";
+			modal.classList.remove("fade-in");
+			setTimeout(function () {
+				modal.style.display = "none";
+			}, 300);
 		}
 		// Open the modal with fade-in effect
-		function openModal2() {
+		{% comment %} function openModal2() {
 			var modal = document.getElementById("myModal2");
 			modal.style.display = "block";
-			modal.classList.add("fade-in");
 		}
 
 		// Close the modal
 		function closeModal2() {
 			var modal = document.getElementById("myModal2");
-			modal.classList.remove("fade-in");
-			setTimeout(function () {
-				modal.style.display = "none";
-			}, 300); // Adjust the delay to match your CSS transition duration
-		}
+			 // Adjust the delay to match your CSS transition duration
+		} {% endcomment %}
 
 		// Submit the form
 		function submitForm2(event) {
@@ -852,28 +873,30 @@
 		function openModal3() {
         var modal = document.getElementById("myModal3");
         modal.style.display = "block";
+        modal.classList.add("fade-in");
+
     }
 
     // Close the modal
     function closeModal3() {
         var modal = document.getElementById("myModal3");
         modal.style.display = "none";
+		modal.classList.remove("fade-in");
+        setTimeout(function () {
+            modal.style.display = "none";
+        }, 300);
     }
-    // Open the modal with fade-in effect
+    {% comment %} // Open the modal with fade-in effect
     function openModal3() {
         var modal = document.getElementById("myModal3");
         modal.style.display = "block";
-        modal.classList.add("fade-in");
     }
 
     // Close the modal
     function closeModal3() {
         var modal = document.getElementById("myModal3");
-        modal.classList.remove("fade-in");
-        setTimeout(function () {
-            modal.style.display = "none";
-        }, 300); // Adjust the delay to match your CSS transition duration
-    }
+         // Adjust the delay to match your CSS transition duration
+    } {% endcomment %}
 
     // Submit the form
     function submitForm3(event) {
@@ -900,28 +923,30 @@
     function openModal4() {
         var modal = document.getElementById("myModal4");
         modal.style.display = "block";
+        modal.classList.add("fade-in");
+
     }
 
     // Close the modal
     function closeModal4() {
         var modal = document.getElementById("myModal4");
         modal.style.display = "none";
+		modal.classList.remove("fade-in");
+        setTimeout(function () {
+            modal.style.display = "none";
+        }, 300);
     }
     // Open the modal with fade-in effect
-    function openModal4() {
+    {% comment %} function openModal4() {
         var modal = document.getElementById("myModal4");
         modal.style.display = "block";
-        modal.classList.add("fade-in");
     }
 
     // Close the modal
     function closeModal4() {
         var modal = document.getElementById("myModal4");
-        modal.classList.remove("fade-in");
-        setTimeout(function () {
-            modal.style.display = "none";
-        }, 300); // Adjust the delay to match your CSS transition duration
-    }
+         // Adjust the delay to match your CSS transition duration
+    } {% endcomment %}
 
     // Submit the form
     function submitForm4(event) {
@@ -948,28 +973,30 @@
     function openModal5() {
         var modal = document.getElementById("myModal5");
         modal.style.display = "block";
+        modal.classList.add("fade-in");
+
     }
 
     // Close the modal
     function closeModal5() {
         var modal = document.getElementById("myModal5");
         modal.style.display = "none";
+		modal.classList.remove("fade-in");
+        setTimeout(function () {
+            modal.style.display = "none";
+        }, 300);
     }
     // Open the modal with fade-in effect
-    function openModal5() {
+    {% comment %} function openModal5() {
         var modal = document.getElementById("myModal5");
         modal.style.display = "block";
-        modal.classList.add("fade-in");
     }
 
     // Close the modal
     function closeModal5() {
         var modal = document.getElementById("myModal5");
-        modal.classList.remove("fade-in");
-        setTimeout(function () {
-            modal.style.display = "none";
-        }, 300); // Adjust the delay to match your CSS transition duration
-    }
+         // Adjust the delay to match your CSS transition duration
+    } {% endcomment %}
 
     // Submit the form
     function submitForm5(event) {
@@ -996,28 +1023,30 @@
     function openModal6() {
         var modal = document.getElementById("myModal6");
         modal.style.display = "block";
+        modal.classList.add("fade-in");
+
     }
 
     // Close the modal
     function closeModal6() {
         var modal = document.getElementById("myModal6");
         modal.style.display = "none";
+		modal.classList.remove("fade-in");
+        setTimeout(function () {
+            modal.style.display = "none";
+        }, 300); 
     }
     // Open the modal with fade-in effect
-    function openModal6() {
+    {% comment %} function openModal6() {
         var modal = document.getElementById("myModal6");
         modal.style.display = "block";
-        modal.classList.add("fade-in");
     }
 
     // Close the modal
     function closeModal6() {
         var modal = document.getElementById("myModal6");
-        modal.classList.remove("fade-in");
-        setTimeout(function () {
-            modal.style.display = "none";
-        }, 300); // Adjust the delay to match your CSS transition duration
-    }
+        // Adjust the delay to match your CSS transition duration
+    } {% endcomment %}
 
     // Submit the form
     function submitForm6(event) {

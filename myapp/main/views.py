@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.core.mail import EmailMessage
 from . models import Contact,Image,Headings,navItems,buttonText,paragraph,spareParts
 from django.core.mail import send_mail,BadHeaderError
@@ -359,6 +359,7 @@ def blog(request):
     image3 =  images[3]
 
     para = paragraph.objects.all()
+    # footer
     para17 =  para[17]
     para18 =  para[18]
     para19 =  para[19]
@@ -501,6 +502,43 @@ def spareparts(request):
                                                'para20': para20, 'para21': para21, 'para22': para22, 'para23': para23,
                                                'para24': para24, 'para25': para25,
                                                'heading44': heading44})
+
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(spareParts, id=product_id)
+    nav = navItems.objects.all()
+    nav0 = nav[0]
+    nav1 = nav[1]
+    nav2 = nav[2]
+    nav3 = nav[3]
+    nav4 = nav[4]
+    nav5 = nav[5]
+    nav6 = nav[6]
+
+    images = Image.objects.all()
+    image3 =  images[3] #logo image
+
+    para = paragraph.objects.all()
+    para17 =  para[17]
+    para18 =  para[18]
+    para19 =  para[19]
+    para20 =  para[20]
+    para21 =  para[21]
+    para22 =  para[22]
+    para23 =  para[23]
+    para24 =  para[24]
+    para25 =  para[25]
+
+    context = {
+        'product': product,
+        'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
+                                               'nav4': nav4, 'nav5': nav5, 'nav6': nav6,
+                                               'image3': image3,
+                                               'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25
+    }
+    return render(request, 'productDetailPage.html', context)
+
     # send_mail(
     #         'This is test mail',
     #         'this is message',
