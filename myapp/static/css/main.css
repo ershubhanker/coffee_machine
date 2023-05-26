@@ -30,7 +30,7 @@ body {
 }
 
 body img {
-  max-width: 100%;
+  max-width: 132%;
 }
 
 a {
@@ -1671,7 +1671,7 @@ div.owl-controls, .owl-controls div {
   height: 65px;
   text-align: center;
   line-height: 60px;
-  border: 2px #F28123 dotted;
+  border: 2px rgb(44, 215, 25) dotted;
   border-radius: 999px;
 }
 

@@ -6,7 +6,18 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from .forms import ContactForm
 # Create your views here.
-def home(request):
+
+
+
+
+
+
+
+
+
+'''-----------Common Funtions------------------'''
+
+def navbar():
     nav = navItems.objects.all()
     nav0 = nav[0]
     nav1 = nav[1]
@@ -15,6 +26,39 @@ def home(request):
     nav4 = nav[4]
     nav5 = nav[5]
     nav6 = nav[6]
+
+    images = Image.objects.all()
+    image3 =  images[3] #logo image
+    return ({'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
+                                               'nav4': nav4, 'nav5': nav5, 'nav6': nav6,
+                                               'images':images,'image3': image3,})
+
+def footbar():
+    para = paragraph.objects.all()
+    para17 =  para[17]
+    para18 =  para[18]
+    para19 =  para[19]
+    para20 =  para[20]
+    para21 =  para[21]
+    para22 =  para[22]
+    para23 =  para[23]
+    para24 =  para[24]
+    para25 =  para[25]
+
+    return ({'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25})
+
+
+# ------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+'''--------------------------Main Funtions---------------------------'''
+
+def home(request):
+    navcontext = navbar()
 
 
     para = paragraph.objects.all()
@@ -36,15 +80,7 @@ def home(request):
     para15 =  para[15]
     para16 =  para[16]
     # footer
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    footercontext = footbar()
 
     btnText = buttonText.objects.all()
     btnText0 =  btnText[0]
@@ -76,29 +112,20 @@ def home(request):
     image0 =  images[0]
     image1 = images[1]
     image2 = images[2]
-    image3 = images[3] #logo image
     image4 = images[4]
     image5 = images[5]
     image6 = images[6]
     image7 = images[7]
     image8 = images[8]
     image9 = images[9]
-    return render(request, 'index.html',{'images': images,'image1':image1,'image0':image0,'image2':image2,'image3':image3,'image4':image4,'image5':image5,'image6':image6,'image7':image7,'image8':image8,'image9':image9,
-                                         'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
+    return render(request, 'index.html',{**navcontext,'images': images,'image1':image1,'image0':image0,'image2':image2,'image4':image4,'image5':image5,'image6':image6,'image7':image7,'image8':image8,'image9':image9,
                                          'headings':headings,'heading0':heading0,'heading1':heading1,'heading2':heading2,'heading3':heading3,'heading4':heading4,'heading5':heading5,'heading6':heading6,'heading7':heading7,'heading8':heading8,'heading9':heading9,'heading10':heading10,'heading11':heading11,'heading12':heading12,'heading13':heading13,
                                          'btnText':btnText,'btnText0':btnText0,'btnText1':btnText1,'btnText2':btnText2,'btnText3':btnText3,'btnText4':btnText4,
-                                         'para':para,'para0':para0,'para1':para1,'para2':para2,'para3':para3,'para4':para4,'para5':para5,'para6':para6,'para7':para7,'para8':para8,'para9':para9,'para10':para10,'para11':para11,'para12':para12,'para13':para13,'para14':para14,'para15':para15,'para16':para16,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25})
+                                         'para':para,'para0':para0,'para1':para1,'para2':para2,'para3':para3,'para4':para4,'para5':para5,'para6':para6,'para7':para7,'para8':para8,'para9':para9,'para10':para10,'para11':para11,'para12':para12,'para13':para13,'para14':para14,'para15':para15,'para16':para16,**footercontext})
 
 
 def about(request):
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    navcontext = navbar()
 
     
 
@@ -106,7 +133,7 @@ def about(request):
     image0 =  images[0]
     image1 = images[1]
     image2 = images[2]
-    image3 = images[3] #logo image
+    # image3 = images[3] #logo image
     image10 =  images[10]
     # team member images
     image11 =  images[11]
@@ -119,15 +146,8 @@ def about(request):
     para8 = para[8]
     para9 = para[9]
     para10 = para[10]
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    # footer
+    footercontext = footbar()
     # our existence
     para39 =  para[39]
     para40 =  para[40]
@@ -174,22 +194,16 @@ def about(request):
     heading42 = headings[42]
     heading43 = headings[43]
 
-    return render(request,'about.html',{'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
+    return render(request,'about.html',{**navcontext,
                                         'btnText':btnText,'btnText6':btnText6,
                                         'headings':headings,'heading6':heading6,'heading7':heading7,'heading32':heading32,'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,'heading33':heading33,'heading34':heading34,'heading35':heading35,'heading36':heading36,'heading37':heading37,'heading38':heading38,'heading39':heading39,'heading40':heading40,'heading41':heading41,'heading42':heading42,'heading43':heading43,
-                                        'para7':para7,'para8':para8,'para9':para9,'para10':para10,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para49':para49,'para50':para50,'para51':para51,'para52':para52,'para53':para53,'para54':para54,'para55':para55,'para56':para56,
-                                        'images':images,'image1':image1,'image0':image0,'image2':image2,'image3':image3,'image10':image10,'image11':image11,'image12':image12,'image13':image13,})
+                                        'para7':para7,'para8':para8,'para9':para9,'para10':para10,**footercontext,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para49':para49,'para50':para50,'para51':para51,'para52':para52,'para53':para53,'para54':para54,'para55':para55,'para56':para56,
+                                        'images':images,'image1':image1,'image0':image0,'image2':image2,'image10':image10,'image11':image11,'image12':image12,'image13':image13,})
 
 
 def coffee(request):
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    
+    navcontext = navbar()
 
     headings = Headings.objects.all()
     heading23 = headings[23]
@@ -220,49 +234,26 @@ def coffee(request):
     para47 =  para[47]
     para48 =  para[48]
     # footer
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]    
+    footercontext = footbar()  
 
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
-
+    
     images = Image.objects.all()
-    image3 =  images[3] #logo image
+    # image3 =  images[3] #logo image
     image10 =  images[10]
 
-    return render(request,'coffee.html',{'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
+    return render(request,'coffee.html',{**navcontext,
                                          'btnText':btnText,'btnText6':btnText6,
                                          'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,
-                                         'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para44':para44,'para45':para45,'para46':para46,'para47':para47,'para48':para48,
-                                         'images':images,'image10':image10,'image3':image3,
+                                         **footercontext,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para44':para44,'para45':para45,'para46':para46,'para47':para47,'para48':para48,
+                                         'images':images,'image10':image10,
                                          'headings':headings,'heading28':heading28,'heading29':heading29,'heading30':heading30,'heading31':heading31,'heading32':heading32,})
 
 
 def shoproaster(request):
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    navcontext = navbar()
 
     images = Image.objects.all()
-    image3 =  images[3] #logo image
+    # image3 =  images[3] #logo image
     image14 =  images[14]
     image15 =  images[15]
     image16 =  images[16]
@@ -270,15 +261,6 @@ def shoproaster(request):
     image18 =  images[18]
     image19 =  images[19]
 
-
-
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
 
     btnText = buttonText.objects.all()
     btnText5 =  btnText[5] #order now
@@ -305,15 +287,7 @@ def shoproaster(request):
     para43 =  para[43]
 
     # para = paragraph.objects.all()
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    footercontext = footbar()
     
 
     headings = Headings.objects.all()
@@ -333,53 +307,28 @@ def shoproaster(request):
     heading27 = headings[27]
     
 
-    return render(request,'shop.html',{'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
-                                       'images':images,'image3':image3,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19,
+    return render(request,'shop.html',{**navcontext,
+                                       'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19,
                                        'btnText':btnText,'btnText5':btnText5,'btnText1':btnText1,
                                        'headings':headings,'heading14':heading14,'heading15':heading15,'heading16':heading16,'heading17':heading17,'heading18':heading18,'heading19':heading19,'heading20':heading20,'heading21':heading21,'heading22':heading22,'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,
-                                         'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,'para26':para26,'para27':para27,'para28':para28,'para29':para29,'para30':para30,'para31':para31,'para32':para32,'para33':para33,'para34':para34,'para35':para35,'para36':para36,'para37':para37,'para38':para38,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,})
+                                         'para':para,**footercontext,'para26':para26,'para27':para27,'para28':para28,'para29':para29,'para30':para30,'para31':para31,'para32':para32,'para33':para33,'para34':para34,'para35':para35,'para36':para36,'para37':para37,'para38':para38,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,})
 
 # def gallery(request):
 #     return render(request, 'gallery.html')
 
 
 def blog(request):
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    navcontext = navbar()
 
-
-
-    images = Image.objects.all()
-    image3 =  images[3]
 
     para = paragraph.objects.all()
     # footer
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    footercontext = footbar()
 
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    return render(request,'news.html',{'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
-                                       'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,
-                                       'images':images,'image3':image3,})
+    
+    return render(request,'news.html',{**navcontext,
+                                       **footercontext
+                                       })
 
 
 
@@ -387,30 +336,12 @@ def blog(request):
 
 
 def contact(request):
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    navcontext = navbar()
 
-    images = Image.objects.all()
-    image3 =  images[3] #logo image
 
-    para = paragraph.objects.all()
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    footercontext = footbar()
 
-    para26 = para[26]
+   
 
 
     headings = Headings.objects.all()
@@ -449,40 +380,20 @@ def contact(request):
         print('---------done')
         form = ContactForm()
 
-    return render(request, 'contact.html',{'form':form,'nav':nav,'nav0':nav0,'nav1':nav1,'nav2':nav2,'nav3':nav3,'nav4':nav4,'nav5':nav5,'nav6':nav6,
+    return render(request, 'contact.html',{'form':form,**navcontext,
                                            'heading45':heading45,
-                                           'images':images,'image3':image3,
-                                           'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25,'para26':para26,'para57':para57})
+                                           'para':para,**footercontext,'para57':para57})
 
 
 
 def spareparts(request):
-    images = Image.objects.all()
-    image3 =  images[3] #logo image
-
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
+    navcontext = navbar()
 
     headings = Headings.objects.all()
     heading44 = headings[44] #Spare parts
     
     
-    para = paragraph.objects.all()
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    footercontext = footbar()
 
     # Retrieve the selected category from the query string
     category = request.GET.get('Category')
@@ -495,88 +406,44 @@ def spareparts(request):
 
 
     return render(request,'spareparts.html',{'spare': spare,
-                                               'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
-                                               'nav4': nav4, 'nav5': nav5, 'nav6': nav6,
-                                               'image3': image3,
-                                               'para': para, 'para17': para17, 'para18': para18, 'para19': para19,
-                                               'para20': para20, 'para21': para21, 'para22': para22, 'para23': para23,
-                                               'para24': para24, 'para25': para25,
+                                               **navcontext,
+                                               **footercontext,
                                                'heading44': heading44})
 
 
 
 def product_detail(request, product_id):
     product = get_object_or_404(spareParts, id=product_id)
-    nav = navItems.objects.all()
-    nav0 = nav[0]
-    nav1 = nav[1]
-    nav2 = nav[2]
-    nav3 = nav[3]
-    nav4 = nav[4]
-    nav5 = nav[5]
-    nav6 = nav[6]
-
-    images = Image.objects.all()
-    image3 =  images[3] #logo image
-
-    para = paragraph.objects.all()
-    para17 =  para[17]
-    para18 =  para[18]
-    para19 =  para[19]
-    para20 =  para[20]
-    para21 =  para[21]
-    para22 =  para[22]
-    para23 =  para[23]
-    para24 =  para[24]
-    para25 =  para[25]
+    
+    navcontext = navbar()
+    footercontext = footbar()
 
     context = {
         'product': product,
-        'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
-                                               'nav4': nav4, 'nav5': nav5, 'nav6': nav6,
-                                               'image3': image3,
-                                               'para':para,'para17':para17,'para18':para18,'para19':para19,'para20':para20,'para21':para21,'para22':para22,'para23':para23,'para24':para24,'para25':para25
+        **navcontext,**footercontext
     }
     return render(request, 'productDetailPage.html', context)
 
-    # send_mail(
-    #         'This is test mail',
-    #         'this is message',
-    #         'boredstuff2021@gmail.com',
-    #         ['spacelover2003@gmail.com'],
-    #         fail_silently=False,
-    # )
-
-    # if request.method == 'POST':
-    #     form = ContactForm(request.POST)
-    #     # print("form")
-
-    #     if form.is_valid():
-    #         # name = form.cleaned_data['name']
-    #         # print("name sent")
-    #         email = form.cleaned_data['email']
-    #         print("email sent")
-    #         subject = form.cleaned_data['subject']
-    #         print("subject sent")
-    #         message = form.cleaned_data['message']
-    #         print("message sent")
-
-    #         send_mail(
-    #                   subject,
-    #                   message,
-    #                   'boredstuff2021@gmail.com',
-    #                   [email],
-    #                   fail_silently=False,
-    #                   )
-    #         print("------------------sent")
-    #         return redirect('contact')
-          
-    # form = ContactForm()
-    # return render(request, 'contact.html')
 
 
-# def service(request):
-#     return render(request,'service.html')
+# def checkout(request):
+#     nav = navItems.objects.all()
+#     nav0 = nav[0]
+#     nav1 = nav[1]
+#     nav2 = nav[2]
+#     nav3 = nav[3]
+#     nav4 = nav[4]
+#     nav5 = nav[5]
+#     nav6 = nav[6]
+#     return render(request, 'checkout.html',{'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
+#                                                'nav4': nav4, 'nav5': nav5, 'nav6': nav6,})
+    
+
+
+
+def comparison(request):
+    context = navbar()
+    return render(request,'roasterComparison.html',context)
 
 
 # def reservation(request):
