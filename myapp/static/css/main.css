@@ -30,7 +30,7 @@ body {
 }
 
 body img {
-  max-width: 132%;
+  max-width: 100%;
 }
 
 a {
@@ -2545,8 +2545,8 @@ a.cart-btn i {
 
 .single-product-img img {
   border-radius: 5px;
-  -webkit-box-shadow: 0 0 20px #ddd;
-  box-shadow: 0 0 20px #ddd;
+  -webkit-box-shadow: 0 0 20px rgb(44, 215, 25);;
+  box-shadow: 0 0 20px rgb(44, 215, 25);
 }
 
 .single-product-content h3 {

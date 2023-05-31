@@ -253,7 +253,6 @@ def shoproaster(request):
     navcontext = navbar()
 
     images = Image.objects.all()
-    # image3 =  images[3] #logo image
     image14 =  images[14]
     image15 =  images[15]
     image16 =  images[16]
@@ -443,7 +442,16 @@ def product_detail(request, product_id):
 
 def comparison(request):
     context = navbar()
-    return render(request,'roasterComparison.html',context)
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image14 =  images[14]
+    image15 =  images[15]
+    image16 =  images[16]
+    image17 =  images[17]
+    image18 =  images[18]
+    image19 =  images[19]
+    return render(request,'roasterComparison.html',{**context,**footercontext,'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19})
 
 
 # def reservation(request):
