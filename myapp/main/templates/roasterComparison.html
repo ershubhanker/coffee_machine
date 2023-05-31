@@ -35,32 +35,116 @@
 	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 	<style>
-		@media only screen and (max-width: 480px) {
-			.mean-bar {
+
+		@media only screen and (max-width: 600px) {
+			.single-product {
+      padding: 20px;
+    }
+
+    .single-product-img {
+      margin-top: 20px;
+    }
+
+    .featured-text {
+      margin-top: 20px;
+    }
+
+    .featured-text h3 {
+      font-size: 24px;
+    }
+
+    .list-box {
+      margin-bottom: 20px;
+    }
+
+    .list-box .list-icon {
+      font-size: 20px;
+    }
+
+    .list-box .content p {
+      font-size: 14px;
+    }
+
+    .list-box .content h3 {
+      font-size: 16px;
+    }
+	.footer-box {
+      margin-bottom: 20px;
+    }
+
+    .footer-box h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-box ul {
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+
+    .footer-box ul li {
+      margin-bottom: 5px;
+    }
+
+    .footer-box .widget-title {
+      text-align: center;
+    }
+
+    .footer-box .subscribe p {
+      text-align: center;
+    }
+
+    .footer-box .subscribe form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .footer-box .subscribe input[type="email"] {
+      border-radius: 20px;
+      padding: 5px 10px;
+      flex: 1;
+      margin-right: 5px;
+    }
+
+    .footer-box .subscribe button[type="submit"] {
+      border-radius: 20px;
+      padding: 5px 10px;
+    }
+	.mean-bar {
 				margin-top: 90px;
 			}
+  
 
-			.footer-area div.container div.row div.col-lg-3:first-of-type {
+
+
+
+
+
+
+			
+
+			/* .footer-area div.container div.row div.col-lg-3:first-of-type {
 				display: flex;
 				justify-content: right;
 				align-items: center;
 			}
-
+/*  */
 			.footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
 				width: 80%;
 				max-width: 1200px;
 				padding: 0 0 10px 0;
 				margin-left: 10px;
 				box-sizing: border-box;
-			}
-
+			} 
 			.footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
 				width: 80%;
 				max-width: 1200px;
 				padding: 0 0 10px 0;
 				margin-left: 10px;
 				box-sizing: border-box;
-			}
+			} 
 		}
 	</style>
 </head>
@@ -108,13 +192,12 @@
 									<div class="header-icons">
 										<a class="shopping-cart" href="cart.html"><i
 												class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i
-												class="fas fa-search"></i></a>
+												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
 									</div>
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant Quote</a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>

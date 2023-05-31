@@ -454,8 +454,10 @@ def comparison(request):
     return render(request,'roasterComparison.html',{**context,**footercontext,'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19})
 
 
-# def reservation(request):
-#     return render(request, 'reservation.html')
+def instantquote(request):
+    context = navbar()
+    footercontext = footbar()
+    return render(request, 'instantquote.html',{**context,**footercontext})
  
 
 # def testimonial(request):
