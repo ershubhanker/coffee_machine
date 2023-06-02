@@ -460,8 +460,14 @@ def instantquote(request):
     return render(request, 'instantquote.html',{**context,**footercontext})
  
 
-# def testimonial(request):
-#     return render(request, 'testimonial.html')
+def sentinelxr20(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image14 =  images[14]
+
+    return render(request, 'sentinelxr20.html',{**navcontext,**footercontext,'images':images,'image14':image14})
 
 # def test(request):
 #     return render(request, 'cart.html')

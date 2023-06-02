@@ -280,7 +280,7 @@
 							<p class="subtitle">{{heading0.head_text}}</p>
 							<h1 style="font-size: 20px">{{para0.para}}</h1>
 							<div class="hero-btns">
-								<a href="#" class="boxed-btn"
+								<a href="{% url 'instantquote' %}" class="boxed-btn"
 									onclick="openModal(); return false;">{{btnText0.btn_txt}}</a>
 								<a href="{% url 'contact' %}" class="bordered-btn">{{btnText1.btn_txt}}</a>
 							</div>
@@ -310,7 +310,7 @@
 			<div id="message" class="message"></div>
 		</div>
 	</div>
-	<!---------------------------- end hero area-------------------- -->
+	<!-- -------------------------- end hero area-------------------- -->
 
 	<!-- features list section -->
 	<div class="list-section pt-80 pb-80" style="background-color:black;">
@@ -323,6 +323,7 @@
 							<i class="fas fa-shipping-fast"></i>
 						</div>
 						<div class="content">
+							<h3 style="color:white">American Made</h3>
 							<p style="color:white">{{para1.para}}</p>
 						</div>
 					</div>

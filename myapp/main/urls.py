@@ -13,6 +13,8 @@ urlpatterns = [
     path('spare-parts/<int:product_id>/', views.product_detail, name='product_detail'),
     path('roaster-comparison/',views.comparison, name='comparison'),
     path('instant-quote/',views.instantquote, name='instantquote'),
+    
+    path('sentinelxr20/',views.sentinelxr20, name='sentinelxr20'),
 
 
     # path('test/',views.test, name='test'),
