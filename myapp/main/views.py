@@ -469,5 +469,42 @@ def sentinelxr20(request):
 
     return render(request, 'sentinelxr20.html',{**navcontext,**footercontext,'images':images,'image14':image14})
 
+def wardenxr30(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image19 =  images[19]
+
+    return render(request, 'warden-xr30.html',{**navcontext,**footercontext,'images':images,'image19':image19})
+
+def ravenxr15(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image17 =  images[17]
+
+    return render(request, 'raven-xr15.html',{**navcontext,**footercontext,'images':images,'image17':image17})
+
+
+def rangerxr5(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image16 =  images[16]
+
+    return render(request, 'ranger-xr5.html',{**navcontext,**footercontext,'images':images,'image16':image16})
+
+
+def genesisxr3(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    images = Image.objects.all()
+    image15 =  images[15]
+
+    return render(request, 'genesis-xr3.html',{**navcontext,**footercontext,'images':images,'image15':image15})
 # def test(request):
 #     return render(request, 'cart.html')

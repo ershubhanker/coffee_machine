@@ -15,6 +15,10 @@ urlpatterns = [
     path('instant-quote/',views.instantquote, name='instantquote'),
     
     path('sentinelxr20/',views.sentinelxr20, name='sentinelxr20'),
+    path('wardenxr30/',views.wardenxr30, name='wardenxr30'),
+    path('ravenxr15/',views.ravenxr15, name='ravenxr15'),
+    path('rangerxr5/',views.rangerxr5, name='rangerxr5'),
+    path('genesisxr3/',views.genesisxr3, name='genesisxr3'),
 
 
     # path('test/',views.test, name='test'),
