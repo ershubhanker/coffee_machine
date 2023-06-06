@@ -77,12 +77,13 @@
           csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
         },
         success: function () {
-          console.log("------------------------------------------------this was a success.");
+          console.log(
+            "------------------------------------------------this was a success."
+          );
         },
       });
     });
   </script>
-
 </head>
 
 <body>
@@ -103,7 +104,7 @@
             <!-- logo -->
             <div class="site-logo">
               <a href="{% url 'home' %}">
-                <img src="{{image3.image.url}}" alt="">
+                <img src="{{image3.image.url}}" alt="" />
               </a>
             </div>
             <!-- logo -->
@@ -111,29 +112,25 @@
             <!-- menu start -->
             <nav class="main-menu">
               <ul>
-                <li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a>
-
+                <li class="current-list-item">
+                  <a href="{% url 'home' %}">{{nav0.items}}</a>
                 </li>
                 <li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
-                <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a>
-
-                </li>
+                <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
                 <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-                <li><a href="{% url 'spareparts' %}">{{nav6.items}}</a>
-                </li>
+                <li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
                 <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-                <li><a href="{% url 'blog' %}">{{nav5.items}}</a>
-                </li>
+                <li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
                 <li>
                   <div class="header-icons">
                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="about.html" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
+                    <a href="about.html" class="boxed-btn" style="padding: 5px 10px">Instant Quote</a>
                   </div>
                 </li>
               </ul>
             </nav>
-            <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant
-              Quote</a>
+            <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}"
+              style="width: 30%; margin-left: 50%">Instant Quote</a>
             <div class="mobile-menu"></div>
             <!-- menu end -->
           </div>
@@ -217,6 +214,8 @@
                 Email: support@fruitkha.com
               </p>
             </div>
+        <a href="https://wa.me/+917986210486?text=I'm%20interested%20in%20your%20car%20for%20sale" class="boxed-btn" style="padding-left: 70px; padding-right: 70px">Whatsapp</a>
+
           </div>
         </div>
       </div>
