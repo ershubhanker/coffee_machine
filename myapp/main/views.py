@@ -249,6 +249,12 @@ def coffee(request):
                                          'headings':headings,'heading28':heading28,'heading29':heading29,'heading30':heading30,'heading31':heading31,'heading32':heading32,})
 
 
+def gallery(request):
+    navcontext = navbar()
+    footercontext = footbar()  
+
+    return render(request, 'gallery.html',{**navcontext,**footercontext})
+
 def shoproaster(request):
     navcontext = navbar()
 
@@ -336,12 +342,7 @@ def blog(request):
 
 def contact(request):
     navcontext = navbar()
-
-
     footercontext = footbar()
-
-   
-
 
     headings = Headings.objects.all()
     heading45 = headings[45] #Contact

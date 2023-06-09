@@ -14,6 +14,7 @@
 
   <!-- favicon -->
   <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- google font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
@@ -176,17 +177,20 @@
 
               <p>
                 <input type="email" placeholder="Email" name="{{form.email.name}}" id="email"
-                  style="background: rgb(230, 224, 224); border-radius: 20px" />
+                  style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               <p>
                 <input type="text" placeholder="Subject" name="{{form.subject.name}}" id="subject"
-                  style="background: rgb(230, 224, 224); border-radius: 20px" />
+                  style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               <p>
                 <textarea name="{{form.message.name}}" id="message" cols="30" rows="10" placeholder="Message"
-                  style="background: rgb(230, 224, 224); border-radius: 20px"></textarea>
+                  style="background: rgb(230, 224, 224); border-radius: 20px" required></textarea>
               </p>
-              <p><input type="submit" value="Submit" /></p>
+              <div class="row">
+                <p ><input type="submit" value="via Mail"/></p>
+                <p style="margin-left: 10px;"><input type="submit" value="via WhatsApp" onclick="sendFormData(event)" /></p>
+              </div>
             </form>
           </div>
         </div>
@@ -214,32 +218,15 @@
                 Email: support@fruitkha.com
               </p>
             </div>
-        <a href="https://wa.me/+917986210486?text=I'm%20interested%20in%20your%20car%20for%20sale" class="boxed-btn" style="padding-left: 70px; padding-right: 70px">Whatsapp</a>
+            <a href="https://wa.me/+917986210486?text=I'm%20interested%20in%20your%20car%20for%20sale" class="boxed-btn"
+              style="padding-left: 70px; padding-right: 70px"><i style="font-size:24px" class="fa">&#xf232;</i></a>
 
           </div>
         </div>
       </div>
     </div>
   </div>
-  {% comment %}
-  <div style="margin: 80px">
-    <h1>Contact</h1>
-    <h4>Contact us directly if you have any questions</h4>
-    <p>
-      Please write your name, email address and a message below if you have
-      any questions. One of our staff members will be happy to contact you
-      directly and answer your questions as soon as possible.
-    </p>
-    <form method="post">
-      {% csrf_token %}
-      <input type="text" name="name" />{{name}}
-      <input type="email" name="name" />{{email}}
-      <input type="text" name="subject" />{{subject}}
-      <input type="text" name="message" />{{message}}
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-  {% endcomment %}
+
   <!-- end contact form -->
 
   <!-- find our location -->
@@ -342,6 +329,66 @@
   </div>
   <!-- end copyright -->
 
+
+  <script>
+    function sendFormData(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Check if all fields are filled
+      if (!validateForm()) {
+        return;
+      }
+
+      // Get form data
+      var email = document.getElementById('email').value;
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value;
+
+      // Construct the WhatsApp message
+      var whatsappMessage = 'Email: ' + email + '%0A' + 'Subject: ' + subject + '%0A' + 'Message: ' + message;
+
+      // Open WhatsApp with the message
+      var whatsappURL = 'https://wa.me/1234567890?text=' + encodeURIComponent(whatsappMessage);
+      window.open(whatsappURL);
+
+      // Submit the form (optional)
+      document.getElementById('fruitkha-contact').submit();
+    }
+
+    function validateForm() {
+      var email = document.getElementById('email').value;
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value;
+
+      if (!email || !subject || !message) {
+        alert('Please fill in all required fields.');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+  <!-- js for whatsapp sending -->
+  <script>
+    function sendFormData(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Get form data
+      var email = document.getElementById('email').value;
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value;
+
+      // Construct the WhatsApp message
+      var whatsappMessage = 'Hi! I am ' + email + '%0A' + '\nSubject: ' + subject + '\nMessage: ' + message;
+
+      // Open WhatsApp with the message
+      var whatsappURL = 'https://wa.me/+917986210486?text=' + encodeURIComponent(whatsappMessage);
+      window.open(whatsappURL);
+
+      // Submit the form (optional)
+      document.getElementById('fruitkha-contact').submit();
+    }
+  </script>
   <!-- jquery -->
   <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
   <!-- bootstrap -->
