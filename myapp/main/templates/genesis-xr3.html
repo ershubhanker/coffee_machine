@@ -90,28 +90,29 @@
 
             <!-- menu start -->
             <nav class="main-menu">
-              <ul>
-                <li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a>
+							<ul>
+								<li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
+								<li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
+								
+								<li><a href="{% url 'gallery' %}">Gallery</a></li>
+								<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
+								
 
-                </li>
-                <li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
-                <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a>
+								<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
+								<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
 
-                </li>
-                <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-                <li><a href="{% url 'spareparts' %}">{{nav6.items}}</a>
-                </li>
-                <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-                <li><a href="{% url 'blog' %}">{{nav5.items}}</a>
-                </li>
-                <li>
-                  <div class="header-icons">
-                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+								<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
+								<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
+
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="cart.html"><i
+												class="fas fa-shopping-cart"></i></a>
+												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
+									</div>
+								</li>
+							</ul>
+						</nav>
             <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant
               Quote</a>
             <div class="mobile-menu"></div>
