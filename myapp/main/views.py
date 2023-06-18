@@ -5,8 +5,25 @@ from django.core.mail import send_mail,BadHeaderError
 from django.template.loader import render_to_string
 from django.conf import settings
 from .forms import ContactForm
-# Create your views here.
+from twilio.rest import Client
 
+
+
+# account_sid = 'ACc545f727e0582daeb7e59a6affaa6c1b'
+# auth_token = 'c2e76e6d32e98ae48f8aa1e044bb75bb'
+# whatsapp_number = 'whatsapp:+18335300345'
+
+# def send_whatsapp_message(to,subject, message):
+#     client = Client(account_sid, auth_token)
+#     body = f"Subject: {subject}\nMessage: {message}"
+#     message = client.messages.create(
+#         from_=whatsapp_number,
+#         body=body,
+#         to=to
+#     )
+
+# Create your views here.
+# from whatsapp_api import WhatsApp
 
 
 
@@ -255,6 +272,8 @@ def gallery(request):
 
     return render(request, 'gallery.html',{**navcontext,**footercontext})
 
+
+
 def shoproaster(request):
     navcontext = navbar()
 
@@ -344,6 +363,9 @@ def contact(request):
     navcontext = navbar()
     footercontext = footbar()
 
+    images = Image.objects.all()
+    image20 =  images[20] #whatsapp image
+
     headings = Headings.objects.all()
     heading45 = headings[45] #Contact
 
@@ -375,6 +397,9 @@ def contact(request):
                 [email],
             )
             print("sent successfully----------------")
+
+            # send_whatsapp_message('whatsapp:+16262499663',subject, message)
+
             return redirect('contact')
     else:
         print('---------done')
@@ -382,7 +407,7 @@ def contact(request):
 
     return render(request, 'contact.html',{'form':form,**navcontext,
                                            'heading45':heading45,
-                                           'para':para,**footercontext,'para57':para57})
+                                           'para':para,**footercontext,'para57':para57,'image20':image20})
 
 
 
@@ -425,6 +450,9 @@ def product_detail(request, product_id):
     return render(request, 'productDetailPage.html', context)
 
 
+
+def checkout(request):
+    return render(request, 'checkout.html')
 
 # def checkout(request):
 #     nav = navItems.objects.all()
@@ -509,3 +537,5 @@ def genesisxr3(request):
     return render(request, 'genesis-xr3.html',{**navcontext,**footercontext,'images':images,'image15':image15})
 # def test(request):
 #     return render(request, 'cart.html')
+
+

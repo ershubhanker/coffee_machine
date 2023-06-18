@@ -112,29 +112,28 @@
 
             <!-- menu start -->
             <nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-								<li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
-								
-								<li><a href="{% url 'gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-								
+              <ul>
+                <li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
+                <li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
 
-								<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-								<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
 
-								<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-								<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
 
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i
-												class="fas fa-shopping-cart"></i></a>
-												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
-									</div>
-								</li>
-							</ul>
-						</nav>
+                <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
+                <li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
+
+                <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
+                <li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
+
+                <li>
+                  <div class="header-icons">
+                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
             <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}"
               style="width: 30%; margin-left: 50%">Instant Quote</a>
             <div class="mobile-menu"></div>
@@ -192,10 +191,8 @@
                 <textarea name="{{form.message.name}}" id="message" cols="30" rows="10" placeholder="Message"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required></textarea>
               </p>
-              <div class="row">
-                <p ><input type="submit" value="via Mail"/></p>
-                <p style="margin-left: 10px;"><input type="submit" value="via WhatsApp" onclick="sendFormData(event)" /></p>
-              </div>
+              <p><input type="submit" value="submit" /></p>
+              <!-- <p style="margin-left: 10px;"><input type="submit" value="via WhatsApp" onclick="sendFormData(event)" /></p> -->
             </form>
           </div>
         </div>
@@ -223,9 +220,30 @@
                 Email: support@fruitkha.com
               </p>
             </div>
-            <a href="https://wa.me/+917986210486?text=I'm%20interested%20in%20your%20car%20for%20sale" class="boxed-btn"
-              style="padding-left: 70px; padding-right: 70px"><i style="font-size:24px" class="fa">&#xf232;</i></a>
+            <!-- <p ><input type="submit" value="Chat with us"/></p> -->
+            {% comment %} <div class="contact-form-box">
+              <a href="https://wa.me/+917986210486?text=Hi%20there!">
+                <h4><i class="fab fa-whatsapp"></i> WhatsApp</h4>
+                <p>
+                  Chat with us!</p>
+              </a>
+            </div>
+            <a href="https://wa.me/+917986210486?text=Hi%20there!">
+              <p style="color:rgb(44, 215, 25);font-family: 'Poppins', sans-serif;">Chat with us!</p></i>
+            </a>
+            <i class="fab fa-whatsapp"
+              style="background-color: #343a40; color:rgb(44, 215, 25); font-size: 32px;"></i><a
+              href="https://wa.me/+917986210486?text=Hi%20there!">
+              <p><input type="submit" value="Chat with Us" />
+            </a>
+            </p> {% endcomment %}
 
+            <a href="https://wa.me/+917986210486?text=Hi%20there!" style="text-decoration: none;">
+              <button
+                style="background-color: #343a40; color: rgb(44, 215, 25); font-size: 16px; padding: 10px 20px; border: 2px solid rgb(44, 215, 25); border-radius: 30px;">
+                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>Chat with Us
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -384,7 +402,7 @@
       var message = document.getElementById('message').value;
 
       // Construct the WhatsApp message
-      var whatsappMessage = 'Hi! I am ' + email + '%0A' + '\nSubject: ' + subject + '\nMessage: ' + message;
+      var whatsappMessage = 'Hi there!';
 
       // Open WhatsApp with the message
       var whatsappURL = 'https://wa.me/+917986210486?text=' + encodeURIComponent(whatsappMessage);

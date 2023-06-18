@@ -4,8 +4,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
-
-
+from PIL import Image as PILImage
 
 # Create your models here.
 class Contact(models.Model):
@@ -54,7 +53,7 @@ class Image(models.Model):
     def save(self, *args, **kwargs):
         if self.image:
             # Open the image using Pillow
-            img = Image.open(self.image)
+            img = PILImage.open(self.image)
 
             # Compress the image
             compressed_image = self.compress_image(img)
@@ -103,7 +102,7 @@ class Image(models.Model):
         max_size = (800, 800)  # Adjust according to your needs
 
         # Resize the image while maintaining the aspect ratio
-        image.thumbnail(max_size, Image.ANTIALIAS)
+        image.thumbnail(max_size, PILImage.ANTIALIAS)
 
         # Return the compressed image
         return image

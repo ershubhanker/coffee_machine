@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f)jj389=+)@i#wwjb*s*%5ntoae=nfz$t2f#yp7xd!ggb7abq@
 DEBUG = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER ='boredstuff2021@gmail.com'
-EMAIL_HOST_PASSWORD = 'kufjlolrxxyahotr'
+EMAIL_HOST_PASSWORD = 'ehyslutcdltcingf'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
