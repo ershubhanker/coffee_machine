@@ -1,0 +1,4 @@
+- Gallery page (done)
+- Paypal integration
+- checkout page
+- mobile view
