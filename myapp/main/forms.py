@@ -1,10 +1,10 @@
 from django import forms  
+from phonenumber_field.formfields import PhoneNumberField
 
 class ContactForm(forms.Form):
-    # name = forms.CharField(max_length=50)
     email = forms.EmailField()
     subject = forms.CharField(label='Subject',max_length=100)
-    # subject = forms.CharField(label='Subject', max_length=100)
+    phone = PhoneNumberField(label='Phone')
     message = forms.CharField(widget=forms.Textarea,max_length=2500)
 
     # def clean_email(self):

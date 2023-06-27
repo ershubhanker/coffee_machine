@@ -1,149 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-    content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/" />
+{% block title %}Contact{% endblock title %}
+{% block extra_scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).on("submit", "#fruitkha-contact", function (e) {
+    e.preventDefault();
 
-  <!-- title -->
-  <title>Contact</title>
-
-  <!-- favicon -->
-  <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- google font -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
-  <!-- owl carousel -->
-  <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
-  <!-- magnific popup -->
-  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
-  <!-- animate css -->
-  <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
-  <!-- mean menu css -->
-  <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}" />
-  <!-- main style -->
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <!-- responsive -->
-  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
-  <style>
-    @media only screen and (max-width: 480px) {
-      .mean-bar {
-        margin-top: 90px;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:first-of-type {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
-        width: 80%;
-        max-width: 1200px;
-        padding: 0 0 10px 0;
-        margin-left: 10px;
-        box-sizing: border-box;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
-        width: 80%;
-        max-width: 1200px;
-        padding: 0 0 10px 0;
-        margin-left: 10px;
-        box-sizing: border-box;
-      }
-    }
-  </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).on("submit", "#fruitkha-contact", function (e) {
-      e.preventDefault();
-
-      $.ajax({
-        url: '{% url "contact" %}',
-        type: "POST",
-        data: {
-          email: $("#email").val(),
-          subject: $("#subject").val(),
-          message: $("#message").val(),
-          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-        },
-        success: function () {
-          console.log(
-            "------------------------------------------------this was a success."
-          );
-        },
-      });
+    $.ajax({
+      url: '{% url "contact" %}',
+      type: "POST",
+      data: {
+        email: $("#email").val(),
+        subject: $("#subject").val(),
+        message: $("#message").val(),
+        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+      },
+      success: function () {
+        console.log("This was a success.");
+      },
     });
-  </script>
-</head>
+  });
+</script>
+<script>
+  function sendFormData(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-<body>
-  <!--PreLoader-->
-  <!-- <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div> -->
-  <!--PreLoader Ends-->
+    // Check if all fields are filled
+    if (!validateForm()) {
+      return;
+    }
 
-  <!-- header -->
-  <div class="top-header-area" id="sticker">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-sm-12 text-center">
-          <div class="main-menu-wrap">
-            <!-- logo -->
-            <div class="site-logo">
-              <a href="{% url 'home' %}">
-                <img src="{{image3.image.url}}" alt="" />
-              </a>
-            </div>
-            <!-- logo -->
+    // Get form data
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
 
-            <!-- menu start -->
-            <nav class="main-menu">
-              <ul>
-                <li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-                <li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
+    // Construct the WhatsApp message
+    var whatsappMessage = 'Email: ' + email + '%0A' + 'Phone:' + phone + '%0A' + 'Subject: ' + subject + '%0A' + 'Message: ' + message;
 
-                <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
+    // Open WhatsApp with the message
+    var whatsappURL = 'https://wa.me/1234567890?text=' + encodeURIComponent(whatsappMessage);
+    window.open(whatsappURL);
+
+    // Submit the form (optional)
+    document.getElementById('fruitkha-contact').submit();
+  }
+
+  function validateForm() {
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    if (!email || !subject || !phone || !message) {
+      alert('Please fill in all required fields.');
+      return false;
+    }
+
+    return true;
+  }
+</script>
+{% endblock extra_scripts %}
 
 
-                <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-                <li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
-
-                <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-                <li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-
-                <li>
-                  <div class="header-icons">
-                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-            <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}"
-              style="width: 30%; margin-left: 50%">Instant Quote</a>
-            <div class="mobile-menu"></div>
-            <!-- menu end -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end header -->
+  {% block content %}
 
   <!-- breadcrumb-section -->
   <div class="breadcrumb-section breadcrumb-bg" style="background: black">
@@ -151,8 +74,8 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center">
           <div class="breadcrumb-text">
-            <p>{{para57.para}}</p>
-            <h1>{{heading45.head_text}}</h1>
+            <p>{{para.57}}</p>
+            <h1>Contact</h1>
           </div>
         </div>
       </div>
@@ -176,7 +99,7 @@
           </div>
           <div id="form_status"></div>
           <div class="contact-form">
-            <form id="fruitkha-contact">
+            <form id="fruitkha-contact" method="post">
               {% csrf_token %}
 
               <p>
@@ -184,9 +107,14 @@
                   style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               <p>
+                <input type="tel" placeholder="Phone" name="{{form.phone.name}}" id="phone"
+                  style="background: rgb(230, 224, 224); border-radius: 20px" required />
+              </p>
+              <p>
                 <input type="text" placeholder="Subject" name="{{form.subject.name}}" id="subject"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
+              
               <p>
                 <textarea name="{{form.message.name}}" id="message" cols="30" rows="10" placeholder="Message"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required></textarea>
@@ -220,24 +148,7 @@
                 Email: support@fruitkha.com
               </p>
             </div>
-            <!-- <p ><input type="submit" value="Chat with us"/></p> -->
-            {% comment %} <div class="contact-form-box">
-              <a href="https://wa.me/+917986210486?text=Hi%20there!">
-                <h4><i class="fab fa-whatsapp"></i> WhatsApp</h4>
-                <p>
-                  Chat with us!</p>
-              </a>
-            </div>
-            <a href="https://wa.me/+917986210486?text=Hi%20there!">
-              <p style="color:rgb(44, 215, 25);font-family: 'Poppins', sans-serif;">Chat with us!</p></i>
-            </a>
-            <i class="fab fa-whatsapp"
-              style="background-color: #343a40; color:rgb(44, 215, 25); font-size: 32px;"></i><a
-              href="https://wa.me/+917986210486?text=Hi%20there!">
-              <p><input type="submit" value="Chat with Us" />
-            </a>
-            </p> {% endcomment %}
-
+            
             <a href="https://wa.me/+917986210486?text=Hi%20there!" style="text-decoration: none;">
               <button
                 style="background-color: #343a40; color: rgb(44, 215, 25); font-size: 16px; padding: 10px 20px; border: 2px solid rgb(44, 215, 25); border-radius: 30px;">
@@ -274,166 +185,10 @@
   <!-- end google map section -->
 
   <!-- footer -->
-  <div class="footer-area" style="padding-bottom: 50px">
-    <div class="container" style="margin-right: 0px">
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box get-in-touch">
-            <h2 class="widget-title">{{para17.para}}</h2>
-            <ul>
-              <li>{{para18.para}}</li>
-              <li>{{para19.para}}</li>
-              <li>{{para20.para}}</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box pages">
-            <h2 class="widget-title">{{para21.para}}</h2>
-            <ul>
-              <li><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-              <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-              <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-              <li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-              <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box subscribe">
-            <h2 class="widget-title">{{para22.para}}</h2>
-            <p>{{para23.para}}</p>
-            <form action="{% url 'home' %}">
-              <input type="email" placeholder="Email" style="border-radius: 20px 0px 0px 20px" />
-              <button type="submit" style="border-radius: 0px 20px 20px 0px">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end footer -->
-
-  <!-- copyright -->
-  <div class="copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <p>
-            Copyrights &copy; 2023 -
-            <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}
-          </p>
-        </div>
-        <div class="col-lg-6 text-right col-md-12">
-          <div class="social-icons">
-            <ul>
-              <li>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-              </li>
-              <li>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-              </li>
-              <li>
-                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end copyright -->
+  {% endblock content %}
 
 
-  <script>
-    function sendFormData(event) {
-      event.preventDefault(); // Prevent the default form submission behavior
+  {% block scripts %}
+{{ block.super }}
 
-      // Check if all fields are filled
-      if (!validateForm()) {
-        return;
-      }
-
-      // Get form data
-      var email = document.getElementById('email').value;
-      var subject = document.getElementById('subject').value;
-      var message = document.getElementById('message').value;
-
-      // Construct the WhatsApp message
-      var whatsappMessage = 'Email: ' + email + '%0A' + 'Subject: ' + subject + '%0A' + 'Message: ' + message;
-
-      // Open WhatsApp with the message
-      var whatsappURL = 'https://wa.me/1234567890?text=' + encodeURIComponent(whatsappMessage);
-      window.open(whatsappURL);
-
-      // Submit the form (optional)
-      document.getElementById('fruitkha-contact').submit();
-    }
-
-    function validateForm() {
-      var email = document.getElementById('email').value;
-      var subject = document.getElementById('subject').value;
-      var message = document.getElementById('message').value;
-
-      if (!email || !subject || !message) {
-        alert('Please fill in all required fields.');
-        return false;
-      }
-
-      return true;
-    }
-  </script>
-  <!-- js for whatsapp sending -->
-  <script>
-    function sendFormData(event) {
-      event.preventDefault(); // Prevent the default form submission behavior
-
-      // Get form data
-      var email = document.getElementById('email').value;
-      var subject = document.getElementById('subject').value;
-      var message = document.getElementById('message').value;
-
-      // Construct the WhatsApp message
-      var whatsappMessage = 'Hi there!';
-
-      // Open WhatsApp with the message
-      var whatsappURL = 'https://wa.me/+917986210486?text=' + encodeURIComponent(whatsappMessage);
-      window.open(whatsappURL);
-
-      // Submit the form (optional)
-      document.getElementById('fruitkha-contact').submit();
-    }
-  </script>
-  <!-- jquery -->
-  <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-  <!-- bootstrap -->
-  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  <!-- count down -->
-  <script src="{% static 'js/jquery.countdown.js' %}"></script>
-  <!-- isotope -->
-  <script src="{% static 'js/jquery.isotope-3.0.6.min.js' %}"></script>
-  <!-- waypoints -->
-  <script src="{% static 'js/waypoints.js' %}"></script>
-  <!-- owl carousel -->
-  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-  <!-- magnific popup -->
-  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-  <!-- mean menu -->
-  <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
-  <!-- sticker js -->
-  <script src="{% static 'js/sticker.js' %}"></script>
-  <!-- form validation js -->
-  <script src="{% static 'js/form-validate.js' %}"></script>
-  <!-- main js -->
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

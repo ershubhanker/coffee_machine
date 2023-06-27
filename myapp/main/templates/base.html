@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+		content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>{% block title %}{% endblock title %}</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+	<style>
+		/* ------------------modal style------------------------ */
+		@media (max-width: 600px) {
+			.modal-content {
+				width: 90%;
+			}
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.modal-content {
+			background-color: #000000;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #3ab344;
+			border-radius: 30px;
+			width: 50%;
+			text-align: center;
+			justify-content: center;
+		}
+
+		.close {
+			margin-left: 95%;
+			color: #e3e3e3;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		label {
+			color: white;
+			/* margin-left: -30%; */
+		}
+
+		.message {
+			margin-top: 20px;
+			color: white;
+		}
+
+		.fade-in {
+			animation: fadeIn 0.3s ease-in-out forwards;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.modal-btn {
+			font-family: 'Poppins', sans-serif;
+			display: inline-block;
+			background-color: rgb(44, 215, 25);
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 50px;
+		}
+
+		.modal-inputs {
+			margin-left: 5%;
+			border-radius: 20px;
+			width:40%;
+		}
+
+		/* -------------------------------------------------------- */
+		@media only screen and (max-width: 600px) {
+			body{
+				width: 100%;
+			}
+			.list-section div.container div.row {
+				margin-left: -155px;
+			}
+
+			a.boxed-btn {
+				margin-left: 47px;
+			}
+
+
+			.shop-banner div.container a:nth-child(2) {
+				margin-left: 100px;
+			}
+
+			.logo-carousel-section div.container div.col-lg-8 {
+				margin-left: -168px;
+			}
+
+			.logo-carousel-section div.container div.row {
+				margin-left: -260px;
+			}
+
+			.footer-area div.container div.row div.col-lg-3:first-of-type {
+				{% comment %} display: flex;
+				justify-content: right;
+				align-items: center; {% endcomment %}
+				width: 80%;
+				max-width: 1200px;
+				padding: 0 0 10px 0;
+				margin-left: -14%;
+				box-sizing: border-box;
+			}
+
+			.footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
+				width: 80%;
+				max-width: 1200px;
+				padding: 0 0 10px 0;
+				margin-left: 10px;
+				box-sizing: border-box;
+			}
+
+			.footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
+				width: 80%;
+				max-width: 1200px;
+				padding: 0 0 10px 0;
+				margin-left: 10px;
+				box-sizing: border-box;
+			}
+
+			.machine-image {
+				height: 450px;
+				width: 400px;
+			}
+
+			.machine-image1 {
+				height: 200px;
+				width: 200px;
+			}
+
+			.mean-bar {
+				/* margin-top: 90px; */
+			}
+
+		}
+        {% block style %}{% endblock style %}
+	</style>
+
+</head>
+
+<body>
+
+	<!--PreLoader-->
+	<!-- <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div> -->
+	<!--PreLoader Ends-->
+
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="{% url 'home' %}">
+								<img src="{% static 'company_logo.webp' %}" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'coffee' %}">Coffee</a></li>
+								
+								<li><a href="{% url 'gallery' %}">Gallery</a></li>
+								<li><a href="{% url 'shoproaster' %}">Shop Roasters</a></li>
+								
+
+								<li><a href="{% url 'about' %}">About</a></li>
+								<li><a href="{% url 'spareparts' %}">Spare Parts</a></li>
+
+								<li><a href="{% url 'contact' %}">Contact</a></li>
+								<li><a href="{% url 'blog' %}">Blog</a></li>
+
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="{% url 'cart' %}"><i
+												class="fas fa-shopping-cart"></i></a>
+												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant Quote</a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    {% block content %}{% endblock content %}
+	
+	<!-- hero area -->
+	
+	<!-- footer -->
+	<div class="footer-area pb-5">
+		<div class="container mr-0">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>
+								1309 S Lyon St Santa Ana, CA 92705</li>
+							<li>info@primoroasting.com</li>
+							<li>(1)-800-675-0160</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
+							<li><a href="{% url 'shoproaster' %}">Shop Roaster</a></li>
+							<li><a href="{% url 'blog' %}">Blog</a></li>
+							<li><a href="{% url 'contact' %}">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our Newsletter.</p>
+						<form action="{% url 'home' %}">
+							<input type="email" placeholder="Email" style="border-radius:20px 0px 0px 20px">
+							<button type="submit" style="border-radius:0px 20px 20px 0px"><i
+									class="fas fa-paper-plane"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">Primo Roasting Equipment</a>,All Rights Reserved.
+					</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script>
+        function openModal2() {
+        var modal = document.getElementById("myModal2");
+        modal.style.display = "block";
+        modal.classList.add("fade-in");
+        
+        }
+        
+        // Close the modal
+        function closeModal2() {
+        var modal = document.getElementById("myModal2");
+        modal.style.display = "none";
+        modal.classList.remove("fade-in");
+        setTimeout(function () {
+        modal.style.display = "none";
+        }, 300);
+        }
+        // Open the modal with fade-in effect
+        
+        // Submit the form
+        function submitForm2(event) {
+        event.preventDefault();
+        var name = document.getElementById("name2").value;
+        var email = document.getElementById("email2").value;
+        var phone = document.getElementById("phone2").value;
+        
+        // Perform any necessary validation or processing here
+        // ...
+        
+        // Display success message
+        var messageDiv = document.getElementById("message2");
+        messageDiv.textContent =
+        "Thank you, " + name + "! We'll get back to you.";
+        
+        // Reset the form
+        document.getElementById("name2").value = "";
+        document.getElementById("email2").value = "";
+        document.getElementById("phone2").value = "";
+        }
+
+        // ----------------------------------------------Modal 1---------------------------------------
+// Open the modal
+function openModal() {
+	console.log("working----------------------------")
+var modal = document.getElementById("myModal");
+modal.style.display = "block";
+modal.classList.add("fade-in");
+
+}
+
+// Close the modal
+function closeModal() {
+var modal = document.getElementById("myModal");
+modal.style.display = "none";
+modal.classList.remove("fade-in");
+setTimeout(function () {
+modal.style.display = "none";
+}, 300); // Adjust the delay to match your CSS transition duration
+
+}
+
+
+
+// Submit the form
+function submitForm(event) {
+event.preventDefault();
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var phone = document.getElementById("phone").value;
+
+// Perform any necessary validation or processing here
+// ...
+
+// Display success message
+var messageDiv = document.getElementById("message");
+messageDiv.textContent =
+"Thank you, " + name + "! We'll get back to you.";
+
+// Reset the form
+document.getElementById("name").value = "";
+document.getElementById("email").value = "";
+document.getElementById("phone").value = "";
+}
+
+// ------------------------------------------Modal 2--------------------------------------------------
+function openModal2() {
+	var modal = document.getElementById("myModal2");
+	modal.style.display = "block";
+	modal.classList.add("fade-in");
+	
+	}
+	
+	// Close the modal
+	function closeModal2() {
+	var modal = document.getElementById("myModal2");
+	modal.style.display = "none";
+	modal.classList.remove("fade-in");
+	setTimeout(function () {
+	modal.style.display = "none";
+	}, 300);
+	}
+	// Open the modal with fade-in effect
+	
+	
+	// Submit the form
+	function submitForm2(event) {
+	event.preventDefault();
+	var name = document.getElementById("name2").value;
+	var email = document.getElementById("email2").value;
+	var phone = document.getElementById("phone2").value;
+	
+	// Perform any necessary validation or processing here
+	// ...
+	
+	// Display success message
+	var messageDiv = document.getElementById("message2");
+	messageDiv.textContent =
+	"Thank you, " + name + "! We'll get back to you.";
+	
+	// Reset the form
+	document.getElementById("name2").value = "";
+	document.getElementById("email2").value = "";
+	document.getElementById("phone2").value = "";
+	}
+
+// ----------------------------------------------Modal 3------------------------------------
+function openModal3() {
+var modal = document.getElementById("myModal3");
+modal.style.display = "block";
+modal.classList.add("fade-in");
+
+}
+
+// Close the modal
+function closeModal3() {
+var modal = document.getElementById("myModal3");
+modal.style.display = "none";
+modal.classList.remove("fade-in");
+setTimeout(function () {
+modal.style.display = "none";
+}, 300);
+}
+
+
+// Submit the form
+function submitForm3(event) {
+event.preventDefault();
+var name = document.getElementById("name3").value;
+var email = document.getElementById("email3").value;
+var phone = document.getElementById("phone3").value;
+
+// Perform any necessary validation or processing here
+// ...
+
+// Display success message
+var messageDiv = document.getElementById("message3");
+messageDiv.textContent =
+"Thank you, " + name + "! We'll get back to you.";
+
+// Reset the form
+document.getElementById("name3").value = "";
+document.getElementById("email3").value = "";
+document.getElementById("phone3").value = "";
+}
+
+// ----------------------------------------------Modal 4------------------------------------
+function openModal4() {
+var modal = document.getElementById("myModal4");
+modal.style.display = "block";
+modal.classList.add("fade-in");
+
+}
+
+// Close the modal
+function closeModal4() {
+var modal = document.getElementById("myModal4");
+modal.style.display = "none";
+modal.classList.remove("fade-in");
+setTimeout(function () {
+modal.style.display = "none";
+}, 300);
+}
+// Open the modal with fade-in effect
+
+
+// Submit the form
+function submitForm4(event) {
+event.preventDefault();
+var name = document.getElementById("name4").value;
+var email = document.getElementById("email4").value;
+var phone = document.getElementById("phone4").value;
+
+// Perform any necessary validation or processing here
+// ...
+
+// Display success message
+var messageDiv = document.getElementById("message4");
+messageDiv.textContent =
+"Thank you, " + name + "! We'll get back to you.";
+
+// Reset the form
+document.getElementById("name4").value = "";
+document.getElementById("email4").value = "";
+document.getElementById("phone4").value = "";
+}
+
+// ----------------------------------------------Modal 5------------------------------------
+function openModal5() {
+var modal = document.getElementById("myModal5");
+modal.style.display = "block";
+modal.classList.add("fade-in");
+
+}
+
+// Close the modal
+function closeModal5() {
+var modal = document.getElementById("myModal5");
+modal.style.display = "none";
+modal.classList.remove("fade-in");
+setTimeout(function () {
+modal.style.display = "none";
+}, 300);
+}
+// Open the modal with fade-in effect
+
+
+// Submit the form
+function submitForm5(event) {
+event.preventDefault();
+var name = document.getElementById("name5").value;
+var email = document.getElementById("email5").value;
+var phone = document.getElementById("phone5").value;
+
+// Perform any necessary validation or processing here
+// ...
+
+// Display success message
+var messageDiv = document.getElementById("message5");
+messageDiv.textContent =
+"Thank you, " + name + "! We'll get back to you.";
+
+// Reset the form
+document.getElementById("name5").value = "";
+document.getElementById("email5").value = "";
+document.getElementById("phone5").value = "";
+}
+
+// ----------------------------------------------Modal 6------------------------------------
+function openModal6() {
+var modal = document.getElementById("myModal6");
+modal.style.display = "block";
+modal.classList.add("fade-in");
+
+}
+
+// Close the modal
+function closeModal6() {
+var modal = document.getElementById("myModal6");
+modal.style.display = "none";
+modal.classList.remove("fade-in");
+setTimeout(function () {
+modal.style.display = "none";
+}, 300);
+}
+// Open the modal with fade-in effect
+
+
+// Submit the form
+function submitForm6(event) {
+event.preventDefault();
+var name = document.getElementById("name6").value;
+var email = document.getElementById("email6").value;
+var phone = document.getElementById("phone6").value;
+
+// Perform any necessary validation or processing here
+// ...
+
+// Display success message
+var messageDiv = document.getElementById("message6");
+messageDiv.textContent =
+"Thank you, " + name + "! We'll get back to you.";
+
+// Reset the form
+document.getElementById("name6").value = "";
+document.getElementById("email6").value = "";
+document.getElementById("phone6").value = "";
+}
+    </script>
+	<!-- end copyright -->
+	<!-- jquery -->
+	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'js/main.js' %}"></script>
+{% block scripts %}{% endblock scripts %}
+</body>
+
+</html>

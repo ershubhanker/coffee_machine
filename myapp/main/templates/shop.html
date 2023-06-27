@@ -1,1108 +1,591 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description"
-		content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
-	<!-- title -->
-	<title>Shop</title>
-
-	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
-	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-	<!-- animate css -->
-	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
-	<!-- main style -->
-	<link rel="stylesheet" href="{% static 'css/main.css' %}">
-	<!-- responsive -->
-	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-	<style>
-		/* ------------------modal style------------------------ */
-		@media (max-width: 600px) {
-			.modal-content {
-				width: 90%;
-			}
-		}
-
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 2;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgba(0, 0, 0, 0.4);
-		}
-
-		.modal-content {
-			background-color: #000000;
-			margin: 10% auto;
-			padding: 20px;
-			border: 1px solid #3ab344;
-			border-radius: 30px;
-			width: 50%;
-			text-align: center;
-			justify-content: center;
-		}
-
-		.close {
-			margin-left: 95%;
-			color: #e3e3e3;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
+{% block title %}Primo Roasting Equipment{% endblock title %}
 
 
-		.close:hover,
-		.close:focus {
-			color: #000;
-			text-decoration: none;
-			cursor: pointer;
-		}
 
-		label {
-			color: white;
-			/* margin-left: -30%; */
-		}
+{{% block style %}
+.main-menu-expand {
+-sm|-md|-lg|-xl;
+}
 
-		.message {
-			margin-top: 20px;
-			color: white;
-		}
+/* ------------------modal style------------------------ */
+@media (max-width: 600px) {
+.modal-content {
+width: 90%;
+}
+}
 
-		.fade-in {
-			animation: fadeIn 0.3s ease-in-out forwards;
-		}
+.modal {
+display: none;
+position: fixed;
+z-index: 2;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.4);
+}
 
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
-				transform: translateY(-10px);
-			}
+.modal-content {
+background-color: #000000;
+margin: 10% auto;
+padding: 20px;
+border: 1px solid #3ab344;
+border-radius: 30px;
+width: 50%;
+text-align: center;
+justify-content: center;
+}
 
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.modal-btn {
-			font-family: 'Poppins', sans-serif;
-			display: inline-block;
-			background-color: rgb(44, 215, 25);
-			color: #fff;
-			padding: 10px 20px;
-			border-radius: 50px;
-		}
-
-		.modal-inputs {
-			margin-left: 5%;
-			border-radius: 20px;
-			width: 40%;
-		}
-
-		/* ----------------------------------- */
+.close {
+margin-left: 95%;
+color: #e3e3e3;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
 
 
-		@media only screen and (max-width: 480px) {
-			.mean-bar {
-				margin-top: 90px;
-			}
+.close:hover,
+.close:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
 
-			.footer-area div.container div.row div.col-lg-3:first-of-type {
-				display: flex;
-				justify-content: right;
-				align-items: center;
-			}
+label {
+color: white;
+/* margin-left: -30%; */
+}
 
-			.footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
-				width: 80%;
-				max-width: 1200px;
-				padding: 0 0 10px 0;
-				margin-left: 10px;
-				box-sizing: border-box;
-			}
+.message {
+margin-top: 20px;
+color: white;
+}
 
-			.footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
-				width: 80%;
-				max-width: 1200px;
-				padding: 0 0 10px 0;
-				margin-left: 10px;
-				box-sizing: border-box;
-			}
+.fade-in {
+animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(-10px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.modal-btn {
+font-family: 'Poppins', sans-serif;
+display: inline-block;
+background-color: rgb(44, 215, 25);
+color: #fff;
+padding: 10px 20px;
+border-radius: 50px;
+}
+
+.modal-inputs {
+margin-left: 5%;
+border-radius: 20px;
+width: 40%;
+}
+
+/* ----------------------------------- */
+
+@media only screen and (max-width: 480px) {
+body {
+width: auto;
+}
+
+.mean-bar {
+margin-top: 90px;
+}
+
+.footer-area div.container div.row div.col-lg-3:first-of-type {
+display: flex;
+justify-content: right;
+align-items: center;
+}
+
+.footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
+width: 80%;
+max-width: 1200px;
+padding: 0 0 10px 0;
+margin-left: 10px;
+box-sizing: border-box;
+}
+
+.footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
+width: 80%;
+max-width: 1200px;
+padding: 0 0 10px 0;
+margin-left: 10px;
+box-sizing: border-box;
+}
 
 
-			.abt-section div.container div.row:first-of-type {
-				margin-top: -2;
-			}
+.abt-section div.container div.row:first-of-type {
+margin-top: -2;
+}
 
-			.abt-section div.container div.row:nth-of-type(1) {
-				margin-top: 56px;
-			}
-		}
+.abt-section div.container div.row:nth-of-type(1) {
+margin-top: 56px;
+}
+}
 
-		.popup .overlay {
-			position: sticky;
-			top: 0px;
-			left: 0px;
-			width: 100vw;
-			height: 100vh;
-			background: rgba(0, 0, 0, 0.7);
-			z-index: 1;
-			display: none;
-		}
+.popup .overlay {
+position: sticky;
+top: 0px;
+left: 0px;
+width: 100vw;
+height: 100vh;
+background: rgba(0, 0, 0, 0.7);
+z-index: 1;
+display: none;
+}
 
-		.popup .content {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%) scale(0);
-			background: #fff;
-			width: 450px;
-			height: 220px;
-			z-index: 2;
-			text-align: center;
-			padding: 20px;
-			box-sizing: border-box;
-		}
+.popup .content {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(0);
+background: #fff;
+width: 450px;
+height: 220px;
+z-index: 2;
+text-align: center;
+padding: 20px;
+box-sizing: border-box;
+}
 
-		.popup .close-btn {
-			position: absolute;
-			cursor: pointer;
-			right: 20px;
-			top: 20px;
-			width: 30px;
-			height: 30px;
-			background: #222;
-			color: #fff;
-			font-size: 25px;
-			font-weight: 600;
-			line-height: 30px;
-			text-align: center;
-			border-radius: 50%;
-		}
+.popup .close-btn {
+position: absolute;
+cursor: pointer;
+right: 20px;
+top: 20px;
+width: 30px;
+height: 30px;
+background: #222;
+color: #fff;
+font-size: 25px;
+font-weight: 600;
+line-height: 30px;
+text-align: center;
+border-radius: 50%;
+}
 
-		.popup.active .overlay {
-			display: block;
-		}
+.popup.active .overlay {
+display: block;
+}
 
-		.popup.active .content {
-			transition: all 300ms ease-in-out;
-			transform: translate(-50%, -50%) scale(1);
-		}
-	</style>
-</head>
+.popup.active .content {
+transition: all 300ms ease-in-out;
+transform: translate(-50%, -50%) scale(1);
+}
+{% endblock style %}
 
-<body>
+{% block content %}
 
-	<!--PreLoader-->
-	<!-- <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div> -->
-	<!--PreLoader Ends-->
-
-	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="{% url 'home' %}">
-								<img src="{{image3.image.url}}" alt="">
-							</a>
-						</div>
-						<!-- logo -->
-
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-								<li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
-								
-								<li><a href="{% url 'gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-								
-
-								<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-								<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
-
-								<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-								<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i
-												class="fas fa-shopping-cart"></i></a>
-												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show boxed-btn" href="{% url 'instantquote' %}"
-							style="width: 30%;margin-left:50%;">Instant Quote</a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>{{headings.14}}</p>
+					<h1>{{headings.15}}</h1>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end header -->
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords" />
-							<button type="submit">
-								Search <i class="fas fa-search"></i>
-							</button>
+</div>
+<!-- end breadcrumb section -->
+<div class="latest-news pt-10 pb-20" style="background: black; margin-bottom:-5px">
+	<div class="container mt-10">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="section-title" style="margin-top: 35px">
+					<h3><span class="orange-text" style="color:white; font-size: 30px;">{{headings.16}}</span></h3>
+					<p>{{para.26}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- products -->
+<!-- modal-section -->
+<!-- 1 -->
+<div class="product-section mt-10 mb-10" style="background: #000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:black;">
+			<div class="row my-0">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;">
+						<img src="{{image14.image.url}}" alt="" class="center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 mt-150">
+					<div class="abt-text">
+						<p style="color:white;">{{para.27}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para.28}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'sentinelxr20' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end header -->
+</div>
 
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{heading.16}}</span></h3>
+		<form onsubmit="submitForm(event)">
+			<label for="name">Name</label>
+			<input type="text" id="name" name="name" required class="modal-inputs" /><br /><br />
+			<label for="email">Email</label>
+			<input type="email" id="email" name="email" required class="modal-inputs" /><br /><br />
+			<label for="phone">Phone</label>
+			<input type="tel" id="phone" name="phone" required class="modal-inputs" /><br /><br />
+			<button type="submit" class="modal-btn">Submit</button>
+		</form>
+		<div id="message" class="message"></div>
 	</div>
-	<!-- end search area -->
-
-	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>{{heading14.head_text}}</p>
-						<h1>{{heading15.head_text}}</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end breadcrumb section -->
-	<div class="latest-news pt-10 pb-20" style="background: black; margin-bottom:-5px">
-		<div class="container mt-10">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title" style="margin-top: 35px">
-						<h3><span class="orange-text"
-								style="color:white; font-size: 30px;">{{heading16.head_text}}</span></h3>
-						<p>{{para26.para}}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- products -->
-	<!-- modal-section -->
-	<!-- 1 -->
-	<div class="product-section mt-10 mb-10" style="background: #000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:black;">
-				<div class="row my-0">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;">
-							<img src="{{image14.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12 mt-150">
-						<div class="abt-text">
-							<p style="color:white;">{{para27.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para28.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'sentinelxr20' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading16.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<label for="name">Name</label>
-				<input type="text" id="name" name="name" required class="modal-inputs" /><br /><br />
-				<label for="email">Email</label>
-				<input type="email" id="email" name="email" required class="modal-inputs" /><br /><br />
-				<label for="phone">Phone</label>
-				<input type="tel" id="phone" name="phone" required class="modal-inputs" /><br /><br />
-				<button type="submit" class="modal-btn">Submit</button>
-			</form>
-			<div id="message" class="message"></div>
-		</div>
-	</div>
+</div>
 
 
 
 
-	<!-- 2 -->
-	<div class="product-section mt-10 mb-10" style="background: #000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:white;">
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
-							<img src="{{image15.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-text">
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 30px;">{{heading18.head_text}}</span></h3>
-							<p style="color:white;">{{para29.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para30.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal2(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'genesisxr3' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal2" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal2()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading18.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<form onsubmit="submitForm2(event)">
-					<label for="name">Name</label>
-					<input type="text" id="name2" name="name" required class="modal-inputs" /><br /><br />
-					<label for="email">Email</label>
-					<input type="email" id="email2" name="email" required class="modal-inputs" /><br /><br />
-					<label for="phone">Phone</label>
-					<input type="tel" id="phone2" name="phone" required class="modal-inputs" /><br /><br />
-					<button type="submit" class="modal-btn">Submit</button>
-				</form>
-				<div id="message2" class="message"></div>
-		</div>
-	</div>
-
-
-	<!-- 3 -->
-	<div class="product-section mt-10 mb-10" style="background: #000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:white;">
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
-							<img src="{{image16.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-text">
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 30px;">
-									{{heading19.head_text}}</span></h3>
-							<p style="color:white;">{{para31.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para32.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal3(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'rangerxr5' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal3" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal3()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading19.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<form onsubmit="submitForm3(event)">
-					<label for="name">Name</label>
-					<input type="text" id="name3" name="name" required class="modal-inputs" /><br /><br />
-					<label for="email">Email</label>
-					<input type="email" id="email3" name="email" required class="modal-inputs" /><br /><br />
-					<label for="phone">Phone</label>
-					<input type="tel" id="phone3" name="phone" required class="modal-inputs" /><br /><br />
-					<button type="submit" class="modal-btn">Submit</button>
-				</form>
-				<div id="message3" class="message"></div>
-		</div>
-	</div>
-
-	<!-- 4 -->
-	<div class="product-section mt-10 mb-10" style="background: #000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:white;">
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
-							<img src="{{image17.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-text">
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 30px;">{{heading20.head_text}}</span></h3>
-							<p style="color:white;">{{para33.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para34.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal4(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'ravenxr15' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal4" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal4()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading20.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<form onsubmit="submitForm4(event)">
-					<label for="name">Name</label>
-					<input type="text" id="name4" name="name" required class="modal-inputs" /><br /><br />
-					<label for="email">Email</label>
-					<input type="email" id="email4" name="email" required class="modal-inputs" /><br /><br />
-					<label for="phone">Phone</label>
-					<input type="tel" id="phone4" name="phone" required class="modal-inputs" /><br /><br />
-					<button type="submit" class="modal-btn">Submit</button>
-				</form>
-				<div id="message4" class="message"></div>
-		</div>
-	</div>
-
-	<!-- 5 -->
-	<div class="product-section mt-10 mb-10" style="background: #000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:white;">
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
-							<img src="{{image18.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-text">
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 30px;">{{heading21.head_text}}</span></h3>
-							<p style="color:white;">{{para35.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para36.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal5(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'sentinelxr20' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal5" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal5()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading21.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<form onsubmit="submitForm5(event)">
-					<label for="name">Name</label>
-					<input type="text" id="name5" name="name" required class="modal-inputs" /><br /><br />
-					<label for="email">Email</label>
-					<input type="email" id="email5" name="email" required class="modal-inputs" /><br /><br />
-					<label for="phone">Phone</label>
-					<input type="tel" id="phone5" name="phone" required class="modal-inputs" /><br /><br />
-					<button type="submit" class="modal-btn">Submit</button>
-				</form>
-				<div id="message5" class="message"></div>
-		</div>
-	</div>
-
-	<!-- 6 -->
-	<div class="product-section mt-10 mb-10" style="background: #000000;">
-		<div class="abt-section mb-50">
-			<div class="container" style="color:white;">
-				<div class="row">
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-bg"
-							style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
-							<img src="{{image19.image.url}}" alt="" class="center">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-12">
-						<div class="abt-text">
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 30px;">{{heading22.head_text}}</span></h3>
-							<p style="color:white;">{{para37.para}}</p>
-							<h3 style="margin-top:20px;"><span class="orange-text"
-									style="color:white; font-size: 25px;">{{heading17.head_text}}</span></h3>
-							<p style="color:white;margin-top:20px;">{{para38.para}}</p>
-							<div class="row">
-								<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
-									onclick="openModal6(); return false;">{{btnText5.btn_txt}}</a>
-								<a href="{% url 'wardenxr30' %}" class="boxed-btn mt-4 mx-4">{{btnText1.btn_txt}}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- --------------------Modal------------------------ -->
-	<div id="myModal6" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close" onclick="closeModal6()">&times;</span>
-			<h4 style="color: white;">Enquiry for</h4>
-			<h3><span class="orange-text"
-					style="color:rgb(44, 215, 25); font-size: 26px;">{{heading22.head_text}}</span></h3>
-			<form onsubmit="submitForm(event)">
-				<form onsubmit="submitForm6(event)">
-					<label for="name">Name</label>
-					<input type="text" id="name6" name="name" required class="modal-inputs" /><br /><br />
-					<label for="email">Email</label>
-					<input type="email" id="email6" name="email" required class="modal-inputs" /><br /><br />
-					<label for="phone">Phone</label>
-					<input type="tel" id="phone6" name="phone" required class="modal-inputs" /><br /><br />
-					<button type="submit" class="modal-btn">Submit</button>
-				</form>
-				<div id="message6" class="message"></div>
-		</div>
-	</div>
-
-
-	<!-- end products -->
-
-	<!-- logo carousel -->
-
-	<!-- end logo carousel -->
-	<div class="latest-news pt-150 pb-150" style="margin-top: 50px;padding-top:5px">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">
-						<h3><span class="orange-text" style="color:white">{{heading23.head_text}}</span></h3>
-						<p>{{para39.para}}</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="row" style="justify-content: center;">
-				<div class="col-lg-4 col-md-6 text-center" style="max-width: 250px;">
-					<div class="single-latest-news">
-						<div class="news-text-box">
-							<h3><a href="single-news.html" style="color:white">{{heading24.head_text}}</a></h3>
-
-							<p class="excerpt">{{para40.para}}</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center" style="max-width: 250px;">
-					<div class="single-latest-news">
-						<div class="news-text-box">
-							<h3><a href="single-news.html" style="color:white">{{heading25.head_text}}</a></h3>
-							<p class="excerpt">{{para41.para}}</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" style="max-width: 250px;">
-					<div class="single-latest-news">
-						<div class="news-text-box">
-							<h3><a href="single-news.html" style="color:white">{{heading26.head_text}}</a></h3>
-							<p class="excerpt">{{para42.para}}</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" style="max-width: 250px;">
-					<div class="single-latest-news">
-						<div class="news-text-box">
-							<h3><a href="single-news.html" style="color:white">{{heading27.head_text}}</a></h3>
-							<p class="excerpt">{{para43.para}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- footer -->
-	<div class="footer-area" style="padding-bottom:50px;">
-		<div class="container" style="margin-right:0px">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">{{para17.para}}</h2>
-						<ul>
-							<li>
-								{{para18.para}}</li>
-							<li>{{para19.para}}</li>
-							<li>{{para20.para}}</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">{{para21.para}}</h2>
-						<ul>
-							<li><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-							<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-							<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-							<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-							<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">{{para22.para}}</h2>
-						<p>{{para23.para}}</p>
-						<form action="{% url 'home' %}">
-							<input type="email" placeholder="Email" style="border-radius:20px 0px 0px 20px">
-							<button type="submit" style="border-radius:0px 20px 20px 0px"><i
-									class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end footer -->
-
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
+<!-- 2 -->
+<div class="product-section mt-10 mb-10" style="background: #000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:white;">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}
-					</p>
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
+						<img src="{{image15.image.url}}" alt="" class="center">
+					</div>
 				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 30px;">{{headings.18}}</span></h3>
+						<p style="color:white;">{{para.29}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para30.para}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal2(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'genesisxr3' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end copyright -->
-	<script>
-
-		// ----------------------------------------------Modal 1---------------------------------------
-		// Open the modal
-		function openModal() {
-			var modal = document.getElementById("myModal");
-			modal.style.display = "block";
-			modal.classList.add("fade-in");
-
-		}
-
-		// Close the modal
-		function closeModal() {
-			var modal = document.getElementById("myModal");
-			modal.style.display = "none";
-			modal.classList.remove("fade-in");
-			setTimeout(function () {
-				modal.style.display = "none";
-			}, 300); // Adjust the delay to match your CSS transition duration
-
-		}
-		// Open the modal with fade-in effect
-		{% comment %} function openModal() {
-			var modal = document.getElementById("myModal");
-			modal.style.display = "block";
-		} {% endcomment %}
-
-		// Close the modal
-		{% comment %} function closeModal() {
-			var modal = document.getElementById("myModal"); {% endcomment %}
+</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal2" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal2()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{headings.18}}</span></h3>
+		<form onsubmit="submitForm(event)">
+			<form onsubmit="submitForm2(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name2" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email2" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone2" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message2" class="message"></div>
+	</div>
+</div>
 
 
-			// Submit the form
-			function submitForm(event) {
-				event.preventDefault();
-				var name = document.getElementById("name").value;
-				var email = document.getElementById("email").value;
-				var phone = document.getElementById("phone").value;
+<!-- 3 -->
+<div class="product-section mt-10 mb-10" style="background: #000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:white;">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
+						<img src="{{image16.image.url}}" alt="" class="center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<h3 style="margin-top:20px;"><span class="orange-text" style="color:white; font-size: 30px;">
+								{{headings.19}}</span></h3>
+						<p style="color:white;">{{para.31}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para.32}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal3(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'rangerxr5' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal3" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal3()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{headings.19}}</span></h3>
+		<form onsubmit="submitForm(event)">
+			<form onsubmit="submitForm3(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name3" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email3" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone3" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message3" class="message"></div>
+	</div>
+</div>
 
-				// Perform any necessary validation or processing here
-				// ...
+<!-- 4 -->
+<div class="product-section mt-10 mb-10" style="background: #000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:white;">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
+						<img src="{{image17.image.url}}" alt="" class="center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 30px;">{{heading.20}}</span></h3>
+						<p style="color:white;">{{para.33}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para.34}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal4(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'ravenxr15' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal4" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal4()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{heading20.head_text}}</span>
+		</h3>
+		<form onsubmit="submitForm(event)">
+			<form onsubmit="submitForm4(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name4" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email4" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone4" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message4" class="message"></div>
+	</div>
+</div>
 
-				// Display success message
-				var messageDiv = document.getElementById("message");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
+<!-- 5 -->
+<div class="product-section mt-10 mb-10" style="background: #000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:white;">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
+						<img src="{{image18.image.url}}" alt="" class="center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 30px;">{{headings.21}}</span></h3>
+						<p style="color:white;">{{para.35}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para.36}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal5(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'sentinelxr20' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal5" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal5()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{headings.21}}</span></h3>
+		<form onsubmit="submitForm(event)">
+			<form onsubmit="submitForm5(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name5" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email5" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone5" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message5" class="message"></div>
+	</div>
+</div>
 
-				// Reset the form
-				document.getElementById("name").value = "";
-				document.getElementById("email").value = "";
-				document.getElementById("phone").value = "";
-			}
+<!-- 6 -->
+<div class="product-section mt-10 mb-10" style="background: #000000;">
+	<div class="abt-section mb-50">
+		<div class="container" style="color:white;">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg"
+						style="background:#000; display: flex; justify-content: center; align-items: center;margin-top:-100px">
+						<img src="{{image19.image.url}}" alt="" class="center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 30px;">{{headings.22}}</span></h3>
+						<p style="color:white;">{{para.37}}</p>
+						<h3 style="margin-top:20px;"><span class="orange-text"
+								style="color:white; font-size: 25px;">{{headings.17}}</span></h3>
+						<p style="color:white;margin-top:20px;">{{para.38}}</p>
+						<div class="row">
+							<a href="#" class="boxed-btn mt-4 mx-1" class="boxed-btn"
+								onclick="openModal6(); return false;">{{btnText.5}}</a>
+							<a href="{% url 'wardenxr30' %}" class="boxed-btn mt-4 mx-4">{{btnText.1}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- --------------------Modal------------------------ -->
+<div id="myModal6" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close" onclick="closeModal6()">&times;</span>
+		<h4 style="color: white;">Enquiry for</h4>
+		<h3><span class="orange-text" style="color:rgb(44, 215, 25); font-size: 26px;">{{headings.22}}</span></h3>
+		<form onsubmit="submitForm(event)">
+			<form onsubmit="submitForm6(event)">
+				<label for="name">Name</label>
+				<input type="text" id="name6" name="name" required class="modal-inputs" /><br /><br />
+				<label for="email">Email</label>
+				<input type="email" id="email6" name="email" required class="modal-inputs" /><br /><br />
+				<label for="phone">Phone</label>
+				<input type="tel" id="phone6" name="phone" required class="modal-inputs" /><br /><br />
+				<button type="submit" class="modal-btn">Submit</button>
+			</form>
+			<div id="message6" class="message"></div>
+	</div>
+</div>
 
-			// ------------------------------------------Modal 2--------------------------------------------------
-			function openModal2() {
-				var modal = document.getElementById("myModal2");
-				modal.style.display = "block";
-				modal.classList.add("fade-in");
 
-			}
+<!-- end products -->
 
-			// Close the modal
-			function closeModal2() {
-				var modal = document.getElementById("myModal2");
-				modal.style.display = "none";
-				modal.classList.remove("fade-in");
-				setTimeout(function () {
-					modal.style.display = "none";
-				}, 300);
-			}
-			// Open the modal with fade-in effect
-			{% comment %} function openModal2() {
-				var modal = document.getElementById("myModal2");
-				modal.style.display = "block";
-			}
+<!-- logo carousel -->
 
-			// Close the modal
-			function closeModal2() {
-				var modal = document.getElementById("myModal2");
-				// Adjust the delay to match your CSS transition duration
-			} {% endcomment %}
+<!-- end logo carousel -->
+<div class="latest-news pt-150 pb-150" style="margin-top: 50px;padding-top:5px">
+	<div class="container">
 
-			// Submit the form
-			function submitForm2(event) {
-				event.preventDefault();
-				var name = document.getElementById("name2").value;
-				var email = document.getElementById("email2").value;
-				var phone = document.getElementById("phone2").value;
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="section-title">
+					<h3><span class="orange-text" style="color:white">{{headings.23}}</span></h3>
+					<p>{{para.39}}</p>
+				</div>
+			</div>
+		</div>
 
-				// Perform any necessary validation or processing here
-				// ...
+		<div class="row" style="justify-content: center;">
+			<div class="col-lg-4 col-md-6 text-center" style="max-width: 250px;">
+				<div class="single-latest-news">
+					<div class="news-text-box">
+						<h3><a href="single-news.html" style="color:white">{{headings.24}}</a></h3>
 
-				// Display success message
-				var messageDiv = document.getElementById("message2");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
+						<p class="excerpt">{{para.40}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 text-center" style="max-width: 250px;">
+				<div class="single-latest-news">
+					<div class="news-text-box">
+						<h3><a href="single-news.html" style="color:white">{{headings.25}}</a></h3>
+						<p class="excerpt">{{para.41}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" style="max-width: 250px;">
+				<div class="single-latest-news">
+					<div class="news-text-box">
+						<h3><a href="single-news.html" style="color:white">{{headings.26}}</a></h3>
+						<p class="excerpt">{{para.42}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" style="max-width: 250px;">
+				<div class="single-latest-news">
+					<div class="news-text-box">
+						<h3><a href="single-news.html" style="color:white">{{headings.27}}</a></h3>
+						<p class="excerpt">{{para.43}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-				// Reset the form
-				document.getElementById("name2").value = "";
-				document.getElementById("email2").value = "";
-				document.getElementById("phone2").value = "";
-			}
-			// ----------------------------------------------Modal 3------------------------------------
-			function openModal3() {
-				var modal = document.getElementById("myModal3");
-				modal.style.display = "block";
-				modal.classList.add("fade-in");
+	</div>
+</div>
 
-			}
 
-			// Close the modal
-			function closeModal3() {
-				var modal = document.getElementById("myModal3");
-				modal.style.display = "none";
-				modal.classList.remove("fade-in");
-				setTimeout(function () {
-					modal.style.display = "none";
-				}, 300);
-			}
-			{% comment %} // Open the modal with fade-in effect
-			function openModal3() {
-				var modal = document.getElementById("myModal3");
-				modal.style.display = "block";
-			}
-
-			// Close the modal
-			function closeModal3() {
-				var modal = document.getElementById("myModal3");
-				// Adjust the delay to match your CSS transition duration
-			} {% endcomment %}
-
-			// Submit the form
-			function submitForm3(event) {
-				event.preventDefault();
-				var name = document.getElementById("name3").value;
-				var email = document.getElementById("email3").value;
-				var phone = document.getElementById("phone3").value;
-
-				// Perform any necessary validation or processing here
-				// ...
-
-				// Display success message
-				var messageDiv = document.getElementById("message3");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
-
-				// Reset the form
-				document.getElementById("name3").value = "";
-				document.getElementById("email3").value = "";
-				document.getElementById("phone3").value = "";
-			}
-
-			// ----------------------------------------------Modal 4------------------------------------
-			function openModal4() {
-				var modal = document.getElementById("myModal4");
-				modal.style.display = "block";
-				modal.classList.add("fade-in");
-
-			}
-
-			// Close the modal
-			function closeModal4() {
-				var modal = document.getElementById("myModal4");
-				modal.style.display = "none";
-				modal.classList.remove("fade-in");
-				setTimeout(function () {
-					modal.style.display = "none";
-				}, 300);
-			}
-			// Open the modal with fade-in effect
-			{% comment %} function openModal4() {
-				var modal = document.getElementById("myModal4");
-				modal.style.display = "block";
-			}
-
-			// Close the modal
-			function closeModal4() {
-				var modal = document.getElementById("myModal4");
-				// Adjust the delay to match your CSS transition duration
-			} {% endcomment %}
-
-			// Submit the form
-			function submitForm4(event) {
-				event.preventDefault();
-				var name = document.getElementById("name4").value;
-				var email = document.getElementById("email4").value;
-				var phone = document.getElementById("phone4").value;
-
-				// Perform any necessary validation or processing here
-				// ...
-
-				// Display success message
-				var messageDiv = document.getElementById("message4");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
-
-				// Reset the form
-				document.getElementById("name4").value = "";
-				document.getElementById("email4").value = "";
-				document.getElementById("phone4").value = "";
-			}
-
-			// ----------------------------------------------Modal 5------------------------------------
-			function openModal5() {
-				var modal = document.getElementById("myModal5");
-				modal.style.display = "block";
-				modal.classList.add("fade-in");
-
-			}
-
-			// Close the modal
-			function closeModal5() {
-				var modal = document.getElementById("myModal5");
-				modal.style.display = "none";
-				modal.classList.remove("fade-in");
-				setTimeout(function () {
-					modal.style.display = "none";
-				}, 300);
-			}
-			// Open the modal with fade-in effect
-			{% comment %} function openModal5() {
-				var modal = document.getElementById("myModal5");
-				modal.style.display = "block";
-			}
-
-			// Close the modal
-			function closeModal5() {
-				var modal = document.getElementById("myModal5");
-				// Adjust the delay to match your CSS transition duration
-			} {% endcomment %}
-
-			// Submit the form
-			function submitForm5(event) {
-				event.preventDefault();
-				var name = document.getElementById("name5").value;
-				var email = document.getElementById("email5").value;
-				var phone = document.getElementById("phone5").value;
-
-				// Perform any necessary validation or processing here
-				// ...
-
-				// Display success message
-				var messageDiv = document.getElementById("message5");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
-
-				// Reset the form
-				document.getElementById("name5").value = "";
-				document.getElementById("email5").value = "";
-				document.getElementById("phone5").value = "";
-			}
-
-			// ----------------------------------------------Modal 6------------------------------------
-			function openModal6() {
-				var modal = document.getElementById("myModal6");
-				modal.style.display = "block";
-				modal.classList.add("fade-in");
-
-			}
-
-			// Close the modal
-			function closeModal6() {
-				var modal = document.getElementById("myModal6");
-				modal.style.display = "none";
-				modal.classList.remove("fade-in");
-				setTimeout(function () {
-					modal.style.display = "none";
-				}, 300);
-			}
-			// Open the modal with fade-in effect
-			{% comment %} function openModal6() {
-				var modal = document.getElementById("myModal6");
-				modal.style.display = "block";
-			}
-
-			// Close the modal
-			function closeModal6() {
-				var modal = document.getElementById("myModal6");
-				// Adjust the delay to match your CSS transition duration
-			} {% endcomment %}
-
-			// Submit the form
-			function submitForm6(event) {
-				event.preventDefault();
-				var name = document.getElementById("name6").value;
-				var email = document.getElementById("email6").value;
-				var phone = document.getElementById("phone6").value;
-
-				// Perform any necessary validation or processing here
-				// ...
-
-				// Display success message
-				var messageDiv = document.getElementById("message6");
-				messageDiv.textContent =
-					"Thank you, " + name + "! We'll get back to you.";
-
-				// Reset the form
-				document.getElementById("name6").value = "";
-				document.getElementById("email6").value = "";
-				document.getElementById("phone6").value = "";
-			}
-	</script>
-
-	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
-	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
-	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
-	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
-	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
-	<!-- main js -->
-	<script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+{% endblock content %}

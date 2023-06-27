@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.core.mail import EmailMessage
-from . models import Contact,Image,Headings,navItems,buttonText,paragraph,spareParts
+from . models import Contact,Image,Headings,navItems,buttonText,paragraph,spareParts,galleryImages
 from django.core.mail import send_mail,BadHeaderError
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -9,18 +9,18 @@ from twilio.rest import Client
 
 
 
-# account_sid = 'ACc545f727e0582daeb7e59a6affaa6c1b'
-# auth_token = 'c2e76e6d32e98ae48f8aa1e044bb75bb'
-# whatsapp_number = 'whatsapp:+18335300345'
+account_sid = 'AC94ff742162c27fabbf8bf7d7cabac83b'
+auth_token = 'b53922bcc5e8b9f1988cc98df117cc58'
+whatsapp_number = 'whatsapp:+14155238886'
 
-# def send_whatsapp_message(to,subject, message):
-#     client = Client(account_sid, auth_token)
-#     body = f"Subject: {subject}\nMessage: {message}"
-#     message = client.messages.create(
-#         from_=whatsapp_number,
-#         body=body,
-#         to=to
-#     )
+def send_whatsapp_message(to,email,subject, message):
+    client = Client(account_sid, auth_token)
+    body = f"Email: {email}\nSubject: {subject}\nMessage: {message}"
+    message = client.messages.create(
+        from_=whatsapp_number,
+        body=body,
+        to=to
+    )
 
 # Create your views here.
 # from whatsapp_api import WhatsApp
@@ -70,12 +70,15 @@ def footbar():
 
 
 
-
+# def base(request):
+#     images = Image.objects.all()
+#     image3 =  images[3] 
+#     return render(request,'base.html',{'images':images,'image3':image3})
 
 '''--------------------------Main Funtions---------------------------'''
 
 def home(request):
-    navcontext = navbar()
+    # navcontext = navbar()
 
 
     para = paragraph.objects.all()
@@ -97,7 +100,7 @@ def home(request):
     para15 =  para[15]
     para16 =  para[16]
     # footer
-    footercontext = footbar()
+    # footercontext = footbar()
 
     btnText = buttonText.objects.all()
     btnText0 =  btnText[0]
@@ -135,14 +138,14 @@ def home(request):
     image7 = images[7]
     image8 = images[8]
     image9 = images[9]
-    return render(request, 'index.html',{**navcontext,'images': images,'image1':image1,'image0':image0,'image2':image2,'image4':image4,'image5':image5,'image6':image6,'image7':image7,'image8':image8,'image9':image9,
+    return render(request, 'index.html',{'images': images,'image1':image1,'image0':image0,'image2':image2,'image4':image4,'image5':image5,'image6':image6,'image7':image7,'image8':image8,'image9':image9,
                                          'headings':headings,'heading0':heading0,'heading1':heading1,'heading2':heading2,'heading3':heading3,'heading4':heading4,'heading5':heading5,'heading6':heading6,'heading7':heading7,'heading8':heading8,'heading9':heading9,'heading10':heading10,'heading11':heading11,'heading12':heading12,'heading13':heading13,
                                          'btnText':btnText,'btnText0':btnText0,'btnText1':btnText1,'btnText2':btnText2,'btnText3':btnText3,'btnText4':btnText4,
-                                         'para':para,'para0':para0,'para1':para1,'para2':para2,'para3':para3,'para4':para4,'para5':para5,'para6':para6,'para7':para7,'para8':para8,'para9':para9,'para10':para10,'para11':para11,'para12':para12,'para13':para13,'para14':para14,'para15':para15,'para16':para16,**footercontext})
+                                         'para':para,'para0':para0,'para1':para1,'para2':para2,'para3':para3,'para4':para4,'para5':para5,'para6':para6,'para7':para7,'para8':para8,'para9':para9,'para10':para10,'para11':para11,'para12':para12,'para13':para13,'para14':para14,'para15':para15,'para16':para16})
 
 
 def about(request):
-    navcontext = navbar()
+    # navcontext = navbar()
 
     
 
@@ -211,7 +214,7 @@ def about(request):
     heading42 = headings[42]
     heading43 = headings[43]
 
-    return render(request,'about.html',{**navcontext,
+    return render(request,'about.html',{
                                         'btnText':btnText,'btnText6':btnText6,
                                         'headings':headings,'heading6':heading6,'heading7':heading7,'heading32':heading32,'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,'heading33':heading33,'heading34':heading34,'heading35':heading35,'heading36':heading36,'heading37':heading37,'heading38':heading38,'heading39':heading39,'heading40':heading40,'heading41':heading41,'heading42':heading42,'heading43':heading43,
                                         'para7':para7,'para8':para8,'para9':para9,'para10':para10,**footercontext,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para49':para49,'para50':para50,'para51':para51,'para52':para52,'para53':para53,'para54':para54,'para55':para55,'para56':para56,
@@ -220,7 +223,7 @@ def about(request):
 
 def coffee(request):
     
-    navcontext = navbar()
+    # navcontext = navbar()
 
     headings = Headings.objects.all()
     heading23 = headings[23]
@@ -258,7 +261,7 @@ def coffee(request):
     # image3 =  images[3] #logo image
     image10 =  images[10]
 
-    return render(request,'coffee.html',{**navcontext,
+    return render(request,'coffee.html',{
                                          'btnText':btnText,'btnText6':btnText6,
                                          'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,
                                          **footercontext,'para39':para39,'para40':para40,'para41':para41,'para42':para42,'para43':para43,'para44':para44,'para45':para45,'para46':para46,'para47':para47,'para48':para48,
@@ -267,15 +270,16 @@ def coffee(request):
 
 
 def gallery(request):
-    navcontext = navbar()
+    # navcontext = navbar()
     footercontext = footbar()  
+    galyimg = galleryImages.objects.all()
 
-    return render(request, 'gallery.html',{**navcontext,**footercontext})
+    return render(request, 'gallery.html',{**footercontext,'galyimg':galyimg})
 
 
 
 def shoproaster(request):
-    navcontext = navbar()
+    # navcontext = navbar()
 
     images = Image.objects.all()
     image14 =  images[14]
@@ -331,7 +335,7 @@ def shoproaster(request):
     heading27 = headings[27]
     
 
-    return render(request,'shop.html',{**navcontext,
+    return render(request,'shop.html',{
                                        'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19,
                                        'btnText':btnText,'btnText5':btnText5,'btnText1':btnText1,
                                        'headings':headings,'heading14':heading14,'heading15':heading15,'heading16':heading16,'heading17':heading17,'heading18':heading18,'heading19':heading19,'heading20':heading20,'heading21':heading21,'heading22':heading22,'heading23':heading23,'heading24':heading24,'heading25':heading25,'heading26':heading26,'heading27':heading27,
@@ -342,7 +346,7 @@ def shoproaster(request):
 
 
 def blog(request):
-    navcontext = navbar()
+    # navcontext = navbar()
 
 
     para = paragraph.objects.all()
@@ -350,7 +354,7 @@ def blog(request):
     footercontext = footbar()
 
     
-    return render(request,'news.html',{**navcontext,
+    return render(request,'news.html',{
                                        **footercontext
                                        })
 
@@ -360,7 +364,7 @@ def blog(request):
 
 
 def contact(request):
-    navcontext = navbar()
+    # navcontext = navbar()
     footercontext = footbar()
 
     images = Image.objects.all()
@@ -379,35 +383,34 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             print("entered the if block")
-            # Get the form data
-            # name = form.cleaned_data['name']
-            # print(name)
+            
             email = form.cleaned_data['email']
             print(email)
+            phone = form.cleaned_data['phone']
+            print(phone)
             subject = form.cleaned_data['subject']
             print(subject)
-            message = form.cleaned_data['message']
+            message = f"Email: {email}\n\nPhone: {phone}\n\n{form.cleaned_data['message']}"
             print(message)
+
 
             # Send the email
             send_mail(
                 subject,
                 message,
-                'django.core.mail.backends.smtp.EmailBackend',
-                [email],
+                email,
+                ['boredstuff2021@gmail.com'],
             )
             print("sent successfully----------------")
 
-            # send_whatsapp_message('whatsapp:+16262499663',subject, message)
-
             return redirect('contact')
     else:
-        print('---------done')
+        print('nah---------done')
         form = ContactForm()
 
-    return render(request, 'contact.html',{'form':form,**navcontext,
+    return render(request, 'contact.html',{'form':form,
                                            'heading45':heading45,
-                                           'para':para,**footercontext,'para57':para57,'image20':image20})
+                                           'para':para,'para57':para57,'image20':image20})
 
 
 
@@ -436,9 +439,20 @@ def spareparts(request):
                                                'heading44': heading44})
 
 
+def checkout(request):
+    navcontext = navbar()
+    footercontext = footbar()
+
+    # Retrieve the selected spare part based on the provided ID
+    return render(request, 'checkout.html', {
+        **navcontext,
+        **footercontext
+    })
+
 
 def product_detail(request, product_id):
     product = get_object_or_404(spareParts, id=product_id)
+    
     
     navcontext = navbar()
     footercontext = footbar()
@@ -449,23 +463,6 @@ def product_detail(request, product_id):
     }
     return render(request, 'productDetailPage.html', context)
 
-
-
-def checkout(request):
-    return render(request, 'checkout.html')
-
-# def checkout(request):
-#     nav = navItems.objects.all()
-#     nav0 = nav[0]
-#     nav1 = nav[1]
-#     nav2 = nav[2]
-#     nav3 = nav[3]
-#     nav4 = nav[4]
-#     nav5 = nav[5]
-#     nav6 = nav[6]
-#     return render(request, 'checkout.html',{'nav': nav, 'nav0': nav0, 'nav1': nav1, 'nav2': nav2, 'nav3': nav3,
-#                                                'nav4': nav4, 'nav5': nav5, 'nav6': nav6,})
-    
 
 
 
@@ -539,3 +536,53 @@ def genesisxr3(request):
 #     return render(request, 'cart.html')
 
 
+
+
+# --------------------cart functions---------------------
+# from django.contrib.auth.decorators import login_required
+from cart.cart import Cart
+
+# @login_required(login_url="/users/login")
+def cart_add(request, id):
+    cart = Cart(request)
+    product = spareParts.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("home")
+
+
+# @login_required(login_url="/users/login")
+def item_clear(request, id):
+    cart = Cart(request)
+    product = spareParts.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart")
+
+
+# @login_required(login_url="/users/login")
+def item_increment(request, id):
+    cart = Cart(request)
+    product = spareParts.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("cart")
+
+
+# @login_required(login_url="/users/login")
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = spareParts.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart")
+
+
+# @login_required(login_url="/users/login")
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart")
+
+
+# @login_required(login_url="/users/login")
+def cart_detail(request):
+    navcontext = navbar()
+    footercontext = footbar()
+    return render(request, 'cart.html',{**navcontext,**footercontext})

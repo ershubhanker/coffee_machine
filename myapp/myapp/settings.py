@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-f)jj389=+)@i#wwjb*s*%5ntoae=nfz$t2f#yp7xd!ggb7abq@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER ='boredstuff2021@gmail.com'
-EMAIL_HOST_PASSWORD = 'ehyslutcdltcingf'
+EMAIL_HOST_USER ='christian@primoroasting.com'
+EMAIL_HOST_PASSWORD = 'cmvjjpdpphozhvwv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myapp.urls'
 
+CART_SESSION_ID = 'cart'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,6 +74,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },

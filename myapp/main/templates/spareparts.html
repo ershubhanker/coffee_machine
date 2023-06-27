@@ -256,21 +256,24 @@
       </div>
       <div class="products">
         {% for sp in spare %}
-        <div class="product" data-category="{{ sp.toolCategory }}"> <!-- Update data-category with multiple categories -->
+        <div class="product" data-category="{{ sp.toolCategory }}">
           <div class="card" style="width: 18rem;">
             <a href="/spare-parts/{{ sp.id }}">
-            <img class="card-img-top" src="{{ sp.toolImage.url }}" alt="Card image cap"></a>
+              <img class="card-img-top" src="{{ sp.image.url }}" alt="Card image cap">
+            </a>
             <div class="card-body">
-              <h5 class="card-title">{{ sp.toolTitle }}</h5>
-              <p class="card-text">${{ sp.toolPrice }}</p>
-              <a href="#" class="btn btn-success" id="pay-now"
-                style="border-radius: 20px;border: 2px solid white;color:#000; padding-right:30px; padding-left: 30px;">Add
-                to cart</a>
+              <h5 class="card-title">{{ sp.name }}</h5>
+              <p class="card-text">${{ sp.price }}</p>
+              <a href="{% url 'cart_add' sp.id %}" class="btn btn-success" id="pay-now"
+                style="border-radius: 20px; border: 2px solid white; color:#000; padding-right:30px; padding-left: 30px;">
+                Add to cart
+              </a>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
+      
     </div>
   </div>
   

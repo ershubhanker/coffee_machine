@@ -1,149 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-    content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/" />
+{% block title %}Ranger-xr5{% endblock title %}
 
-  <!-- title -->
-  <title>Ranger-Xr5</title>
-
-  <!-- favicon -->
-  <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
-  <!-- google font -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <!-- owl carousel -->
-  <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-  <!-- magnific popup -->
-  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-  <!-- animate css -->
-  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-  <!-- mean menu css -->
-  <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
-  <!-- main style -->
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  <!-- responsive -->
-  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-
-  <style>
+  {% block style %}
     @media only screen and (max-width: 480px) {
-      .mean-bar {
-        margin-top: 90px;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:first-of-type {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:nth-of-type(2) {
-        width: 80%;
-        max-width: 1200px;
-        padding: 0 0 10px 0;
-        margin-left: 10px;
-        box-sizing: border-box;
-      }
-
-      .footer-area div.container div.row div.col-lg-3:nth-of-type(3) {
-        width: 80%;
-        max-width: 1200px;
-        padding: 0 0 10px 0;
-        margin-left: 10px;
-        box-sizing: border-box;
+      .list-section{
+        width: 31%;
       }
     }
-  </style>
-</head>
-
-<body>
-  <!--PreLoader-->
-  <!-- <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div> -->
-  <!--PreLoader Ends-->
-
-  <!-- header -->
-  <div class="top-header-area" id="sticker">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-sm-12 text-center">
-          <div class="main-menu-wrap">
-            <!-- logo -->
-            <div class="site-logo">
-              <a href="{% url 'home' %}">
-                <img src="{{image3.image.url}}" alt="">
-              </a>
-            </div>
-            <!-- logo -->
-
-            <!-- menu start -->
-            <nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-								<li><a href="{% url 'coffee' %}">{{nav1.items}}</a></li>
-								
-								<li><a href="{% url 'gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-								
-
-								<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-								<li><a href="{% url 'spareparts' %}">{{nav6.items}}</a></li>
-
-								<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-								<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i
-												class="fas fa-shopping-cart"></i></a>
-												<a href="{% url 'instantquote' %}" class="boxed-btn" style="padding: 5px 10px;">Instant Quote</a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-            <a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant
-              Quote</a>
-            <div class="mobile-menu"></div>
-            <!-- menu end -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end header -->
-
-  <!-- search area -->
-  <div class="search-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <span class="close-btn"><i class="fas fa-window-close"></i></span>
-          <div class="search-bar">
-            <div class="search-bar-tablecell">
-              <h3>Search For:</h3>
-              <input type="text" placeholder="Keywords" />
-              <button type="submit">
-                Search <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end search arewa -->
+    {% endblock style %}
+    {% block content%}
 
   <!-- breadcrumb-section -->
   <div class="breadcrumb-section breadcrumb-bg" style="background: #000; padding-bottom:0px ;">
@@ -163,7 +30,7 @@
   <div class="single-product" style="background: #000; margin-top: -2px">
     <div class="container">
       <div class="abt-bg" style="background:#000; display: flex;">
-        <img src="{{image16.image.url}}" alt="" class="center" height="1200" width="1000" style="margin-top: -130px;">
+        <img src="{{image16.image.url}}" alt="" class="center" style="margin-top: -130px; width: 100%; height: auto;">
       </div>
     </div>
   </div>
@@ -172,14 +39,11 @@
 
 
   <!-- the feature row -->
-  <div class="list-section pb-80"
-    style="background-color:black; position: relative;z-index: 2; justify-content: center; align-items: center;margin-top: -126px;">
+  <div class="list-section pb-80" style="background-color:black; position: relative;z-index: 2; justify-content: center; align-items: center;margin-top: -126px;">
     <div class="container">
-
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <div class="list-box d-flex justify-content-center align-items-center">
-
             <div class="content">
               <h3 style="color:white;; text-align: center;">5.4 Kilograms</h3>
               <p style="color:white; text-align: center;">Maximum Batch Size</p>
@@ -208,7 +72,7 @@
         </div>
       </div>
 
-      <div class="row" style="margin-top: 85px;">
+      <div class="row" style="margin-top: 20px;">
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <div class="list-box d-flex justify-content-center align-items-center">
 
@@ -247,17 +111,17 @@
   <div class="single-product mt-80 mb-150" style="background: #000;">
     <div class="container">
       <div class="row">
-        <div class="col-md-7" style="margin-top: 45px;max-width: 40%;">
+        <div class="col-md-7 col-sm-12" style="margin-top: 45px;">
           <div class="single-product-content">
             <h3>
-              <span class="orange-text" style="color: white"><span style="font-size: 18px;">Reliability</span><br>
+              <span class="orange-text" style="color: white">
+                <span style="font-size: 18px;">Reliability</span><br>
                 <span style="color: rgb(44, 215, 25);">You Deserve</span><br>
-                <span style="font-size: 16px;">All of our roasters are hand made and custom built to your exact
-                  specifications.</span>
+                <span style="font-size: 16px;">All of our roasters are hand made and custom built to your exact specifications.</span>
               </span>
             </h3>
             <div style="color: white; border: 2px solid white; border-radius: 30px; padding: 45px;">
-              <h3 style="color: white;justify-content: center;text-align: center;">Specifications</h3>
+              <h3 style="color: white; justify-content: center; text-align: center;">Specifications</h3>
               <ul>
                 <li>Specially designed paddles keep mixing consistent</li>
                 <li>Automated two-stage temperature controller </li>
@@ -273,13 +137,15 @@
                 <li>100% designed & manufactured in the U.S.A.</li>
               </ul>
             </div>
-            <a class="boxed-btn mt-5 d-block" style="text-align: center; padding: 5px 10px; cursor: pointer;">Order
-              Now</a>
-            <a class="boxed-btn mt-5 d-block" style="text-align: center; padding: 5px 10px; cursor: pointer;">Learn
-              More</a>
+            <div class="text-center">
+              <a class="boxed-btn mt-5 d-inline-block" style="padding: 5px 10px; cursor: pointer;">Order Now</a>
+              <a class="boxed-btn mt-5 d-inline-block" style="padding: 5px 10px; cursor: pointer;">Learn More</a>
+            </div>
           </div>
         </div>
-
+      </div>
+    </div>
+  </div>
         <div class="col-md-5" style="margin-top: 40px">
           <div class="single-product-img">
             <img src="{{image10.image.url}}" alt="" />
@@ -361,10 +227,9 @@
   <div class="single-product mt-80 mb-150" style="background: #000;">
     <div class="container">
       <div class="row">
-        <div class="col-md-7" style="margin-top: 45px;max-width: 50%;">
+        <div class="col-lg-6 col-md-7 col-sm-12" style="margin-top: 45px;">
           <div class="single-product-content">
-
-            <div style="color: white; border: 2px solid white; border-radius: 30px; padding: 45px;height:750px;">
+            <div style="color: white; border: 2px solid white; border-radius: 30px; padding: 45px; height: auto;">
               <h2 style="color: white;justify-content: center;text-align: center;">
                 STANDARD RANGER-Xr5</h2>
               <h3 style="color: white;justify-content: center;text-align: center;">Instant Quote</h3>
@@ -384,19 +249,17 @@
                 <li>All units come standard in either (White or Black). The Designs Package additional cost* gives you
                   the ability to pick two colors of your choice and the customization of your trim, body, cyclone
                   colors, and logo addition.</li>
-              </ul>
+                </ul>
+              </div>
+              <div class="hero-btns text-center">
+                <a href="{% url 'instantquote' %}" class="boxed-btn">Instant Quote</a>
+              </div>
             </div>
-            <div class="hero-btns text-center">
-              <a href="{% url 'instantquote' %}" class="boxed-btn" style="padding-left: 70px; padding-right: 70px;">Instant Quote</a>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-md-7" style="margin-top: 45px;max-width: 50%;">
+        <div class="col-lg-6 col-md-7 col-sm-12" style="margin-top: 45px;">
           <div class="single-product-content">
-
-            <div style="color: white; border: 2px solid white; border-radius: 30px; padding: 35px;height:750px;">
+            <div style="color: white; border: 2px solid white; border-radius: 30px; padding: 35px; height: auto;">
               <h2 style="color: white;justify-content: center;text-align: center;">
                 CUSTOM RANGER-Xr5</h2>
               <h3 style="color: white;justify-content: center;text-align: center;">Schedule a Call</h3>
@@ -423,106 +286,17 @@
                 <li>All units come standard in either (White or Black). The Designs Package additional cost* gives you
                   the ability to pick two colors of your choice and the customization of your trim, body, cyclone
                   colors, and logo addition.</li>
-              </ul>
+                </ul>
+              </div>
+              <div class="hero-btns text-center">
+                <a href="{% url 'contact' %}" class="boxed-btn">Book Now</a>
+              </div>
             </div>
-            <div class="hero-btns text-center">
-              <a href="{% url 'contact' %}" class="boxed-btn" style="padding-left: 70px; padding-right: 70px;">Book Now</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- footer -->
-  <div class="footer-area" style="padding-bottom:50px;">
-    <div class="container" style="margin-right:0px">
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box get-in-touch">
-            <h2 class="widget-title">{{para17.para}}</h2>
-            <ul>
-              <li>
-                {{para18.para}}</li>
-              <li>{{para19.para}}</li>
-              <li>{{para20.para}}</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box pages">
-            <h2 class="widget-title">{{para21.para}}</h2>
-            <ul>
-              <li><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-              <li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-              <li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-              <li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-              <li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-box subscribe">
-            <h2 class="widget-title">{{para22.para}}</h2>
-            <p>{{para23.para}}</p>
-            <form action="{% url 'home' %}">
-              <input type="email" placeholder="Email" style="border-radius:20px 0px 0px 20px">
-              <button type="submit" style="border-radius:0px 20px 20px 0px"><i class="fas fa-paper-plane"></i></button>
-            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- end footer -->
 
-  <!-- copyright -->
-  <div class="copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}</p>
-        </div>
-        <div class="col-lg-6 text-right col-md-12">
-          <div class="social-icons">
-            <ul>
-              <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end copyright -->
 
-  <!-- jquery -->
-  <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-  <!-- bootstrap -->
-  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  <!-- count down -->
-  <script src="{% static 'js/jquery.countdown.js' %}"></script>
-  <!-- isotope -->
-  <script src="{% static 'js/jquery.isotope-3.0.6.min.js' %}"></script>
-  <!-- waypoints -->
-  <script src="{% static 'js/waypoints.js' %}"></script>
-  <!-- owl carousel -->
-  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-  <!-- magnific popup -->
-  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-  <!-- mean menu -->
-  <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
-  <!-- sticker js -->
-  <script src="{% static 'js/sticker.js' %}"></script>
-  <!-- main js -->
-  <script src="{% static 'js/main.js' %}"></script>
 
-</body>
-
-</html>
+    {% endblock content %}

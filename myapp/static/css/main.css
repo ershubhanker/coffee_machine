@@ -34,6 +34,7 @@ body img {
   max-width: 100%;
 }
 
+
 a {
   cursor: pointer;
   text-decoration: none;
@@ -84,10 +85,8 @@ h1, .h1 {
 a.boxed-btn{
   margin-left:47px;
 }
-/* a.cart-btn{
-  margin-left: 90px;
-  margin-top: 20px;
-} */
+.logo-carousel-section{width:100%;}
+
 .shop-banner div.container a:nth-child(2){
   margin-left:100px;
 }
@@ -514,7 +513,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 
 .section-title p {
   font-size: 15px;
-  width: 530px;
+  width: 100%;
   margin: 0 auto;
   color: #555;
   margin-top: 10px;
@@ -572,6 +571,32 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 # Header Styles
 
 ----------------------------------------------------------------------------- */
+
+#navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* position: fixed; */
+  overflow: hidden;
+  /* position: fixed; */
+  flex-wrap: wrap;
+}
+
+
+/* ul{
+  display:flex;
+    flex-direction:row;
+    flex-basis:100px;
+    row-gap:2rem;
+    justify-content: center;
+  } */
+
+
+
+
+
+
+
 ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-link {
   color: #000000;
 }
@@ -681,6 +706,7 @@ ul.sub-menu li:last-child {
   position: absolute;
   right: 0;
   top: 15px;
+  margin-top: 0px ;
 }
 
 .mean-bar a.meanmenu-reveal {

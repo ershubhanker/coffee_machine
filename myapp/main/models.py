@@ -1,4 +1,6 @@
 from django.db import models
+import datetime
+from django_countries.fields import CountryField
 
 from PIL import Image
 from io import BytesIO
@@ -113,10 +115,27 @@ class Image(models.Model):
 
 class spareParts(models.Model):
     toolCategory = models.CharField(max_length=100,null=True,blank=True)
-    toolImage = models.ImageField(upload_to='media')
-    toolTitle = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='media')
+    name = models.CharField(max_length=30)
     toolDesc = models.TextField(null=True, blank=True)
-    toolPrice = models.FloatField()
+    price = models.FloatField()
 
     def __str__(self):
-        return f'{self.toolTitle} - ${self.toolPrice} / {self.toolCategory}'
+        return f'{self.name} - ${self.price} / {self.toolCategory}'
+
+
+
+class galleryImages(models.Model):
+    galleryImage = models.ImageField(upload_to='media')
+
+
+class Order(models.Model):
+    image = models.ImageField(upload_to='media')
+    product = models.ForeignKey(spareParts, on_delete=models.CASCADE)
+    quantity = models.CharField(max_length=100)
+    price = models.IntegerField()
+    address = models.TextField()
+    country = CountryField()
+    phone = models.CharField(max_length=10)
+    pincode = models.CharField(max_length=6)
+    date = models.DateField(default=datetime.datetime.today)
