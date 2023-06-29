@@ -2,68 +2,7 @@
 {% load static %}
 
 {% block title %}Contact{% endblock title %}
-{% block extra_scripts %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).on("submit", "#fruitkha-contact", function (e) {
-    e.preventDefault();
 
-    $.ajax({
-      url: '{% url "contact" %}',
-      type: "POST",
-      data: {
-        email: $("#email").val(),
-        subject: $("#subject").val(),
-        message: $("#message").val(),
-        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-      },
-      success: function () {
-        console.log("This was a success.");
-      },
-    });
-  });
-</script>
-<script>
-  function sendFormData(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-
-    // Check if all fields are filled
-    if (!validateForm()) {
-      return;
-    }
-
-    // Get form data
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
-
-    // Construct the WhatsApp message
-    var whatsappMessage = 'Email: ' + email + '%0A' + 'Phone:' + phone + '%0A' + 'Subject: ' + subject + '%0A' + 'Message: ' + message;
-
-    // Open WhatsApp with the message
-    var whatsappURL = 'https://wa.me/1234567890?text=' + encodeURIComponent(whatsappMessage);
-    window.open(whatsappURL);
-
-    // Submit the form (optional)
-    document.getElementById('fruitkha-contact').submit();
-  }
-
-  function validateForm() {
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
-
-    if (!email || !subject || !phone || !message) {
-      alert('Please fill in all required fields.');
-      return false;
-    }
-
-    return true;
-  }
-</script>
-{% endblock extra_scripts %}
 
 
   {% block content %}

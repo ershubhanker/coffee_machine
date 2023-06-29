@@ -57,16 +57,8 @@ def home(request):
     
 
     images = Image.objects.all()
-    image0 =  images[0]
-    image1 = images[1]
-    image2 = images[2]
-    image4 = images[4]
-    image5 = images[5]
-    image6 = images[6]
-    image7 = images[7]
-    image8 = images[8]
-    image9 = images[9]
-    return render(request, 'index.html',{'images': images,'image1':image1,'image0':image0,'image2':image2,'image4':image4,'image5':image5,'image6':image6,'image7':image7,'image8':image8,'image9':image9,
+    
+    return render(request, 'index.html',{'images': images,
                                          'headings':headings,
                                          'btnText':btnText,
                                          'para':para,})
@@ -77,15 +69,7 @@ def about(request):
     
 
     images = Image.objects.all()
-    image0 =  images[0]
-    image1 = images[1]
-    image2 = images[2]
-    # image3 = images[3] #logo image
-    image10 =  images[10]
-    # team member images
-    image11 =  images[11]
-    image12 =  images[12]
-    image13 =  images[13]
+    
 
 
     para = paragraph.objects.all()
@@ -103,7 +87,7 @@ def about(request):
     return render(request,'about.html',{'para':para,
                                         'btnText':btnText,
                                         'headings':headings,
-                                        'images':images,'image1':image1,'image0':image0,'image2':image2,'image10':image10,'image11':image11,'image12':image12,'image13':image13,})
+                                        'images':images,})
 
 
 def coffee(request):
@@ -121,14 +105,12 @@ def coffee(request):
 
     
     images = Image.objects.all()
-    # image3 =  images[3] #logo image
-    image10 =  images[10]
+    
 
     return render(request,'coffee.html',{
                                          'btnText':btnText,
                                          'para':para,
-                                         
-                                         'images':images,'image10':image10,
+                                         'images':images,
                                          'headings':headings,})
 
 
@@ -142,12 +124,7 @@ def gallery(request):
 def shoproaster(request):
 
     images = Image.objects.all()
-    image14 =  images[14]
-    image15 =  images[15]
-    image16 =  images[16]
-    image17 =  images[17]
-    image18 =  images[18]
-    image19 =  images[19]
+    
 
 
     btnText = buttonText.objects.all()
@@ -162,7 +139,7 @@ def shoproaster(request):
     
 
     return render(request,'shop.html',{
-                                       'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19,
+                                       'images':images,
                                        'btnText':btnText,
                                        'headings':headings,
                                          'para':para,})
@@ -189,7 +166,6 @@ def contact(request):
     # navcontext = navbar()
 
     images = Image.objects.all()
-    image20 =  images[20] #whatsapp image
 
     headings = Headings.objects.all()
 
@@ -229,7 +205,7 @@ def contact(request):
 
     return render(request, 'contact.html',{'form':form,
                                            'headings':headings,
-                                           'para':para,'image20':image20})
+                                           'para':para,'images':images})
 
 
 
@@ -276,13 +252,8 @@ def product_detail(request, product_id):
 def comparison(request):
 
     images = Image.objects.all()
-    image14 =  images[14]
-    image15 =  images[15]
-    image16 =  images[16]
-    image17 =  images[17]
-    image18 =  images[18]
-    image19 =  images[19]
-    return render(request,'roasterComparison.html',{'images':images,'image14':image14,'image15':image15,'image16':image16,'image17':image17,'image18':image18,'image19':image19})
+    
+    return render(request,'roasterComparison.html',{'images':images})
 
 
 def instantquote(request):
@@ -292,40 +263,35 @@ def instantquote(request):
 def sentinelxr20(request):
 
     images = Image.objects.all()
-    image14 =  images[14]
 
-    return render(request, 'sentinelxr20.html',{'images':images,'image14':image14})
+    return render(request, 'sentinelxr20.html',{'images':images})
 
 def wardenxr30(request):
 
     images = Image.objects.all()
-    image19 =  images[19]
 
-    return render(request, 'warden-xr30.html',{'images':images,'image19':image19})
+    return render(request, 'warden-xr30.html',{'images':images})
 
 def ravenxr15(request):
 
     images = Image.objects.all()
-    image17 =  images[17]
 
-    return render(request, 'raven-xr15.html',{'images':images,'image17':image17})
+    return render(request, 'raven-xr15.html',{'images':images})
 
 
 def rangerxr5(request):
    
 
     images = Image.objects.all()
-    image16 =  images[16]
 
-    return render(request, 'ranger-xr5.html',{'images':images,'image16':image16})
+    return render(request, 'ranger-xr5.html',{'images':images})
 
 
 def genesisxr3(request):
 
     images = Image.objects.all()
-    image15 =  images[15]
 
-    return render(request, 'genesis-xr3.html',{'images':images,'image15':image15})
+    return render(request, 'genesis-xr3.html',{'images':images})
 # def test(request):
 #     return render(request, 'cart.html')
 
@@ -377,6 +343,5 @@ def cart_clear(request):
 
 # @login_required(login_url="/users/login")
 def cart_detail(request):
-    navcontext = navbar()
-    footercontext = footbar()
-    return render(request, 'cart.html',{**navcontext,**footercontext})
+    
+    return render(request, 'cart.html')
