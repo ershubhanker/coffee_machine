@@ -1,4 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}Blog{% endblock title %}
+{% block content %}
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg" style="background: #000;" >
@@ -170,92 +174,4 @@
 	<!-- logo carousel -->
 	
 	<!-- end logo carousel -->
-
-	<!-- footer -->
-	<div class="footer-area" style="padding-bottom:50px;">
-		<div class="container" style="margin-right:0px">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">{{para17.para}}</h2>
-						<ul>
-							<li>
-								{{para18.para}}</li>
-							<li>{{para19.para}}</li>
-							<li>{{para20.para}}</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">{{para21.para}}</h2>
-						<ul>
-							<li><a href="{% url 'home' %}">{{nav0.items}}</a></li>
-							<li><a href="{% url 'about' %}">{{nav3.items}}</a></li>
-							<li><a href="{% url 'shoproaster' %}">{{nav2.items}}</a></li>
-							<li><a href="{% url 'blog' %}">{{nav5.items}}</a></li>
-							<li><a href="{% url 'contact' %}">{{nav4.items}}</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">{{para22.para}}</h2>
-						<p>{{para23.para}}</p>
-						<form action="{% url 'home' %}">
-							<input type="email" placeholder="Email" style="border-radius:20px 0px 0px 20px">
-							<button type="submit" style="border-radius:0px 20px 20px 0px"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end footer -->
-	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2023 - <a href="https://primoroasting.com/">{{para24.para}}</a>{{para25.para}}</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
-	
-	<!-- jquery -->
-	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-	<!-- bootstrap -->
-	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-	<!-- count down -->
-	<script src="{% static 'js/jquery.countdown.js' %}"></script>
-	<!-- isotope -->
-	<script src="{% static 'js/jquery.isotope-3.0.6.min.js' %}"></script>
-	<!-- waypoints -->
-	<script src="{% static 'js/waypoints.js' %}"></script>
-	<!-- owl carousel -->
-	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-	<!-- magnific popup -->
-	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-	<!-- mean menu -->
-	<script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
-	<!-- sticker js -->
-	<script src="{% static 'js/sticker.js' %}"></script>
-	<!-- main js -->
-	<script src="{% static 'js/main.js' %}"></script>
-
-</body>
-</html>
+	{% endblock content %}
