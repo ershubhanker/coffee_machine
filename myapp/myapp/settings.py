@@ -31,7 +31,7 @@ EMAIL_HOST_PASSWORD = 'cmvjjpdpphozhvwv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -60,7 +60,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myapp.urls'
 
-CART_SESSION_ID = 'cart'
 
 TEMPLATES = [
     {
@@ -69,19 +68,22 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'cart.context_processor.cart_total_amount',
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                
-                'cart.context_processor.cart_total_amount',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
+
+CART_SESSION_ID = 'cart'
+
 
 
 # Database

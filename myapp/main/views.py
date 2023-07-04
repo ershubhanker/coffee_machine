@@ -5,35 +5,7 @@ from django.core.mail import send_mail,BadHeaderError
 from django.template.loader import render_to_string
 from django.conf import settings
 from .forms import ContactForm
-# from twilio.rest import Client
-
-
-
-# account_sid = 'AC94ff742162c27fabbf8bf7d7cabac83b'
-# auth_token = 'b53922bcc5e8b9f1988cc98df117cc58'
-# whatsapp_number = 'whatsapp:+14155238886'
-
-# def send_whatsapp_message(to,email,subject, message):
-#     client = Client(account_sid, auth_token)
-#     body = f"Email: {email}\nSubject: {subject}\nMessage: {message}"
-#     message = client.messages.create(
-#         from_=whatsapp_number,
-#         body=body,
-#         to=to
-#     )
-
-# Create your views here.
-# from whatsapp_api import WhatsApp
-
-
-
-
-
-
-
-
-
-
+from cart.cart import Cart
 
 
 # def base(request):
@@ -42,71 +14,36 @@ from .forms import ContactForm
 #     return render(request,'base.html',{'images':images,'image3':image3})
 
 '''--------------------------Main Funtions---------------------------'''
-
+#--- home 
 def home(request):
-
-
     para = paragraph.objects.all()
-    
     btnText = buttonText.objects.all()
-    
-
     headings = Headings.objects.all()
-    
-
-    
-
     images = Image.objects.all()
-    
     return render(request, 'index.html',{'images': images,
                                          'headings':headings,
                                          'btnText':btnText,
                                          'para':para,})
 
 
+#--- about 
 def about(request):
-
-    
-
     images = Image.objects.all()
-    
-
-
     para = paragraph.objects.all()
-    
-    
-
-    
-
-
     btnText = buttonText.objects.all()
-
     headings = Headings.objects.all()
-    
-
     return render(request,'about.html',{'para':para,
                                         'btnText':btnText,
                                         'headings':headings,
                                         'images':images,})
 
 
+#---  coffee
 def coffee(request):
-    
-    # navcontext = navbar()
-
     headings = Headings.objects.all()
-    
-    
     btnText = buttonText.objects.all()
-
     para = paragraph.objects.all()
-    # our existence
-   
-
-    
     images = Image.objects.all()
-    
-
     return render(request,'coffee.html',{
                                          'btnText':btnText,
                                          'para':para,
@@ -114,63 +51,35 @@ def coffee(request):
                                          'headings':headings,})
 
 
+#--- shoproaster 
 def gallery(request):
     galyimg = galleryImages.objects.all()
-
     return render(request, 'gallery.html',{'galyimg':galyimg})
 
 
-
+#--- shoproaster 
 def shoproaster(request):
-
     images = Image.objects.all()
-    
-
-
     btnText = buttonText.objects.all()
-    
-
     para = paragraph.objects.all()
-    
-    
-
     headings = Headings.objects.all()
-   
-    
-
-    return render(request,'shop.html',{
-                                       'images':images,
+    return render(request,'shop.html',{'images':images,
                                        'btnText':btnText,
                                        'headings':headings,
                                          'para':para,})
 
 
-
-
+#--- blog
 def blog(request):
-
-
     para = paragraph.objects.all()
-    
-
-    
-    return render(request,'news.html',{
-'para':para                                       })
+    return render(request,'news.html',{'para':para})
 
 
-
-
-
-
+#--- contact
 def contact(request):
-    # navcontext = navbar()
-
     images = Image.objects.all()
-
     headings = Headings.objects.all()
-
     para = paragraph.objects.all()
-
 
     # contact form
     if request.method == 'POST':
@@ -209,12 +118,11 @@ def contact(request):
 
 
 
+#--- spareparts
 def spareparts(request):
 
     headings = Headings.objects.all()
     
-    
-
     # Retrieve the selected category from the query string
     category = request.GET.get('Category')
     
@@ -224,23 +132,20 @@ def spareparts(request):
     else:
         spare = spareParts.objects.all()
 
-
-    return render(request,'spareparts.html',{'spare': spare,
-                                              
-                                               'headings': headings})
+    return render(request,'spareparts.html',{'spare': spare,'headings': headings})
 
 
+#--- checkout 
 def checkout(request):
 
     # Retrieve the selected spare part based on the provided ID
     return render(request, 'checkout.html')
 
 
+#--- product_detail 
 def product_detail(request, product_id):
     product = get_object_or_404(spareParts, id=product_id)
     
-    
-
     context = {
         'product': product,
     }
@@ -248,7 +153,7 @@ def product_detail(request, product_id):
 
 
 
-
+#--- comparison 
 def comparison(request):
 
     images = Image.objects.all()
@@ -256,51 +161,44 @@ def comparison(request):
     return render(request,'roasterComparison.html',{'images':images})
 
 
+#--- instantquote 
 def instantquote(request):
     return render(request, 'instantquote.html')
  
 
+#--- sentinelxr20 
 def sentinelxr20(request):
-
     images = Image.objects.all()
-
     return render(request, 'sentinelxr20.html',{'images':images})
 
+
+#--- wardenxr30 
 def wardenxr30(request):
-
     images = Image.objects.all()
-
     return render(request, 'warden-xr30.html',{'images':images})
 
+
+#--- ravenxr15
 def ravenxr15(request):
-
     images = Image.objects.all()
-
     return render(request, 'raven-xr15.html',{'images':images})
 
 
+#--- rangerxr5 
 def rangerxr5(request):
-   
-
     images = Image.objects.all()
-
     return render(request, 'ranger-xr5.html',{'images':images})
 
 
+#--- genesisxr3
 def genesisxr3(request):
-
     images = Image.objects.all()
-
     return render(request, 'genesis-xr3.html',{'images':images})
-# def test(request):
-#     return render(request, 'cart.html')
-
 
 
 
 # --------------------cart functions---------------------
 # from django.contrib.auth.decorators import login_required
-from cart.cart import Cart
 
 # @login_required(login_url="/users/login")
 def cart_add(request, id):
@@ -343,5 +241,9 @@ def cart_clear(request):
 
 # @login_required(login_url="/users/login")
 def cart_detail(request):
-    
     return render(request, 'cart.html')
+
+
+
+def test(request):
+    return render(request, 'test.html')

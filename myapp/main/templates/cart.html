@@ -63,8 +63,7 @@
 										</a>
 									</td>
 
-									<td class="product-total" style="color:white;">{{
-										value.price|multiply:value.quantity }}</td>
+									<td class="product-total" style="color:white;">{{ value.price|multiply:value.quantity }}</td>
 									<td class="product-remove">
 										<a href="{% url 'item_clear' key %}" class="remove-link">
 											<i class="fas fa-trash-alt" style="color:red;"></i>
@@ -74,43 +73,23 @@
 
 								{% endfor %}
 								<td class="product-total-sum" style="color:white;">
-									Total: <span id="total-sum">$0.00</span>
+									Total: <span id="total-sum">$ {{ request.session.cart|total_price }}</span>
 								</td>
 								<td>
 									<h3 style="color:white;">item count</h3>
 									<h4 style="color:white;">{{request.session.cart|length}}<h3>
 								</td>
-
 							</tbody>
-
-
 						</table>
 
 						<div>
 							<a href="{% url 'checkout' %}" class="boxed-btn mt-4 mx-1" class="boxed-btn">Checkout</a>
 						</div>
 
-
-
-
-						<!-- Add options for modifying or removing items from the cart -->
-
-						<!-- Add a checkout button -->
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-				<!-- end cart -->
-
-
-				<!-- end logo carousel -->
-
-				<!-- footer -->
-
-
-
 
 				{% endblock content %}
