@@ -31,6 +31,8 @@ EMAIL_HOST_PASSWORD = 'cmvjjpdpphozhvwv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# host
 ALLOWED_HOSTS = ['*']
 
 
@@ -45,7 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+
+    # cart integration
     'cart',
+
+    # paypal integration
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +154,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+# paypal account settings
+PAYPAL_RECEIVER_EMAIL = 'notme2@gmail.com'
+PAYPAL_TEST = True
 
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = (

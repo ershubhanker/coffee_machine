@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment Failed{% endblock title %}
+
+{% block content %}
+
+<div class="breadcrumb-section breadcrumb-bg" style="background: #000;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                    <h1>Payment Failed</h1>
+                    <div class="hero-btns">
+                        <a href="{% url 'home' %}" class="boxed-btn">Back to home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

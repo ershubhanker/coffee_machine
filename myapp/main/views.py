@@ -1,11 +1,19 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.core.mail import EmailMessage
+from django.conf import settings
 from . models import Contact,Image,Headings,navItems,buttonText,paragraph,spareParts,galleryImages
 from django.core.mail import send_mail,BadHeaderError
 from django.template.loader import render_to_string
 from django.conf import settings
 from .forms import ContactForm
 from cart.cart import Cart
+import time
+
+from django.urls import reverse
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from paypal.standard.forms import PayPalPaymentsForm
+
 
 
 # def base(request):
@@ -135,24 +143,6 @@ def spareparts(request):
     return render(request,'spareparts.html',{'spare': spare,'headings': headings})
 
 
-#--- checkout 
-def checkout(request):
-
-    # Retrieve the selected spare part based on the provided ID
-    return render(request, 'checkout.html')
-
-
-#--- product_detail 
-def product_detail(request, product_id):
-    product = get_object_or_404(spareParts, id=product_id)
-    
-    context = {
-        'product': product,
-    }
-    return render(request, 'productDetailPage.html', context)
-
-
-
 #--- comparison 
 def comparison(request):
 
@@ -205,7 +195,7 @@ def cart_add(request, id):
     cart = Cart(request)
     product = spareParts.objects.get(id=id)
     cart.add(product=product)
-    return redirect("home")
+    return redirect("spareparts")
 
 
 # @login_required(login_url="/users/login")
@@ -241,9 +231,120 @@ def cart_clear(request):
 
 # @login_required(login_url="/users/login")
 def cart_detail(request):
-    return render(request, 'cart.html')
+    cart_items = request.session.get('cart', {})
+    is_empty = len(cart_items) == 0
+
+    context = {
+        'cart_items': cart_items,
+        'is_empty': is_empty,
+    }
+
+    return render(request, 'cart.html', context)
 
 
 
+#--- checkout 
+def checkout(request):
+    host = request.get_host()
+
+    timestamp = str(int(time.time()))
+    invoice_number = f"INVOICE_NO-{timestamp}"
+    
+    paypal_dict = {
+    'business': settings.PAYPAL_RECEIVER_EMAIL,
+    'amount': '50',
+    'item_name': "Order-Item-No-5",
+    'invoice': f"INVOICE_NO-{invoice_number}",
+    'currency_code': "USD",
+    'notify_url': f'http://{host}{reverse("paypal-ipn")}',
+    'return_url': f'http://{host}{reverse("payment-successful")}',
+    'cancel_url': f'http://{host}{reverse("payment-failed")}'
+    }
+
+    paypal_payment_button =  PayPalPaymentsForm(initial=paypal_dict)
+
+    
+    # Retrieve the selected spare part based on the provided ID
+    return render(request, 'checkout.html',{'paypal_payment_button':paypal_payment_button})
+
+
+
+
+# ===========================================
+# checkout
+# def checkout(request):
+#     host = request.get_host()
+
+#     timestamp = str(int(time.time()))
+#     invoice_number = f"INVOICE_NO-{timestamp}"
+
+#     # Retrieve the cart items and total amount from the cart_detail view
+#     cart_items = request.session.get('cart', {})
+#     total_amount = request.session.get('total_amount', 0)
+
+#     # Generate the invoice content
+#     invoice_content = f"""
+#         Invoice Number: {invoice_number}
+
+#         Order Items:
+#         --------------
+#     """
+
+#     for key, value in cart_items.items():
+#         item_name = value['name']
+#         item_price = value['price']
+#         item_quantity = value['quantity']
+#         item_total = item_price * item_quantity
+
+#         invoice_content += f"{item_name} - ${item_price} x {item_quantity} = ${item_total}\n"
+
+#     invoice_content += f"\nTotal Amount: ${total_amount}"
+
+#     # Prepare PayPal payment details
+#     paypal_dict = {
+#         'business': settings.PAYPAL_RECEIVER_EMAIL,
+#         'amount': str(total_amount),
+#         'item_name': "Order",
+#         'invoice': invoice_number,
+#         'currency_code': "USD",
+#         'notify_url': f'http://{host}{reverse("paypal-ipn")}',
+#         'return_url': f'http://{host}{reverse("payment-successful")}',
+#         'cancel_url': f'http://{host}{reverse("payment-failed")}'
+#     }
+
+#     paypal_payment_button = PayPalPaymentsForm(initial=paypal_dict)
+
+#     # Pass the invoice content, total amount, and PayPal payment button to the template
+#     return render(request, 'checkout.html', {
+#         'invoice_number': invoice_number,
+#         'invoice_content': invoice_content,
+#         'total_amount': total_amount,
+#         'paypal_payment_button': paypal_payment_button,
+#     })
+# ===========================================
+#--- product_detail 
+def product_detail(request, product_id):
+    product = get_object_or_404(spareParts, id=product_id)
+    
+    context = {
+        'product': product,
+    }
+    return render(request, 'productDetailPage.html', context)
+
+
+
+# paypal payment successful page
+def payment_completed_view(request):
+    return render(request, 'payment_successful.html')
+
+# payment failed
+def payment_failed_view(request):
+    return render(request, 'payment_failed.html')
+
+
+
+# just to test
 def test(request):
     return render(request, 'test.html')
+
+

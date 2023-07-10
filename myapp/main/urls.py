@@ -14,13 +14,11 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('spare-parts/',views.spareparts, name='spareparts'),
     path('spare-parts/<int:product_id>/', views.product_detail, name='product_detail'),
-    # path('cart/', views.cart, name='cart'),
-    # path('add-to-cart/<int:spare_id>/', views.add_to_cart, name='add_to_cart'),
-    # path('remove-from-cart/<int:spare_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('checkout', views.checkout, name='checkout'),
     path('roaster-comparison/',views.comparison, name='comparison'),
     path('instant-quote/',views.instantquote, name='instantquote'),
-    
+
+# ----------------coffee machines-----------------
     path('sentinelxr20/',views.sentinelxr20, name='sentinelxr20'),
     path('wardenxr30/',views.wardenxr30, name='wardenxr30'),
     path('ravenxr15/',views.ravenxr15, name='ravenxr15'),
@@ -40,5 +38,16 @@ urlpatterns = [
     path('cart/cart-detail/',views.cart_detail,name='cart'),
 
 
+# -----------------paypal payment urls----------------
+    # paypal url
+    path('paypal/',include('paypal.standard.ipn.urls')),
+
+    # payment successful
+    path('payment-completed/',views.payment_completed_view, name='payment-successful'),
+
+    # payment failed
+    path('payment-failed/',views.payment_failed_view, name='payment-failed'),
+
+    
    
 ]

@@ -1,159 +1,160 @@
-<{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %}
+{% block title %}Checkout{% endblock title %}
+{% block style %}
+.form-control {
+width: 300px;
+/* Set the desired width */
+border-radius: 30px;
+background-color: transparent;
+color: white;
+box-shadow: 2px 2px #2cd719;
+}
 
-	<!-- title -->
-	{% block title %}Checkout{% endblock title %}
-	{% block style %}
-		.form-control {
-			width: 300px;
-			/* Set the desired width */
-			border-radius: 30px;
-			background-color: transparent;
-			color: white;
-			box-shadow: 2px 2px #2cd719;
-		}
-
-		.form-control:focus {
-			/* background-color: 0 0 3px 1px #2cd719; */
-			border-color: #ccc;
-			background-color: transparent;
-			box-shadow: none;
-		}
+.form-control:focus {
+/* background-color: 0 0 3px 1px #2cd719; */
+border-color: #ccc;
+background-color: transparent;
+box-shadow: none;
+}
 
 
 
 
-		.left-column .form-control::placeholder,
-		.middle-column .form-control::placeholder,
-		.right-column .form-control::placeholder {
-			color: white;
-		}
+.left-column .form-control::placeholder,
+.middle-column .form-control::placeholder,
+.right-column .form-control::placeholder {
+color: white;
+}
 
-		.drpdn-plch {
-			display: none;
-		}
+.drpdn-plch {
+display: none;
+}
 
-		.form-control option:hover {
-			background-color: green;
-			color: white;
-		}
+.form-control option:hover {
+background-color: green;
+color: white;
+}
 
 
-		.left-column {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-end;
-			justify-content: flex-end;
-			top: -23px;
-		}
+.left-column {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+justify-content: flex-end;
+top: -23px;
+}
 
-		.middle-column {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			top: -21px;
+.middle-column {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+top: -21px;
 
-		}
+}
 
-		.right-column {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: flex-start;
-		}
+.right-column {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+}
 
-		{% endblock style %}
-	</style>
+{% endblock style %}
+</style>
 </head>
 
-{% block content %}
+{% block content %} -->
 
-	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg" style="background: #000; z-index:0">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<h1>Checkout</h1><br>
-						<p>Just one more step</p>
-					</div>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg" style="background: #000; z-index:0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<h1>Checkout</h1><br>
+					<p>Just one more step</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end breadcrumb section -->
+</div>
+<!-- end breadcrumb section -->
 
-	<!-- featured section -->
-	<div class="single-product mb-15" style="background: #000;">
-		<div class="container" style="color: #fff">
-			<!-- <h3 style="color: #fff">Instant Quote</h3> -->
+<!-- featured section -->
+<div class="single-product" style="background: #000;">
+	<div class="container" style="color: #fff">
 
-			<!-- <div class="row" style="margin-top: 90px; justify-content: center; width: 100%;"> -->
-			<!-- <div class="row" style="margin-top: 90px; justify-content: center"> -->
-			<form method="post">
-				<div class="row justify-content-center">
-					<div class="col-md-4 left-column">
-						<div class="form-group">
-							<label for="input1"></label>
-							<input type="text" id="input1" class="form-control" placeholder="First Name">
+		<h3 style="color: #fff">this page should contain the cart details with non editable fields</h3> 
+
+		<div class="row" style="margin-top: 90px; justify-content: center; width: 100%;">
+			<div class="row" style="margin-top: 90px; justify-content: center">
+				{% comment %} <form method="post">
+					{% csrf_token %} {% endcomment %}
+					<div class="row justify-content-center">
+						<div class="col-md-4 left-column">
+							<div class="form-group">
+								<label for="input1"></label>
+								<input type="text" id="input1" class="form-control" placeholder="First Name">
+							</div>
+							<div class="form-group">
+								<label for="input2"></label>
+								<input type="email" id="input2" class="form-control" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="input3"></label>
+								<input type="tel" id="input3" class="form-control" placeholder="Address 1">
+							</div>
+							<div class="form-group">
+								<label for="input4"></label>
+								<input type="text" id="input4" class="form-control" placeholder="State/Province">
+							</div>
+
 						</div>
-						<div class="form-group">
-							<label for="input2"></label>
-							<input type="email" id="input2" class="form-control" placeholder="Email">
+						<div class="col-md-4 middle-column">
+							<div class="form-group">
+								<label for="input6"></label>
+								<input type="text" id="input6" class="form-control" placeholder="Last Name">
+							</div>
+							<div class="form-group">
+								<label for="input7"></label>
+								<input type="text" id="input7" class="form-control" placeholder="Phone">
+							</div>
+							<div class="form-group">
+								<label for="input8"></label>
+								<input type="text" id="input9" class="form-control" placeholder="Address 2">
+							</div>
+							<div class="form-group">
+								<label for="input9"></label>
+								<input type="text" id="input9" class="form-control" placeholder="Country">
+							</div>
+
 						</div>
-						<div class="form-group">
-							<label for="input3"></label>
-							<input type="tel" id="input3" class="form-control" placeholder="Address 1">
-						</div>
-						<div class="form-group">
-							<label for="input4"></label>
-							<input type="text" id="input4" class="form-control" placeholder="State/Province">
-						</div>
-					
+						<a class="boxed-btn mt-5 d-block"
+							style="width:40% ;text-align: center; padding: 5px 10px; cursor: pointer;">{{paypal_payment_button.render}}</a>
+
 					</div>
-					<div class="col-md-4 middle-column">
-						<div class="form-group">
-							<label for="input6"></label>
-							<input type="text" id="input6" class="form-control" placeholder="Last Name">
-						</div>
-						<div class="form-group">
-							<label for="input7"></label>
-							<input type="text" id="input7" class="form-control" placeholder="Phone">
-						</div>
-						<div class="form-group">
-							<label for="input8"></label>
-							<input type="text" id="input9" class="form-control" placeholder="Address 2">
-						</div>
-						<div class="form-group">
-							<label for="input9"></label>
-							<input type="text" id="input9" class="form-control" placeholder="Country">
-						</div>
-						
-					</div>
-					<a class="boxed-btn mt-5 d-block" style="width:40% ;text-align: center; padding: 5px 10px; cursor: pointer;" onclick="submitForm()">pay with Paypal</a>
-				
-				</div>
-</form>
+					{% comment %}
+				</form> {% endcomment %}
 
 
 
 
 
 
-			<!-- </div> -->
-			<!-- </div> -->
-		</div>
+				<!-- </div> -->
+				<!-- </div> -->
+				<!-- </div> -->
 
-		<!-- footer -->
-		
-		<!-- end footer -->
-		
-		
-		
-		<script>
-			function submitForm() {
-			  document.getElementById("myForm").submit();
-			}
-		  </script>
-		  {% endblock content %}
+				<!-- footer -->
+
+				<!-- end footer -->
+
+
+
+				<script>
+					function submitForm() {
+						document.getElementById("myForm").submit();
+					}
+				</script>
+				{% endblock content %}

@@ -5,93 +5,53 @@
 
 
 {% block content %}
-    <!-- breadcrumb-section -->
-    <div class="breadcrumb-section breadcrumb-bg" style="background: #000">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 offset-lg-2 text-center">
-            <div class="breadcrumb-text">
-              <h1>{{ product.name }}</h1>
-            </div>
-          </div>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg" style="background: #000">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>{{ product.name }}</h1>
         </div>
       </div>
     </div>
-    <!-- end breadcrumb section -->
+  </div>
+</div>
+<!-- end breadcrumb section -->
 
-    <!-- featured section -->
-    <div
-      class="single-product mb-150"
-      style="background: #000; margin-top: -2px"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5" style="margin-top: 40px">
-            <div class="single-product-img">
-              <img src="{{ product.image.url }}" alt="" />
-            </div>
-          </div>
-          <div class="col-md-7" style="margin-top: 130px">
-            <div class="single-product-content">
-              <h3>
-                <span class="orange-text" style="color: white"
-                  >{{ product.name }}</span
-                >
-              </h3>
-              <p>
-                {{ product.toolDesc }}
-              </p>
-              <h3 style="margin-top: 20px">
-                <span class="orange-text" style="color: white"
-                  >${{ product.price }}</span
-                >
-              </h3>
+<!-- featured section -->
+<div class="single-product mb-150" style="background: #000; margin-top: -2px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5" style="margin-top: 40px">
+        <div class="single-product-img">
+          <img src="{{ product.image.url }}" alt="" />
+        </div>
+      </div>
+      <div class="col-md-7" style="margin-top: 130px">
+        <div class="single-product-content">
+          <h3>
+            <span class="orange-text" style="color: white">{{ product.name }}</span>
+          </h3>
+          <p>
+            {{ product.toolDesc }}
+          </p>
+          <h3 style="margin-top: 20px">
+            <span class="orange-text" style="color: white">${{ product.price }}</span>
+          </h3>
 
-              <h3 style="margin-top: 20px">
-                <span class="orange-text" style="color: white"
-                  ><div class="counter">
-                    <button class="minus">-</button>
-                    <input type="number" class="quantity" value="1" />
-                    <button class="plus">+</button>
-                  </div>
-                  <!-- Add to Cart button -->
-                  <a href="#" class="btn btn-success" id="add-to-cart"
-                    >Add to Cart</a
-                  ></span>
-                  <a href="#" class="btn btn-info" id="add-to-cart" style="margin-left:10px;"
-                    >Buy Now</a
-                  ></span>
-              </h3>
-            </div>
-          </div>
+          <h3 style="margin-top: 20px">
+            <span class="orange-text" style="color: white">
+              <div class="row">
+                <a href="{% url 'cart_add' product.id %}" class="boxed-btn mt-4 mx-1" class="boxed-btn">Add to Cart</a>
+                <a href="{% url 'cart_add' product.id %}" class="boxed-btn mt-4 mx-4">Buy Now</a>
+              </div>
+              <!-- Add to Cart button -->
+          </h3>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    {% endblock content %}
-
-    {% block scripts %}
-{{ block.super }}
-
-    <!-- end copyright -->
-    <script>
-      // JavaScript (jQuery) code
-      document.addEventListener("DOMContentLoaded", function () {
-        var minusBtn = document.querySelector(".minus");
-        var plusBtn = document.querySelector(".plus");
-        var quantityInput = document.querySelector(".quantity");
-
-        minusBtn.addEventListener("click", function () {
-          var currentValue = parseInt(quantityInput.value);
-          if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-          }
-        });
-
-        plusBtn.addEventListener("click", function () {
-          var currentValue = parseInt(quantityInput.value);
-          quantityInput.value = currentValue + 1;
-        });
-      });
-    </script>
-    {% endblock %}
+{% endblock content %}
