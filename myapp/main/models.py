@@ -7,8 +7,47 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 from PIL import Image as PILImage
-
+from django import forms  
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 # Create your models here.
+
+
+class UserCreateForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        label='Email',
+        error_messages={'exists': 'This email is already registered.'}
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(self.fields['email'].error_messages['exists'])
+        return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
+    
+class LoginForm(forms.Form):
+    username = forms.CharField(label='username')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     phone = models.IntegerField()
@@ -130,12 +169,20 @@ class galleryImages(models.Model):
 
 
 class Order(models.Model):
-    image = models.ImageField(upload_to='media')
-    product = models.ForeignKey(spareParts, on_delete=models.CASCADE)
-    quantity = models.CharField(max_length=100)
-    price = models.IntegerField()
-    address = models.TextField()
-    country = CountryField()
-    phone = models.CharField(max_length=10)
-    pincode = models.CharField(max_length=6)
-    date = models.DateField(default=datetime.datetime.today)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    pincode = models.CharField(max_length=6, null=True, blank=True)
+    address = models.CharField(max_length=300,null=True, blank=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)
+    country = models.CharField(max_length=100,null=True, blank=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True, blank=True)
+
+    image = models.ImageField(upload_to='media/',null=True, blank=True)
+    product = models.CharField(max_length=200, null=True, blank=True)
+    quantity = models.IntegerField(null=True, blank=True)
+    price = models.FloatField(null=True, blank=True)
+    total = models.FloatField(null=True, blank=True)
+    date = models.DateField(default=datetime.datetime.today, null=True, blank=True)
+
+
+    def __str__(self):
+        return f'{self.product} - {self.user}'

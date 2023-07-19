@@ -1,9 +1,16 @@
 from django.urls import path,include
 from . import views
-
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('test/', views.test, name='test'),
+    path('csrf-forbidden/', TemplateView.as_view(template_name='error_404_page.html'), name='csrf_forbidden'),
+    path('csrf-forbidden/', views.csrf_forbidden, name='csrf_forbidden'),
+    path('signup/',views.signup_view, name='signup'),
+    path('login/',views.login_view, name='login'),
+    path('logout/',views.logout_view, name='logout'),
+    # path('accounts/',include('django.contrib.auth.urls')),
+
     
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
@@ -48,6 +55,5 @@ urlpatterns = [
     # payment failed
     path('payment-failed/',views.payment_failed_view, name='payment-failed'),
 
-    
-   
 ]
+

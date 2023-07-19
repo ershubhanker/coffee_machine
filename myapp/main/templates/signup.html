@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock title %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+
+					<h1>Signup</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="contact-from-section mt-150" style="background: black; margin-top: 0px">
+    <div class="container "style="text-align: center;">
+        <p style="color:white">Already have an account? <a href="{% url 'login' %}">LOGIN</a></p>
+        <div class="col-lg-4 col-md-12">
+            <form id="checkout-form" method="post">
+                {% csrf_token %}
+                <div class="cart-form">
+                    <div class="form-group">
+                        <label for="input1">Username</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="input2">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="input1">Password</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="input1">Confirm Password</label>
+                        {{ form.password2 }}
+                    </div>
+                </div>
+                <p><input type="submit" value="Signup" /></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content%}

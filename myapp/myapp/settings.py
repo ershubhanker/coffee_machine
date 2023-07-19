@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # paypal integration
     'paypal.standard.ipn',
 ]
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myapp.urls'
@@ -158,11 +160,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PAYPAL_RECEIVER_EMAIL = 'notme2@gmail.com'
 PAYPAL_TEST = True
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-# STATIC_ROOT = os.path.join(BASE_DIR, '/home/primoroa/public_html/static')
-
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, '/home/primoroa/public_html/mediafiles')
+CSRF_FAILURE_VIEW = 'main.views.csrf_forbidden'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
