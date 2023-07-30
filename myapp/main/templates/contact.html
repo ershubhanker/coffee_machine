@@ -3,6 +3,62 @@
 
 {% block title %}Contact{% endblock title %}
 
+{% block style %}
+/* ------------------modal style------------------------ */
+@media (max-width: 600px) {
+.modal-content {
+width: 90%;
+}
+}
+
+.modal {
+display: none;
+position: fixed;
+z-index: 2;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+background-color: #000000;
+margin: 10% auto;
+padding: 20px;
+border: 1px solid #3ab344;
+border-radius: 30px;
+width: 50%;
+text-align: center;
+justify-content: center;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+  from {
+  opacity: 0;
+  transform: translateY(-10px);
+  }
+  
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
+  }
+  
+  .modal-btn {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  background-color: rgb(44, 215, 25);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  }
+{% endblock style%}
 
 
   {% block content %}
@@ -36,30 +92,44 @@
               esse natus!
             </p>
           </div>
-          <div id="form_status"></div>
-          <div class="contact-form">
-            <form id="fruitkha-contact" method="post">
-              {% csrf_token %}
+          
 
+          <div id="myModal" class="modal" style="display: none;">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <h4 style="color: white;">Submission Successful</h4>
+              <button onclick="closeModalAndSubmit()" class="modal-btn">Okay</button>
+            </div>
+          </div>
+          
+
+          <div class="contact-form">
+            <form id="fruitkha-contact" method="post" onsubmit="openModal()">
+              {% csrf_token %}
               <p>
-                <input type="email" placeholder="Email" name="{{form.email.name}}" id="email"
+                <input type="text" placeholder="Ex: John Doe" name="name" id="name"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               <p>
-                <input type="tel" placeholder="Phone" name="{{form.phone.name}}" id="phone"
+                <input type="tel" placeholder="your phone number with Country code" name="phone" id="phone"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               <p>
-                <input type="text" placeholder="Subject" name="{{form.subject.name}}" id="subject"
+                <input type="email" placeholder="Email" name="email" id="email"
+                  style="background: rgb(230, 224, 224); border-radius: 20px" required />
+              </p>
+            
+              <p>
+                <input type="text" placeholder="Subject" name="subject" id="subject"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required />
               </p>
               
               <p>
-                <textarea name="{{form.message.name}}" id="message" cols="30" rows="10" placeholder="Message"
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"
                   style="background: rgb(230, 224, 224); border-radius: 20px" required></textarea>
               </p>
-              <p><input type="submit" value="submit" /></p>
-              <!-- <p style="margin-left: 10px;"><input type="submit" value="via WhatsApp" onclick="sendFormData(event)" /></p> -->
+              <p><input type="submit" value="submit"/></p>
+              
             </form>
           </div>
         </div>
@@ -88,7 +158,7 @@
               </p>
             </div>
             
-            <a href="https://wa.me/+917986210486?text=Hi%20there!" style="text-decoration: none;">
+            <a href="https://wa.me/+16262499663?text=Hi%20there!" style="text-decoration: none;">
               <button
                 style="background-color: #343a40; color: rgb(44, 215, 25); font-size: 16px; padding: 10px 20px; border: 2px solid rgb(44, 215, 25); border-radius: 30px;">
                 <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>Chat with Us
@@ -123,11 +193,83 @@
   </div>
   <!-- end google map section -->
 
-  <!-- footer -->
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Prevent form submission to avoid page reload
+      var form = document.getElementById('fruitkha-contact');
+      
+      // Show the success modal
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+      
+      // Clear all form fields after a short delay (to show the success message)
+      setTimeout(function() {
+        form.reset();
+        closeModal(); // Hide the modal after clearing the fields
+      }, 200); // Adjust the delay (in milliseconds) as needed
+    }
+  
+    function closeModalAndSubmit() {
+      closeModal();
+      submitForm(event);
+    }
+  
+    function openModal() {
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+      modal.classList.add('fade-in');
+    }
+  
+    function closeModal() {
+      var modal = document.getElementById('myModal');
+      modal.classList.remove('fade-in');
+      setTimeout(function () {
+        modal.style.display = 'none';
+      }, 300); // Adjust the delay to match your CSS transition duration
+    }
+  </script>
+  <script>
+  function sendFormData(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Check if all fields are filled
+    if (!validateForm()) {
+      return;
+    }
+
+    // Get form data
+	var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    // Construct the WhatsApp message
+    var whatsappMessage = 'Name: ' + name + 'Email: ' + email + '%0A' + 'Phone:' + phone + '%0A' + 'Subject: ' + subject + '%0A' + 'Message: ' + message;
+
+    // Open WhatsApp with the message
+    var whatsappURL = 'https://wa.me/1234567890?text=' + encodeURIComponent(whatsappMessage);
+    window.open(whatsappURL);
+
+    // Submit the form (optional)
+    document.getElementById('fruitkha-contact').submit();
+  }
+
+  function validateForm() {
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    if (!email || !subject || !phone || !message) {
+      alert('Please fill in all required fields.');
+      return false;
+    }
+
+    return true;
+  }
+</script>
   {% endblock content %}
 
 
-  {% block scripts %}
-{{ block.super }}
-
-{% endblock %}

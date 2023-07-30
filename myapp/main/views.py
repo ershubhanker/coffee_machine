@@ -17,6 +17,9 @@ from django.urls import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import EmailMultiAlternatives
 
 
 
@@ -145,21 +148,26 @@ def contact(request):
 
     # contact form
     if request.method == 'POST':
-        print(request.method)
+        print("entered",request.POST)
         form = ContactForm(request.POST)
         if form.is_valid():
+            
             print("entered the if block")
             
-            email = form.cleaned_data['email']
-            print(email)
+            contact = Contact(
+                    name = form.cleaned_data['name'],
+                    phone = form.cleaned_data['phone'],
+                    email=form.cleaned_data['email'],
+                    subject=form.cleaned_data['subject'],
+                    message=form.cleaned_data['message'],
+                )
+            contact.save()  # Save the instance to the database
+            name = form.cleaned_data['name']
             phone = form.cleaned_data['phone']
-            print(phone)
+            email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
-            print(subject)
-            message = f"Email: {email}\n\nPhone: {phone}\n\n{form.cleaned_data['message']}"
-            print(message)
-
-
+            message = f"Name: {name}\n\nPhone: {phone}\n\nEmail: {email}\n\nMessage: {form.cleaned_data['message']}"
+                
             # Send the email
             send_mail(
                 subject,
@@ -171,7 +179,7 @@ def contact(request):
 
             return redirect('contact')
     else:
-        print('nah---------done')
+        print('not done')
         form = ContactForm()
 
     return render(request, 'contact.html',{'form':form,
@@ -207,6 +215,7 @@ def comparison(request):
 
 #--- instantquote 
 def instantquote(request):
+
     return render(request, 'instantquote.html')
  
 
@@ -329,12 +338,15 @@ def cart_detail(request):
                 )
                 order.save()
             print("order success-----------------------")
+
+            
             return redirect('checkout')
 
         else:
             form = OrderForm()
     
         context['form'] = form
+
     return render(request, 'cart.html', context)
 
 
@@ -373,6 +385,20 @@ def checkout(request):
     }
 
     paypal_payment_button =  PayPalPaymentsForm(initial=paypal_dict)
+
+    #email with order details
+    html_message = render_to_string('order_email.html', context)
+    plain_message = strip_tags(html_message)
+
+    email = EmailMultiAlternatives(
+            'this is a test',
+            plain_message,
+            'settings.EMAIL_HOST_USER',  # Sender's email address
+            ['spacelover2003@gmail.com'],  # List of recipient email addresses
+            )
+    email.attach_alternative(html_message,'text/html')
+    email.send()
+    print("email sent")
 
 
     # Retrieve the selected spare part based on the provided ID

@@ -83,7 +83,7 @@
 							{% if not is_empty %}
 							<tr>
 								<td colspan="5" class="product-total-sum" style="color:white;">
-									Total: <span id="total-sum">$ {{ request.session.cart|total_price }}</span>
+									Total: <span id="total-sum">$ {{ cart_total_amount }}</span>
 								</td>
 								<td>
 									<h6 style="color:white;">Item count: {{ request.session.cart|length }}</h6>
