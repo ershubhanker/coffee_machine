@@ -1669,9 +1669,9 @@ div.owl-controls, .owl-controls div {
 .list-section {
   background-color: #f5f5f5;
 }
-.list-section div.container{
+/* .list-section div.container{
   margin-left:200px;
-}
+} */
 .list-box {
   overflow: hidden;
   letter-spacing: 0.5px;

@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 	<style>
+		
 		/* ------------------modal style------------------------ */
 		@media (max-width: 600px) {
 			.modal-content {
@@ -121,18 +122,30 @@
 			border-radius: 20px;
 			width:40%;
 		}
-
+		/* -------------individual roaster-------------------- */
+		.thisislistsection{
+			background-color:black;
+			position: relative;
+			z-index: 2;
+			justify-content: center;
+			align-items: center;
+			margin-top: -126px;
+		  }
 		/* -------------------------------------------------------- */
 		@media only screen and (max-width: 600px) {
 			body{
 				width: 100%;
 			}
+			.thisislistsection{
+				margin-top: -62px;
+			  }
+
 			.list-section div.container div.row {
-				margin-left: -155px;
+				margin-left: 20px;
 			}
 
 			a.boxed-btn {
-				margin-left: 47px;
+				margin-left: 37px;
 			}
 
 
@@ -149,9 +162,6 @@
 			}
 
 			.footer-area div.container div.row div.col-lg-3:first-of-type {
-				{% comment %} display: flex;
-				justify-content: right;
-				align-items: center; {% endcomment %}
 				width: 80%;
 				max-width: 1200px;
 				padding: 0 0 10px 0;
@@ -190,6 +200,8 @@
 			}
 
 		}
+		.main-menu li.active-link a {
+  color: rgb(44, 215, 25);}
         {% block style %}{% endblock style %}
 	</style>
 
@@ -222,18 +234,33 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="{% url 'home' %}">Home</a></li>
-								<li><a href="{% url 'coffee' %}">Coffee</a></li>
-								
-								<li><a href="{% url 'gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'shoproaster' %}">Shop Roasters</a></li>
-								
-
-								<li><a href="{% url 'about' %}">About</a></li>
-								<li><a href="{% url 'spareparts' %}">Spare Parts</a></li>
-
-								<li><a href="{% url 'contact' %}">Contact</a></li>
-								<li><a href="{% url 'blog' %}">Blog</a></li>
+								<li class="{% if request.path == '/' %}active-link{% endif %}">
+									<a href="{% url 'home' %}">Home</a>
+								</li>
+								<li class="{% if request.path == '/coffee/' %}active-link{% endif %}">
+									<a href="{% url 'coffee' %}">Coffee</a>
+								</li>
+								<!-- Add the same class condition for other list items -->
+								<li class="{% if request.path == '/gallery/' %}active-link{% endif %}">
+									<a href="{% url 'gallery' %}">Gallery</a>
+								</li>
+								<li class="{% if request.path == '/shoproaster/' %}active-link{% endif %}">
+									<a href="{% url 'shoproaster' %}">Shop Roasters</a>
+								</li>
+								<!-- Add the same class condition for other list items -->
+								<li class="{% if request.path == '/about/' %}active-link{% endif %}">
+									<a href="{% url 'about' %}">About</a>
+								</li>
+								<li class="{% if request.path == '/spareparts/' %}active-link{% endif %}">
+									<a href="{% url 'spareparts' %}">Spare Parts</a>
+								</li>
+								<!-- Add the same class condition for other list items -->
+								<li class="{% if request.path == '/contact/' %}active-link{% endif %}">
+									<a href="{% url 'contact' %}">Contact</a>
+								</li>
+								<li class="{% if request.path == '/blog/' %}active-link{% endif %}">
+									<a href="{% url 'blog' %}">Blog</a>
+								</li>
 								
 
 								<li>
@@ -250,7 +277,6 @@
 								</li>
 							</ul>
 						</nav>
-						<a class="mobile-show boxed-btn" href="{% url 'instantquote' %}" style="width: 30%;margin-left:50%;">Instant Quote</a>
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>
@@ -332,7 +358,36 @@
 
     
 
+<script>
+// script.js
 
+$(document).ready(function() {
+  // Get the current URL path without the domain name
+  var currentPath = window.location.pathname;
+
+  // Function to highlight the active navigation item
+  function highlightActiveNavItem() {
+    // Remove the 'active-link' class from all navigation links
+    $('.main-menu li a').removeClass('active-link');
+
+    // Add the 'active-link' class to the active navigation link
+    $('.main-menu li a[href="' + currentPath + '"]').addClass('active-link');
+  }
+
+  // Call the function on page load to highlight the initially active item
+  highlightActiveNavItem();
+
+  // Call the function whenever the user clicks on a navigation link
+  $('.main-menu li a').on('click', function(event) {
+    // Remove the 'active-link' class from all navigation links
+    $('.main-menu li a').removeClass('active-link');
+
+    // Add the 'active-link' class to the clicked navigation link
+    $(this).addClass('active-link');
+  });
+});
+
+</script>
     <!-- ----------------------sparepart------------------------- -->
     <script>
 
@@ -367,6 +422,8 @@
       </script>
 
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <script>
   $(document).on("submit", "#fruitkha-contact", function (e) {
     e.preventDefault();

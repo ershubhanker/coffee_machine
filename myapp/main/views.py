@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.core.mail import EmailMessage
 from django.conf import settings
-from . models import Contact,Image,Headings,navItems,buttonText,paragraph,spareParts,galleryImages,Order
+from . models import Contact,Image,Headings,buttonText,paragraph,spareParts,galleryImages,Order,videoFiles
 from .forms import ContactForm,OrderForm
 
 from django.core.mail import send_mail,BadHeaderError
@@ -52,6 +52,7 @@ def signup_view(request):
 
     return render(request, 'signup.html', context)
 
+#--- Login
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -73,6 +74,7 @@ def login_view(request):
     context = {'form': form}
     return render(request, 'login.html', context)
 
+#--- Logout
 def logout_view(request):
     logout(request)
     return redirect('home')
@@ -81,6 +83,7 @@ def logout_view(request):
 
 #--- home 
 def home(request):
+    video = videoFiles.objects.all()
     para = paragraph.objects.all()
     btnText = buttonText.objects.all()
     headings = Headings.objects.all()
@@ -88,7 +91,8 @@ def home(request):
     return render(request, 'index.html',{'images': images,
                                          'headings':headings,
                                          'btnText':btnText,
-                                         'para':para,})
+                                         'para':para,
+                                         'video':video})
 
 
 #--- about 
@@ -173,7 +177,7 @@ def contact(request):
                 subject,
                 message,
                 email,
-                ['boredstuff2021@gmail.com'],
+                ['christian@primoroasting.com'],
             )
             print("sent successfully----------------")
 
@@ -321,6 +325,7 @@ def cart_detail(request):
             uid = request.session.get('_auth_user_id')
             user = User.objects.get(pk=uid)
             print(name,address,phone,country,pincode,user)
+            context['name'] = name
 
             for i in cart:
                 order = Order(
@@ -338,6 +343,13 @@ def cart_detail(request):
                 )
                 order.save()
             print("order success-----------------------")
+            # storing details in session
+            request.session['name'] = name
+            request.session['phone'] = phone
+            request.session['address'] = address
+            request.session['country'] = country
+            request.session['pincode'] = pincode
+
 
             
             return redirect('checkout')
@@ -352,6 +364,7 @@ def cart_detail(request):
 
 
 #--- checkout 
+@login_required(login_url="login")
 def checkout(request):
     cart_items = request.session.get('cart', {})
     is_empty = len(cart_items) == 0
@@ -386,20 +399,6 @@ def checkout(request):
 
     paypal_payment_button =  PayPalPaymentsForm(initial=paypal_dict)
 
-    #email with order details
-    html_message = render_to_string('order_email.html', context)
-    plain_message = strip_tags(html_message)
-
-    email = EmailMultiAlternatives(
-            'this is a test',
-            plain_message,
-            'settings.EMAIL_HOST_USER',  # Sender's email address
-            ['spacelover2003@gmail.com'],  # List of recipient email addresses
-            )
-    email.attach_alternative(html_message,'text/html')
-    email.send()
-    print("email sent")
-
 
     # Retrieve the selected spare part based on the provided ID
     return render(request, 'checkout.html',{'paypal_payment_button':paypal_payment_button,**context})
@@ -419,11 +418,50 @@ def product_detail(request, product_id):
 
 
 # paypal payment successful page
+@login_required(login_url="login")
 def payment_completed_view(request):
+    cart_items = request.session.get('cart', {})
+    is_empty = len(cart_items) == 0
+    total_price = 0
+    for item in cart_items.values():
+        price = float(item['price'])
+        quantity = int(item['quantity'])
+        total_price += price * quantity
+    name = request.session.get('name', '')
+    address = request.session.get('address', '')
+    pincode = request.session.get('pincode', '')
+    country = request.session.get('country', '')
+    phone = request.session.get('phone','')
+
+    print(name)
+    context = {
+        'cart_items': cart_items,
+        'is_empty': is_empty,
+        'total_price': total_price,
+        'name':name,'phone':phone,
+        'address':address,
+        'pincode':pincode,
+        'country':country,
+    }
+    
+    #email with order details
+    html_message = render_to_string('order_email.html', context)
+    plain_message = strip_tags(html_message)
+    recipient_email = request.user.email
+    email = EmailMultiAlternatives(
+            'this is a test',
+            plain_message,
+            'settings.EMAIL_HOST_USER',  # Sender's email address
+            [recipient_email],  # List of recipient email addresses
+            )
+    email.attach_alternative(html_message,'text/html')
+    email.send()
+    print("email sent")
     request.session['cart'] = {}
     return render(request, 'payment_successful.html')
 
 # payment failed
+@login_required(login_url="login")
 def payment_failed_view(request):
     return render(request, 'payment_failed.html')
 

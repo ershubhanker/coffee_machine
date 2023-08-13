@@ -1,6 +1,6 @@
 from django import forms  
 from phonenumber_field.formfields import PhoneNumberField
-from .models import Order,Contact
+from .models import Order,Contact,Instantquote
 
 
 
@@ -13,4 +13,9 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['name','phone','email','subject','message']
+
+class InstaquoteForm(forms.ModelForm):
+    class Meta:
+        model = Instantquote
+        fields = '__all__'
     

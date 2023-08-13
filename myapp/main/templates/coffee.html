@@ -3,6 +3,22 @@
 
 {% block title %}Coffee{% endblock title %}
     <!-- end search arewa -->
+{% block style %}
+#itdevelopement{margin-left:330px}
+#companies{margin-left:120px;}
+#privateclient{margin-left:270px;}
+#medicine{margin-left:20px;}
+
+@media only screen and (max-width: 600px) {
+  #itdevelopement,#companies,#privateclient,#medicine {
+    margin-left: 300px;
+  }
+}
+.theranges{color:white;}
+
+
+
+{% endblock style %}
 
     {% block content %}
     <!-- breadcrumb-section -->
@@ -92,22 +108,22 @@
             </div>
             <div class="w3-light-grey w3-round mt-3" style="background-color: rgb(54, 52, 52); border-radius:20px">
               <div class="w3-container w3-round w3-white" style="width: 80%;background-color: rgb(44, 215, 25);border-radius:20px  0px 0px 20px">
-                <span style="color:white;margin-left:20px">IT Development<span> <span style="margin-left:330px;color:white">80%</span>
+                <span style="color:white;margin-left:20px">IT Development<span> <span class="theranges" id="itdevelopement">80%</span>
               </div>
             </div>
 			<div class="w3-light-grey w3-round mt-3" style="background-color: rgb(54, 52, 52);border-radius:20px">
 				<div class="w3-container w3-round w3-white" style="width: 42%;background-color: rgb(44, 215, 25);;border-radius:20px  0px 0px 20px">
-				 <span style="color:white;margin-left:20px">Companies</span> <span style="margin-left:120px;color:white">42%</span>
+				 <span style="color:white;margin-left:20px">Companies</span> <span class="theranges" id="companies">42%</span>
 				</div>
 			  </div>
 			  <div class="w3-light-grey w3-round mt-3" style="background-color: rgb(54, 52, 52);border-radius:20px">
 				<div class="w3-container w3-round w3-white" style="width: 68%;background-color: rgb(44, 215, 25);border-radius:20px  0px 0px 20px">
-				 <span style="color:white;margin-left:20px">Private Clients</span> <span style="margin-left:270px;color:white">68%</span>
+				 <span style="color:white;margin-left:20px">Private Clients</span> <span class="theranges" id="privateclient">68%</span>
 				</div>
 			  </div>
 			  <div class="w3-light-grey w3-round mt-3" style="background-color: rgb(54, 52, 52);border-radius:20px">
 				<div class="w3-container w3-round w3-white" style="width: 24%;background-color: rgb(44, 215, 25);border-radius:20px  0px 0px 20px">
-				<span style="color:white;margin-left:20px">Medicine</span> <span style="margin-left:20px;color:white">24%</span>
+				<span style="color:white;margin-left:20px">Medicine</span> <span class="theranges" id="medicine">24%</span>
 				</div>
 			  </div>
 

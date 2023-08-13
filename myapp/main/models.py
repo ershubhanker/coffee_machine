@@ -90,7 +90,15 @@ class Headings(models.Model):
     def __str__(self):
         return f'{self.head_text}'
 
+# ---------------------video------------
+class videoFiles(models.Model):
+    video = models.FileField(upload_to='media')
+    video_name = models.CharField(max_length=100, null=True, blank=True)
 
+    def __str__(self):
+        return self.video_name
+
+    
 # -----------------images upload and compressed---------------------
 class Image(models.Model):
     image = models.ImageField(upload_to='media')

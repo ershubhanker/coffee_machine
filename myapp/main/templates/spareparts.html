@@ -105,6 +105,36 @@
       margin-right: 10px;
     }
 
+    /* Add this to your existing CSS styles */
+@media screen and (max-width: 768px) {
+  /* Styles for screens with a maximum width of 768px or smaller (typical mobile screen size) */
+
+  #container {
+    flex-direction: column;
+  }
+
+  .filter {
+    flex: 1;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .products {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .product {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .breadcrumb-text h1 {
+    font-size: 24px;
+  }
+}
+
+
     {% endblock style %}
 
 {% block content %}
@@ -126,7 +156,7 @@
   <!-- contact form -->
   <div class="contact-from-section mt-150 mb-150" style="background: black; margin-top: 0px">
     <div class="container" id="container">
-      <div class="filter">
+      <div class="filter" style="margin-bottom: 10px;">
         <h2>Filters</h2>
         <hr style="background-color: white;">
         <h3 style="color: white;">Category</h3>
@@ -147,7 +177,7 @@
             </a>
             <div class="card-body">
               <h5 class="card-title">{{ sp.name }}</h5>
-              <p class="card-text">${{ sp.price }}</p>
+              <p class="card-text" id="thisisprice">${{ sp.price }}</p>
               <a href="{% url 'cart_add' sp.id %}" class="btn btn-success" id="pay-now"
                 style="border-radius: 20px; border: 2px solid white; color:#000; padding-right:30px; padding-left: 30px;">
                 Add to cart

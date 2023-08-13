@@ -4,7 +4,123 @@
 <!-- title -->
 {% block title %}Cart{% endblock title %}
 {% block style %}
+/* Mobile styles */
+@media only screen and (max-width: 600px) {
+	.cart-section {
+		padding: 20px;
+	}
 
+	.cart-table-head th {
+		font-size: 14px;
+	}
+
+	.product-image img {
+		width: 80px;
+	}
+
+	.product-name,
+	.product-price,
+	.product-quantity,
+	.product-total,
+	.product-remove {
+		font-size: 14px;
+	}
+
+	.product-quantity span {
+		margin: 0 10px;
+	}
+
+	.product-remove i {
+		font-size: 18px;
+	}
+
+	.cart-empty-message h3 {
+		font-size: 16px;
+	}
+
+	.product-total-sum {
+		text-align: center;
+	}
+
+	.product-total-sum h6 {
+		margin-top: 10px;
+	}
+
+	/* Adjustments to fit the table to the screen */
+	.cart-table-wrap {
+		overflow-x: auto;
+	}
+
+	.cart-table {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	.cart-table th,
+	.cart-table td {
+		padding: 8px;
+		text-align: left;
+		word-break: break-word;
+		white-space: normal;
+		max-width: 200px;
+		overflow: hidden;
+	}
+
+	.cart-table .product-image img {
+		width: 60px;
+		height: 60px;
+	}
+
+	.cart-table .product-name,
+	.cart-table .product-price,
+	.cart-table .product-quantity,
+	.cart-table .product-total,
+	.cart-table .product-remove {
+		font-size: 12px;
+		padding: 5px;
+	}
+
+	.cart-table .product-quantity span {
+		margin: 0 5px;
+	}
+
+	.cart-table .product-remove i {
+		font-size: 16px;
+	}
+
+	.cart-form {
+		margin-top: 20px;
+	}
+
+	.cart-form .form-group {
+		margin-bottom: 15px;
+	}
+
+	.cart-form label {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	.cart-form .form-control {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		font-size: 14px;
+	}
+
+	.checkout-button {
+		background: rgb(44, 215, 25);
+		padding: 7px 20px;
+		color: white;
+		font-weight: 700;
+		border-radius: 50px;
+		display: block;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+}
 {% endblock style %}
 
 {% block content %}
@@ -39,11 +155,8 @@
 								<th class="product-quantity">Quantity</th>
 								<th class="product-total">Total</th>
 								<th class="product-remove"></th>
-
 							</tr>
-
 						</thead>
-
 						<tbody>
 							{% for key, value in cart_items.items %}
 							<tr>

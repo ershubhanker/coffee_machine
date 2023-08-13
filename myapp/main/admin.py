@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Contact,navItems,Image,Headings,buttonText,Instantquote,paragraph,spareParts,galleryImages,Order
+from . models import Contact,navItems,Image,Headings,buttonText,Instantquote,paragraph,spareParts,galleryImages,Order,videoFiles
 # Register your models here.
 
 admin.site.register(spareParts)
@@ -12,3 +12,4 @@ admin.site.register(Image)
 admin.site.register(galleryImages)
 admin.site.register(Order)
 admin.site.register(Instantquote)
+admin.site.register(videoFiles)
